@@ -264,6 +264,7 @@ nav { display: none; }
   background: var(--border-hard);
   border: 1px solid var(--border-hard);
 }
+.philosophy-card:first-child { grid-column: 1 / -1; }
 .philosophy-card {
   padding: 56px 48px;
   background: var(--bg);
@@ -931,7 +932,9 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
   .account-sidebar { display: flex; flex-direction: row; align-items: center; gap: 24px; flex-wrap: wrap; }
   .spa-detail-grid { grid-template-columns: 1fr; padding: 40px 24px; }
   .philosophy-grid { grid-template-columns: 1fr; }
+  .philosophy-card:first-child { grid-column: 1; }
   .training-list { grid-template-columns: 1fr; }
+  [style*="grid-template-columns:1fr 1fr 1fr"][style*="gap:1px"] { grid-template-columns: 1fr !important; }
   .schedule-grid { grid-template-columns: 1fr 1fr; }
   .page-hero, .fitness-hero { padding: 100px 24px 0; }
   footer { padding: 40px 24px 24px; }
@@ -1698,7 +1701,31 @@ footer {
     </div>
   </section>
 
-  <!-- PHILOSOPHY -->
+  <!-- ── WOMEN ONLY STATEMENT ────────────────────────── -->
+  <section style="background:var(--cream);padding:72px 80px;position:relative;overflow:hidden;border-bottom:3px solid var(--gold)">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,146,74,0.07) 0%,transparent 60%);pointer-events:none"></div>
+    <div style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:260px;font-weight:300;color:rgba(184,146,74,0.06);line-height:1;pointer-events:none;letter-spacing:-0.02em">♀</div>
+    <div style="position:relative;z-index:1;max-width:900px">
+      <div style="display:inline-flex;align-items:center;gap:12px;background:var(--gold);padding:8px 20px;margin-bottom:32px">
+        <span style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:#fff;font-family:var(--sans);font-weight:400">Закрытый клуб · Только для женщин</span>
+      </div>
+      <h2 style="font-family:var(--serif);font-size:clamp(40px,5.5vw,80px);font-weight:300;color:var(--cream);line-height:1.02;margin-bottom:28px">
+        Мы создали мир,<br>
+        где <em style="font-style:italic;color:var(--gold)">вы в центре.</em><br>
+        Только вы.
+      </h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px">
+        <p style="font-size:15px;color:rgba(42,32,24,0.72);line-height:1.9;font-weight:300">
+          Венеция — единственное в Москве велнес-пространство, куда вход разрешён исключительно женщинам. Никаких исключений. Никаких компромиссов. Это принципиальное решение — не маркетинг, а убеждение.
+        </p>
+        <p style="font-size:15px;color:rgba(42,32,24,0.72);line-height:1.9;font-weight:300">
+          Здесь можно быть собой без оглядки. Тренироваться, восстанавливаться и преображаться в пространстве, где каждая деталь — от архитектуры до аромата в раздевалке — продумана с заботой о женской природе.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHILOSOPHY ──────────────────────────────────── -->
   <section class="section">
     <div class="section-eyebrow">Наша философия</div>
     <div class="services-intro">
@@ -1712,32 +1739,218 @@ footer {
       </div>
     </div>
     <div class="philosophy-grid">
-      <div class="philosophy-card">
-        <div class="philosophy-num">01</div>
-        <h3>Только для женщин</h3>
-        <p>Закрытое пространство, созданное с заботой о женской природе. Уединённость, приватность и особая атмосфера — здесь всё говорит на вашем языке.</p>
+      <!-- Card 01 — highlighted, full-width -->
+      <div class="philosophy-card" style="grid-column:1/-1;background:var(--cream);border:2px solid var(--gold);padding:48px 56px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center">
+        <div style="flex-shrink:0">
+          <div style="width:80px;height:80px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--gold)">♀</div>
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-family:var(--sans)">Принцип №1 · Основополагающий</div>
+          <h3 style="font-family:var(--serif);font-size:32px;font-weight:400;color:var(--cream);margin-bottom:12px">Исключительно для женщин — без исключений</h3>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.85;max-width:680px">Венеция — закрытый клуб с доступом строго для женщин. Это не концепция и не формат — это наша идентичность. Уединённость, свобода, приватность и особая женская атмосфера, в которой нет места компромиссам. Мужчины не допускаются ни в одну зону клуба — ни как гости, ни как тренеры.</p>
+        </div>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-num">02</div>
-        <h3>Премиальный сервис</h3>
-        <p>Персональный подход к каждой гостье. Профессиональные тренеры, spa-специалисты и косметологи с многолетним опытом — ваш комфорт в центре внимания.</p>
+        <h3>Сервис уровня частного клуба</h3>
+        <p>Персональный подход к каждой участнице. Ваше имя знают все — от администратора до тренера. Профессиональные специалисты с многолетним опытом в лучших заведениях мира.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-num">03</div>
-        <h3>Комплексный велнес</h3>
-        <p>Фитнес, СПА, косметология и салон красоты — всё под одной крышей. Забота о теле и душе в едином пространстве, без необходимости куда-то ехать.</p>
+        <h3>Один адрес — весь велнес</h3>
+        <p>Фитнес, СПА, косметология и салон красоты под одной крышей. Вы больше не планируете маршруты по городу — всё, что нужно телу и душе, здесь.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-num">04</div>
-        <h3>Инновационное оборудование</h3>
-        <p>Тренажёры Hammer Strength, оборудование Symbio и Life Fitness, реформеры для пилатеса, профессиональный ринг — только лучшее для ваших тренировок.</p>
+        <h3>Оборудование без компромиссов</h3>
+        <p>Hammer Strength, Symbio, Life Fitness, реформеры Balanced Body, профессиональный ринг. Мы выбираем лучшее — потому что вы этого заслуживаете.</p>
+      </div>
+      <div class="philosophy-card">
+        <div class="philosophy-num">05</div>
+        <h3>Ограниченное членство</h3>
+        <p>Не более 300 участниц одновременно. Клуб намеренно не масштабируется — мы сохраняем камерность, чтобы каждая гостья получала всё внимание, которого она достойна.</p>
       </div>
     </div>
   </section>
 
-  <div class="divider"><div class="divider-ornament">✦</div></div>
+  <!-- ── MANIFESTO ───────────────────────────────────── -->
+  <section style="background:var(--cream);padding:0;position:relative;overflow:hidden;border-top:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:500px">
+      <!-- Left: dark editorial panel -->
+      <div style="background:var(--cream);padding:80px 64px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border-hard)">
+        <div style="font-size:9px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;font-family:var(--sans);display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Манифест</div>
+        <blockquote style="font-family:var(--serif);font-size:clamp(28px,3vw,46px);font-weight:300;color:var(--cream);line-height:1.12;margin-bottom:32px">
+          «Роскошь — это<br>не цена входа.<br>Это <em style="color:var(--gold);font-style:italic">качество тишины</em><br>внутри.»
+        </blockquote>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.9;max-width:400px">
+          Мы не строили клуб для всех. Мы строили его для женщины, которая умеет ценить разницу. Между суетой и покоем. Между толпой и уединением. Между хорошим и безупречным.
+        </p>
+      </div>
+      <!-- Right: stats -->
+      <div style="background:var(--card);padding:80px 64px;display:flex;flex-direction:column;justify-content:center;gap:0">
+        <div style="border-bottom:1px solid var(--border-hard);padding-bottom:36px;margin-bottom:36px">
+          <div style="font-family:var(--serif);font-size:72px;font-weight:300;color:var(--gold);line-height:1">300</div>
+          <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;font-family:var(--sans)">максимум участниц клуба</div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.7">Намеренное ограничение. Каждая участница получает внимание, пространство и время.</p>
+        </div>
+        <div style="border-bottom:1px solid var(--border-hard);padding-bottom:36px;margin-bottom:36px">
+          <div style="font-family:var(--serif);font-size:72px;font-weight:300;color:var(--gold);line-height:1">2 200</div>
+          <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;font-family:var(--sans)">м² частного пространства</div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.7">Фитнес, СПА, клиника, салон и лаунж — единый организм, созданный для одной цели.</p>
+        </div>
+        <div>
+          <div style="font-family:var(--serif);font-size:72px;font-weight:300;color:var(--gold);line-height:1">0</div>
+          <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;font-family:var(--sans)">мужчин. Ни одного. Никогда.</div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.7">Первый в Москве велнес-клуб с полным закрытым доступом — без исключений и компромиссов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- SERVICES -->
+  <!-- ── MEMBERSHIP CARDS ────────────────────────────── -->
+  <section class="section" style="background:var(--bg)">
+    <div class="section-eyebrow">Членство</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px">
+      <h2 class="section-title">Клубные карты</h2>
+      <p class="section-desc">Членство в Венеции — это не просто абонемент. Это выбор стиля жизни. Каждый уровень открывает свой мир привилегий, сервиса и возможностей.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)">
+
+      <!-- Signature -->
+      <div style="background:var(--bg);padding:48px 36px;position:relative;overflow:hidden;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="position:absolute;right:24px;top:24px;font-family:var(--serif);font-size:80px;font-weight:300;color:rgba(184,146,74,0.06);line-height:1;pointer-events:none">S</div>
+        <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-family:var(--sans)">Signature</div>
+        <div style="margin-bottom:32px"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px">
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Фитнес и бассейн без ограничений</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>СПА-зона ежедневно</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>4 персональные тренировки в месяц</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Скидка 20% в клинике и салоне</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Личный шкафчик</div>
+        </div>
+        <button class="btn-outline" style="width:100%;justify-content:center" onclick="showToast('Менеджер свяжется с вами для оформления Signature')">Запросить карту</button>
+      </div>
+
+      <!-- Platinum — highlighted -->
+      <div style="background:var(--cream);padding:48px 36px;position:relative;overflow:hidden;border:2px solid var(--gold);margin:-1px">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+        <div style="position:absolute;right:24px;top:24px;font-family:var(--serif);font-size:80px;font-weight:300;color:rgba(184,146,74,0.08);line-height:1;pointer-events:none">P</div>
+        <div style="display:inline-block;background:var(--gold);padding:4px 12px;font-size:7.5px;letter-spacing:0.35em;text-transform:uppercase;color:#fff;font-family:var(--sans);margin-bottom:16px">Популярный выбор</div>
+        <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-family:var(--sans)">Platinum</div>
+        <div style="margin-bottom:32px"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px">
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Всё из Signature</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>8 персональных тренировок в месяц</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>VIP-раздевалка 4× в месяц</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>4 СПА-сеанса в месяц (кабинет)</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Скидка 30% в клинике и салоне</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>VIP-шкафчик + персональный стилаж</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Приоритетная запись к специалистам</div>
+        </div>
+        <button class="btn-primary" style="width:100%" onclick="showToast('Менеджер свяжется с вами для оформления Platinum')">Запросить карту</button>
+      </div>
+
+      <!-- Diamond -->
+      <div style="background:var(--bg);padding:48px 36px;position:relative;overflow:hidden;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="position:absolute;right:24px;top:24px;font-family:var(--serif);font-size:80px;font-weight:300;color:rgba(184,146,74,0.06);line-height:1;pointer-events:none">D</div>
+        <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-family:var(--sans)">Diamond</div>
+        <div style="margin-bottom:32px"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px">
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Всё из Platinum</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Безлимитные персональные тренировки</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Закреплённый VIP-кабинет в СПА</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Консьерж-сервис 24/7</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Персональный менеджер клуба</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Скидка 50% на все услуги</div>
+          <div style="display:flex;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold);flex-shrink:0">—</span>Право пригласить 1 гостью в месяц</div>
+        </div>
+        <button class="btn-outline" style="width:100%;justify-content:center" onclick="showToast('Менеджер свяжется с вами для оформления Diamond')">Запросить карту</button>
+      </div>
+
+    </div>
+    <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:20px;line-height:1.7">Вступление — только по предварительному знакомству или рекомендации действующего члена клуба.<br>Оформление карты — через персонального менеджера. </p>
+  </section>
+
+  <!-- ── YOUR DAY AT VENEZIA ─────────────────────────── -->
+  <section style="background:var(--card);border-top:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard);padding:80px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="section-eyebrow" style="justify-content:center">Опыт</div>
+      <h2 class="section-title" style="text-align:center;max-width:520px;margin:0 auto">Ваш день<br>в <em>Венеции</em></h2>
+    </div>
+    <div style="position:relative;max-width:760px;margin:0 auto">
+      <!-- Timeline line -->
+      <div style="position:absolute;left:52px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),var(--gold),transparent)"></div>
+      <!-- Items -->
+      <div style="display:flex;flex-direction:column;gap:0">
+
+        <div style="display:flex;gap:32px;align-items:flex-start;padding:0 0 40px">
+          <div style="flex-shrink:0;width:104px;text-align:right">
+            <div style="font-family:var(--serif);font-size:20px;color:var(--gold)">07:00</div>
+            <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:2px">утро</div>
+          </div>
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px;box-shadow:0 0 0 4px var(--card)"></div>
+          <div style="padding-top:2px">
+            <div style="font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:6px">Утренняя йога и бассейн</div>
+            <p style="font-size:12px;color:var(--text-muted);line-height:1.8">Начните день в тишине. Приватная студия, инструктор только для вас, панорамный вид на Москву-реку. После — дорожки бассейна и первый кофе в лаунже.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:32px;align-items:flex-start;padding:0 0 40px">
+          <div style="flex-shrink:0;width:104px;text-align:right">
+            <div style="font-family:var(--serif);font-size:20px;color:var(--gold)">10:30</div>
+            <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:2px">день</div>
+          </div>
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--border-hard);flex-shrink:0;margin-top:6px;box-shadow:0 0 0 4px var(--card)"></div>
+          <div style="padding-top:2px">
+            <div style="font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:6px">Персональная тренировка</div>
+            <p style="font-size:12px;color:var(--text-muted);line-height:1.8">Ваш тренер уже знает ваши цели. 60 минут фокусированной работы в закреплённой студии — только вы и результат.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:32px;align-items:flex-start;padding:0 0 40px">
+          <div style="flex-shrink:0;width:104px;text-align:right">
+            <div style="font-family:var(--serif);font-size:20px;color:var(--gold)">13:00</div>
+            <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:2px">восстановление</div>
+          </div>
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--border-hard);flex-shrink:0;margin-top:6px;box-shadow:0 0 0 4px var(--card)"></div>
+          <div style="padding-top:2px">
+            <div style="font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:6px">Хамам и СПА-ритуал</div>
+            <p style="font-size:12px;color:var(--text-muted);line-height:1.8">Хамам со звёздным небом, ароматический пар, массаж с маслами в приватном кабинете. Время перестаёт существовать.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:32px;align-items:flex-start;padding:0 0 40px">
+          <div style="flex-shrink:0;width:104px;text-align:right">
+            <div style="font-family:var(--serif);font-size:20px;color:var(--gold)">16:00</div>
+            <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:2px">красота</div>
+          </div>
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--border-hard);flex-shrink:0;margin-top:6px;box-shadow:0 0 0 4px var(--card)"></div>
+          <div style="padding-top:2px">
+            <div style="font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:6px">Косметология и салон</div>
+            <p style="font-size:12px;color:var(--text-muted);line-height:1.8">Косметолог завершает день уходом за лицом. Укладка в салоне. Вы выходите из Венеции такой, какой хотели войти в него с утра.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:32px;align-items:flex-start">
+          <div style="flex-shrink:0;width:104px;text-align:right">
+            <div style="font-family:var(--serif);font-size:20px;color:var(--gold)">19:00</div>
+            <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:2px">вечер</div>
+          </div>
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px;box-shadow:0 0 0 4px var(--card)"></div>
+          <div style="padding-top:2px">
+            <div style="font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:6px">Вечерний лаунж</div>
+            <p style="font-size:12px;color:var(--text-muted);line-height:1.8">Последний чай в зоне отдыха. За окном — огни Москвы. Внутри — то спокойствие, которое невозможно купить нигде, кроме Венеции.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px">
+      <button class="btn-primary" onclick="showToast('Запрос на пробный день принят. Мы свяжемся с вами.')">Запросить пробный день</button>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ────────────────────────────────────── -->
   <section class="section">
     <div class="section-eyebrow">Направления</div>
     <h2 class="section-title" style="margin-bottom:48px">Выберите <em>своё</em> направление</h2>
@@ -1782,17 +1995,23 @@ footer {
   </section>
 
   <!-- CTA -->
-  <section class="section" style="background: var(--card); border-top: 1px solid var(--border-hard); border-bottom: 1px solid var(--border-hard); text-align:center;">
-    <div class="section-eyebrow" style="justify-content:center">Начните сегодня</div>
-    <h2 class="section-title" style="text-align:center; max-width:600px; margin:0 auto 24px">
-      Ваш первый шаг к <em>новому ощущению себя</em>
-    </h2>
-    <p style="font-size:13px; color:var(--text-muted); max-width:440px; margin:0 auto 40px; text-align:center; line-height:1.9">
-      Запишитесь на пробное посещение или выберите клубную карту, которая подходит именно вам.
-    </p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <button class="btn-primary" onclick="navigate('booking')">Записаться на пробное</button>
-      <button class="btn-outline" onclick="navigate('account')">Личный кабинет</button>
+  <section class="section" style="background:var(--cream);border-top:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard);padding:80px;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,146,74,0.07),transparent 60%);pointer-events:none"></div>
+    <div style="position:relative;z-index:1">
+      <div class="section-eyebrow" style="justify-content:center">Первый шаг</div>
+      <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 20px">
+        Познакомьтесь с<br><em>Венецией</em> лично
+      </h2>
+      <p style="font-size:14px;color:rgba(42,32,24,0.65);max-width:480px;margin:0 auto 16px;text-align:center;line-height:1.9">
+        Мы не продаём карты онлайн. Каждое знакомство начинается с личной встречи — чтобы понять, подходим ли мы друг другу.
+      </p>
+      <p style="font-size:11px;color:var(--text-muted);max-width:420px;margin:0 auto 40px;text-align:center;line-height:1.7">
+        Оставьте запрос — персональный менеджер свяжется с вами в течение часа и пригласит на экскурсию по клубу.
+      </p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-primary" style="font-size:11px;padding:18px 48px" onclick="showToast('Запрос получен. Менеджер свяжется в течение часа.')">Запросить знакомство</button>
+        <button class="btn-outline" style="font-size:11px;padding:18px 48px" onclick="navigate('directory')">Изучить клуб</button>
+      </div>
     </div>
   </section>
 
