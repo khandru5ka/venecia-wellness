@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Венеция — Навигация</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:   #16120e;
+  --ink2:  #1f1a15;
+  --ink3:  #2b251e;
+  --gold:  #c4a05a;
+  --gold2: #e2cc98;
+  --cream: #f2ece0;
+  --muted: #7a6a52;
+  --serif: 'Cormorant Garamond', serif;
+  --sans:  'Jost', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px}
+
+/* HEADER */
+header{position:relative;z-index:10;padding:0 56px;height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(196,160,90,.16)}
+.h-logo{font-family:var(--serif);font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+.h-badge{font-size:8px;letter-spacing:.38em;text-transform:uppercase;color:var(--muted);border:1px solid rgba(196,160,90,.2);padding:5px 14px}
+.h-link{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.h-link:hover{color:var(--gold)}
+
+/* HERO */
+.hero{position:relative;z-index:1;padding:64px 56px 56px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;border-bottom:1px solid rgba(196,160,90,.1);overflow:hidden}
+.hero::before{content:'VENICE';position:absolute;right:32px;bottom:-16px;font-family:var(--serif);font-size:148px;font-weight:300;color:rgba(196,160,90,.035);letter-spacing:.14em;pointer-events:none;line-height:1}
+.hero-eye{font-size:8px;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.hero-h{font-family:var(--serif);font-size:clamp(36px,4vw,62px);font-weight:300;line-height:1.02;color:var(--cream)}
+.hero-h em{font-style:italic;color:var(--gold)}
+.hero-stats{display:flex;gap:40px;flex-shrink:0}
+.stat-n{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--gold);line-height:1}
+.stat-l{font-size:7.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+/* SECTION LABEL */
+.slabel{position:relative;z-index:1;padding:26px 56px 14px;font-size:7.5px;letter-spacing:.44em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.slabel::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(196,160,90,.22),transparent)}
+
+/* MAIN GRID */
+.mgrid{position:relative;z-index:1;display:grid;grid-template-columns:1.55fr 1fr 1fr;grid-template-rows:auto auto;gap:1px;background:rgba(196,160,90,.09);margin:0 56px;border:1px solid rgba(196,160,90,.09)}
+
+/* TILE */
+.tile{background:var(--ink2);display:flex;flex-direction:column;cursor:pointer;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:background .32s}
+.tile:hover{background:var(--ink3)}
+.tile::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .4s ease}
+.tile:hover::after{transform:scaleY(1)}
+
+/* VISUAL ZONE */
+.tv{flex:1;min-height:210px;display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden;position:relative}
+.tv svg{width:100%;height:100%;max-width:240px;max-height:220px;transition:transform .55s ease,opacity .4s}
+.tile:hover .tv svg{transform:scale(1.04);opacity:.88}
+.tile-tall .tv{min-height:320px}
+
+/* TEXT ZONE */
+.tt{padding:18px 22px 22px;border-top:1px solid rgba(196,160,90,.11);display:flex;flex-direction:column;gap:5px}
+.t-n{font-family:var(--serif);font-size:10.5px;color:rgba(196,160,90,.32);letter-spacing:.06em}
+.t-tag{font-size:7px;letter-spacing:.36em;text-transform:uppercase;color:var(--muted)}
+.t-nm{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1}
+.t-id{font-family:'Courier New',monospace;font-size:8.5px;color:var(--gold);opacity:.6;letter-spacing:.04em;margin-top:1px}
+.t-arr{margin-top:9px;font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:7px;transition:color .3s,gap .3s}
+.t-arr::after{content:'→'}
+.tile:hover .t-arr{color:var(--gold);gap:11px}
+
+/* Placement */
+.t-home    {grid-column:1;grid-row:1/3}
+.t-dir     {grid-column:2;grid-row:1}
+.t-fitness {grid-column:3;grid-row:1}
+.t-spa     {grid-column:2;grid-row:2}
+.t-clinic  {grid-column:3;grid-row:2}
+
+/* Second row cluster */
+.row2{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(196,160,90,.09);margin:1px 56px 0;border:0 solid rgba(196,160,90,.09);border-left:1px solid rgba(196,160,90,.09);border-right:1px solid rgba(196,160,90,.09);border-bottom:1px solid rgba(196,160,90,.09)}
+
+/* SUB GRIDS */
+.sgrid{position:relative;z-index:1;display:grid;gap:1px;background:rgba(196,160,90,.09);margin:1px 56px 0;border:0 solid rgba(196,160,90,.09);border-left:1px solid rgba(196,160,90,.09);border-right:1px solid rgba(196,160,90,.09);border-bottom:1px solid rgba(196,160,90,.09)}
+.sg6{grid-template-columns:repeat(6,1fr)}
+.sg7{grid-template-columns:repeat(7,1fr)}
+
+.stile{background:var(--ink2);padding:20px 16px 18px;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;position:relative;overflow:hidden;transition:background .28s}
+.stile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .32s}
+.stile:hover{background:var(--ink3)}
+.stile:hover::after{transform:scaleX(1)}
+.st-tag{font-size:6.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.st-nm{font-family:var(--serif);font-size:14px;font-weight:400;color:var(--cream);line-height:1.1}
+.st-id{font-family:'Courier New',monospace;font-size:8px;color:var(--gold);opacity:.55}
+.st-desc{font-size:9px;color:var(--muted);line-height:1.55;margin-top:2px}
+.st-arr{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px;transition:color .28s}
+.stile:hover .st-arr{color:var(--gold)}
+
+/* Footer */
+.pgf{position:relative;z-index:1;margin:0 56px;padding:22px 0 44px;border-top:1px solid rgba(196,160,90,.12);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.pgf-note{font-size:9px;color:var(--muted)}
+.pgf-note code{color:var(--gold);font-family:'Courier New',monospace;font-size:8.5px;background:rgba(196,160,90,.07);padding:2px 6px}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.tile{animation:fadeUp .65s ease both}
+.tile:nth-child(1){animation-delay:.04s}.tile:nth-child(2){animation-delay:.10s}.tile:nth-child(3){animation-delay:.16s}.tile:nth-child(4){animation-delay:.21s}.tile:nth-child(5){animation-delay:.26s}
+.row2 .tile{animation-delay:.08s}
+.stile{animation:fadeUp .5s ease both;animation-delay:.15s}
+
+/* Responsive */
+@media(max-width:1080px){
+  .mgrid{grid-template-columns:1fr 1fr;margin:0 24px}
+  .t-home{grid-column:1/3;grid-row:auto}.t-dir,.t-fitness,.t-spa,.t-clinic{grid-column:auto;grid-row:auto}
+  .row2{grid-template-columns:1fr 1fr;margin:1px 24px 0}
+  .sgrid{margin:1px 24px 0}.sg6{grid-template-columns:repeat(3,1fr)}.sg7{grid-template-columns:repeat(4,1fr)}
+  header,.hero,.slabel,.pgf{padding-left:24px;padding-right:24px}
+  .hero::before{display:none}
+}
+@media(max-width:620px){
+  .mgrid{grid-template-columns:1fr;margin:0 14px}.t-home{grid-column:1}
+  .row2{grid-template-columns:1fr 1fr;margin:1px 14px 0}
+  .sgrid{margin:1px 14px 0}.sg6,.sg7{grid-template-columns:1fr 1fr}
+  header{padding:0 14px}.h-badge{display:none}
+  .hero{padding:44px 14px 36px;flex-direction:column;align-items:flex-start}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+  .slabel,.pgf{padding-left:14px;padding-right:14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-logo">В Е Н Е Ц И Я</div>
+  <div class="h-badge">Карта страниц · Sitemap</div>
+  <a class="h-link" href="venecia-multipage.html">Открыть сайт →</a>
+</header>
+
+<div class="hero">
+  <div>
+    <div class="hero-eye">Техническая навигация</div>
+    <h1 class="hero-h">Все страницы<br><em>проекта</em></h1>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-n">9</div><div class="stat-l">страниц</div></div>
+    <div><div class="stat-n">22</div><div class="stat-l">раздела</div></div>
+    <div><div class="stat-n">1</div><div class="stat-l">HTML-файл</div></div>
+  </div>
+</div>
+
+<div class="slabel">Основные страницы</div>
+
+<div class="mgrid">
+
+  <!-- 01 HOME — tall, left -->
+  <a class="tile tile-tall t-home" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 260 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="130" cy="155" rx="95" ry="115" fill="rgba(196,160,90,.035)"/>
+        <line x1="18" y1="248" x2="242" y2="248" stroke="rgba(196,160,90,.18)" stroke-width="1"/>
+        <ellipse cx="130" cy="256" rx="78" ry="7" fill="rgba(196,160,90,.05)"/>
+        <!-- Main arch -->
+        <path d="M97 248 L97 152 Q97 104 130 104 Q163 104 163 152 L163 248" stroke="rgba(196,160,90,.72)" stroke-width="1.3" fill="none"/>
+        <!-- Left arch -->
+        <path d="M44 248 L44 176 Q44 144 70 144 Q96 144 96 176 L96 248" stroke="rgba(196,160,90,.32)" stroke-width="1" fill="none"/>
+        <!-- Right arch -->
+        <path d="M164 248 L164 176 Q164 144 190 144 Q216 144 216 176 L216 248" stroke="rgba(196,160,90,.32)" stroke-width="1" fill="none"/>
+        <!-- Keystone -->
+        <circle cx="130" cy="104" r="5" fill="none" stroke="rgba(196,160,90,.6)" stroke-width="1"/>
+        <circle cx="130" cy="104" r="1.8" fill="rgba(196,160,90,.85)"/>
+        <!-- Horizontal bands -->
+        <line x1="97" y1="194" x2="163" y2="194" stroke="rgba(196,160,90,.13)" stroke-width=".8"/>
+        <line x1="97" y1="222" x2="163" y2="222" stroke="rgba(196,160,90,.1)" stroke-width=".8"/>
+        <!-- Bases -->
+        <rect x="92" y="244" width="10" height="5" fill="rgba(196,160,90,.22)" rx="1"/>
+        <rect x="158" y="244" width="10" height="5" fill="rgba(196,160,90,.22)" rx="1"/>
+        <!-- Ripples -->
+        <path d="M52 264 Q130 258 208 264" stroke="rgba(196,160,90,.1)" stroke-width=".8" fill="none"/>
+        <path d="M36 274 Q130 268 224 274" stroke="rgba(196,160,90,.07)" stroke-width=".7" fill="none"/>
+        <path d="M70 283 Q130 279 190 283" stroke="rgba(196,160,90,.05)" stroke-width=".6" fill="none"/>
+        <!-- Stars -->
+        <circle cx="55" cy="122" r="1.1" fill="rgba(196,160,90,.45)"/>
+        <circle cx="205" cy="132" r="1.1" fill="rgba(196,160,90,.35)"/>
+        <circle cx="130" cy="74" r="1.4" fill="rgba(196,160,90,.6)"/>
+        <circle cx="86" cy="90" r=".9" fill="rgba(196,160,90,.3)"/>
+        <circle cx="174" cy="88" r=".9" fill="rgba(196,160,90,.3)"/>
+        <!-- Diamond ornament top -->
+        <path d="M130 46 L137 58 L130 70 L123 58 Z" stroke="rgba(196,160,90,.4)" stroke-width=".8" fill="none"/>
+        <path d="M130 50 L134 58 L130 66 L126 58 Z" fill="rgba(196,160,90,.12)"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">01</div>
+      <div class="t-tag">Главная страница</div>
+      <div class="t-nm">Home</div>
+      <div class="t-id">#page-home</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 02 DIRECTORY -->
+  <a class="tile t-dir" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="95" r="68" stroke="rgba(196,160,90,.07)" stroke-width=".8"/>
+        <circle cx="100" cy="95" r="50" stroke="rgba(196,160,90,.12)" stroke-width=".8"/>
+        <circle cx="100" cy="95" r="32" stroke="rgba(196,160,90,.18)" stroke-width=".8"/>
+        <circle cx="100" cy="95" r="8"  stroke="rgba(196,160,90,.55)" stroke-width="1.1" fill="rgba(196,160,90,.06)"/>
+        <circle cx="100" cy="95" r="2.5" fill="rgba(196,160,90,.9)"/>
+        <!-- Cardinal arms -->
+        <line x1="100" y1="27" x2="100" y2="63" stroke="rgba(196,160,90,.55)" stroke-width="1.2"/>
+        <line x1="100" y1="127" x2="100" y2="163" stroke="rgba(196,160,90,.55)" stroke-width="1.2"/>
+        <line x1="32" y1="95" x2="68" y2="95" stroke="rgba(196,160,90,.55)" stroke-width="1.2"/>
+        <line x1="132" y1="95" x2="168" y2="95" stroke="rgba(196,160,90,.55)" stroke-width="1.2"/>
+        <!-- Diagonal -->
+        <line x1="52" y1="47" x2="72" y2="73" stroke="rgba(196,160,90,.18)" stroke-width=".8"/>
+        <line x1="148" y1="47" x2="128" y2="73" stroke="rgba(196,160,90,.18)" stroke-width=".8"/>
+        <line x1="52" y1="143" x2="72" y2="117" stroke="rgba(196,160,90,.18)" stroke-width=".8"/>
+        <line x1="148" y1="143" x2="128" y2="117" stroke="rgba(196,160,90,.18)" stroke-width=".8"/>
+        <!-- North arrow -->
+        <path d="M100 20 L105 32 L100 27 L95 32 Z" fill="rgba(196,160,90,.8)"/>
+        <path d="M100 34 L105 32 L100 40 L95 32 Z" fill="rgba(196,160,90,.3)"/>
+        <text x="96" y="16" font-family="'Cormorant Garamond',serif" font-size="9" fill="rgba(196,160,90,.55)" letter-spacing="1">С</text>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">02</div>
+      <div class="t-tag">Разводящая</div>
+      <div class="t-nm">Все разделы</div>
+      <div class="t-id">#page-directory</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 03 FITNESS -->
+  <a class="tile t-fitness" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="100" rx="72" ry="62" stroke="rgba(196,160,90,.06)" stroke-width="18" fill="none"/>
+        <!-- Dumbbell bar -->
+        <line x1="40" y1="98" x2="160" y2="98" stroke="rgba(196,160,90,.55)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Left plates -->
+        <rect x="28" y="82" width="14" height="32" rx="3" fill="none" stroke="rgba(196,160,90,.65)" stroke-width="1.5"/>
+        <rect x="14" y="87" width="16" height="22" rx="3" fill="none" stroke="rgba(196,160,90,.4)" stroke-width="1.5"/>
+        <!-- Right plates -->
+        <rect x="158" y="82" width="14" height="32" rx="3" fill="none" stroke="rgba(196,160,90,.65)" stroke-width="1.5"/>
+        <rect x="170" y="87" width="16" height="22" rx="3" fill="none" stroke="rgba(196,160,90,.4)" stroke-width="1.5"/>
+        <!-- Grip lines -->
+        <line x1="87" y1="93" x2="87"  y2="103" stroke="rgba(196,160,90,.22)" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="95" y1="93" x2="95"  y2="103" stroke="rgba(196,160,90,.22)" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="103" y1="93" x2="103" y2="103" stroke="rgba(196,160,90,.22)" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="111" y1="93" x2="111" y2="103" stroke="rgba(196,160,90,.22)" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- Center dot -->
+        <circle cx="100" cy="98" r="3.5" fill="rgba(196,160,90,.45)"/>
+        <!-- Chart sparkline -->
+        <path d="M58 64 L68 49 L80 57 L92 42 L104 53 L116 38 L128 48 L140 35" stroke="rgba(196,160,90,.32)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="140" cy="35" r="2" fill="rgba(196,160,90,.65)"/>
+        <!-- Bottom waves -->
+        <path d="M24 128 Q56 122 88 128 Q120 134 152 128 Q178 122 196 128" stroke="rgba(196,160,90,.15)" stroke-width=".9" fill="none"/>
+        <path d="M32 140 Q68 135 104 140 Q140 145 172 140 Q188 136 196 140" stroke="rgba(196,160,90,.08)" stroke-width=".7" fill="none"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">03</div>
+      <div class="t-tag">Активность</div>
+      <div class="t-nm">Фитнес</div>
+      <div class="t-id">#page-fitness</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 04 SPA -->
+  <a class="tile t-spa" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ripples -->
+        <ellipse cx="100" cy="108" rx="88" ry="28" stroke="rgba(196,160,90,.07)" stroke-width="1"/>
+        <ellipse cx="100" cy="108" rx="70" ry="22" stroke="rgba(196,160,90,.11)" stroke-width="1"/>
+        <ellipse cx="100" cy="108" rx="52" ry="17" stroke="rgba(196,160,90,.17)" stroke-width="1"/>
+        <ellipse cx="100" cy="108" rx="34" ry="11" stroke="rgba(196,160,90,.28)" stroke-width="1.1"/>
+        <ellipse cx="100" cy="108" rx="16" ry="5.5" stroke="rgba(196,160,90,.45)" stroke-width="1.2"/>
+        <circle  cx="100" cy="108" r="3.5" fill="rgba(196,160,90,.65)"/>
+        <!-- Water drop -->
+        <path d="M100 46 Q107 62 107 74 Q107 88 100 90 Q93 88 93 74 Q93 62 100 46Z" fill="rgba(196,160,90,.12)" stroke="rgba(196,160,90,.45)" stroke-width="1"/>
+        <!-- Lotus petals -->
+        <path d="M100 106 Q83 88 100 72 Q117 88 100 106Z" fill="rgba(196,160,90,.06)" stroke="rgba(196,160,90,.18)" stroke-width=".8"/>
+        <path d="M100 106 Q82 110 76 94 Q88 83 100 106Z" fill="rgba(196,160,90,.04)" stroke="rgba(196,160,90,.13)" stroke-width=".8"/>
+        <path d="M100 106 Q118 110 124 94 Q112 83 100 106Z" fill="rgba(196,160,90,.04)" stroke="rgba(196,160,90,.13)" stroke-width=".8"/>
+        <!-- Steam -->
+        <path d="M77 38 Q73 30 77 24 Q81 18 77 12" stroke="rgba(196,160,90,.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M100 34 Q96 26 100 20 Q104 14 100 8"  stroke="rgba(196,160,90,.24)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M123 38 Q127 30 123 24 Q119 18 123 12" stroke="rgba(196,160,90,.18)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <!-- Bottom waves -->
+        <path d="M14 148 Q50 141 86 148 Q122 155 158 148 Q182 141 196 148" stroke="rgba(196,160,90,.1)" stroke-width=".8" fill="none"/>
+        <path d="M14 160 Q54 154 96 160 Q138 166 174 160 Q188 155 196 160" stroke="rgba(196,160,90,.07)" stroke-width=".7" fill="none"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">04</div>
+      <div class="t-tag">Восстановление</div>
+      <div class="t-nm">СПА и велнес</div>
+      <div class="t-id">#page-spa</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 05 CLINIC -->
+  <a class="tile t-clinic" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="98" r="70" stroke="rgba(196,160,90,.05)" stroke-width="16" fill="none"/>
+        <!-- Diamond -->
+        <polygon points="100,24 148,70 148,128 100,174 52,128 52,70" stroke="rgba(196,160,90,.42)" stroke-width="1.2" fill="rgba(196,160,90,.025)"/>
+        <!-- Top facet -->
+        <polygon points="100,24 148,70 100,86 52,70" stroke="rgba(196,160,90,.22)" stroke-width=".8" fill="rgba(196,160,90,.05)"/>
+        <!-- Bottom facet -->
+        <polygon points="100,174 148,128 100,112 52,128" stroke="rgba(196,160,90,.18)" stroke-width=".8" fill="rgba(196,160,90,.03)"/>
+        <!-- Side facets -->
+        <polygon points="100,86 148,70 148,128 100,112" stroke="rgba(196,160,90,.18)" stroke-width=".7" fill="rgba(196,160,90,.04)"/>
+        <polygon points="100,86 52,70 52,128 100,112"  stroke="rgba(196,160,90,.18)" stroke-width=".7" fill="rgba(196,160,90,.02)"/>
+        <!-- Highlight -->
+        <polygon points="100,86 148,70 100,98" fill="rgba(196,160,90,.07)"/>
+        <!-- Center -->
+        <circle cx="100" cy="98" r="5.5" fill="rgba(196,160,90,.55)"/>
+        <circle cx="100" cy="98" r="2.2" fill="rgba(196,160,90,.95)"/>
+        <!-- Light rays -->
+        <line x1="100" y1="24" x2="100" y2="38"  stroke="rgba(196,160,90,.6)"  stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="148" y1="70" x2="137" y2="76"  stroke="rgba(196,160,90,.42)" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="148" y1="128" x2="137" y2="122" stroke="rgba(196,160,90,.38)" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="100" y1="174" x2="100" y2="160" stroke="rgba(196,160,90,.38)" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="52" y1="128" x2="63" y2="122"  stroke="rgba(196,160,90,.38)" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="52" y1="70"  x2="63" y2="76"   stroke="rgba(196,160,90,.42)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">05</div>
+      <div class="t-tag">Эстетика</div>
+      <div class="t-nm">Клиника красоты</div>
+      <div class="t-id">#page-clinic</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+</div><!-- /mgrid -->
+
+
+<!-- Row 2: beauty, team, booking, account -->
+<div class="row2">
+
+  <!-- 06 BEAUTY -->
+  <a class="tile" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(100,96)">
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.06)" stroke="rgba(196,160,90,.34)" stroke-width=".9" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.04)" stroke="rgba(196,160,90,.26)" stroke-width=".9" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.06)" stroke="rgba(196,160,90,.32)" stroke-width=".9" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.04)" stroke="rgba(196,160,90,.26)" stroke-width=".9" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.06)" stroke="rgba(196,160,90,.30)" stroke-width=".9" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.04)" stroke="rgba(196,160,90,.26)" stroke-width=".9" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.06)" stroke="rgba(196,160,90,.30)" stroke-width=".9" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-38" rx="13" ry="36" fill="rgba(196,160,90,.04)" stroke="rgba(196,160,90,.26)" stroke-width=".9" transform="rotate(315)"/>
+          <circle cx="0" cy="0" r="15" fill="rgba(196,160,90,.09)" stroke="rgba(196,160,90,.5)" stroke-width="1"/>
+          <circle cx="0" cy="0" r="5.5" fill="rgba(196,160,90,.6)"/>
+          <circle cx="0" cy="0" r="2.2" fill="rgba(196,160,90,1)"/>
+        </g>
+        <circle cx="100" cy="96" r="60" stroke="rgba(196,160,90,.07)" stroke-width=".5" stroke-dasharray="3 5"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">06</div>
+      <div class="t-tag">Стиль</div>
+      <div class="t-nm">Салон красоты</div>
+      <div class="t-id">#page-beauty</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 07 TEAM -->
+  <a class="tile" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Left person -->
+        <circle cx="55" cy="70" r="19" stroke="rgba(196,160,90,.3)" stroke-width="1" fill="rgba(196,160,90,.04)"/>
+        <path d="M24 155 Q24 118 55 118 Q86 118 86 155" stroke="rgba(196,160,90,.3)" stroke-width="1" fill="rgba(196,160,90,.03)"/>
+        <!-- Center person (main) -->
+        <circle cx="100" cy="63" r="25" stroke="rgba(196,160,90,.62)" stroke-width="1.4" fill="rgba(196,160,90,.07)"/>
+        <path d="M62 162 Q62 120 100 120 Q138 120 138 162" stroke="rgba(196,160,90,.62)" stroke-width="1.4" fill="rgba(196,160,90,.06)"/>
+        <!-- Right person -->
+        <circle cx="145" cy="70" r="19" stroke="rgba(196,160,90,.3)" stroke-width="1" fill="rgba(196,160,90,.04)"/>
+        <path d="M114 155 Q114 118 145 118 Q176 118 176 155" stroke="rgba(196,160,90,.3)" stroke-width="1" fill="rgba(196,160,90,.03)"/>
+        <!-- Base line -->
+        <line x1="18" y1="168" x2="182" y2="168" stroke="rgba(196,160,90,.13)" stroke-width=".8"/>
+        <!-- Crown dots above center -->
+        <circle cx="100" cy="28" r="1.5" fill="rgba(196,160,90,.7)"/>
+        <circle cx="90"  cy="34" r="1"   fill="rgba(196,160,90,.4)"/>
+        <circle cx="110" cy="34" r="1"   fill="rgba(196,160,90,.4)"/>
+        <!-- Laurel hint -->
+        <path d="M86 40 Q92 33 100 31 Q108 33 114 40" stroke="rgba(196,160,90,.32)" stroke-width=".8" fill="none"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">07</div>
+      <div class="t-tag">О клубе</div>
+      <div class="t-nm">Команда</div>
+      <div class="t-id">#page-team</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 08 BOOKING -->
+  <a class="tile" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="28" y="40" width="144" height="120" rx="5" stroke="rgba(196,160,90,.45)" stroke-width="1.2" fill="rgba(196,160,90,.03)"/>
+        <rect x="28" y="40" width="144" height="26" rx="5" fill="rgba(196,160,90,.1)" stroke="none"/>
+        <line x1="54" y1="53" x2="148" y2="53" stroke="rgba(196,160,90,.28)" stroke-width="5.5" stroke-linecap="round"/>
+        <circle cx="64"  cy="40" r="5" fill="var(--ink2)" stroke="rgba(196,160,90,.5)" stroke-width="1.2"/>
+        <circle cx="136" cy="40" r="5" fill="var(--ink2)" stroke="rgba(196,160,90,.5)" stroke-width="1.2"/>
+        <!-- Day grid 5×3 -->
+        <circle cx="50"  cy="88" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="74"  cy="88" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="98"  cy="88" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="122" cy="88" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="146" cy="88" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="50"  cy="112" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="74"  cy="112" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <!-- Highlighted day -->
+        <circle cx="98"  cy="112" r="7.5" fill="rgba(196,160,90,.72)" stroke="none"/>
+        <circle cx="98"  cy="112" r="3"   fill="rgba(196,160,90,1)"/>
+        <circle cx="122" cy="112" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="146" cy="112" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="50"  cy="136" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="74"  cy="136" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="98"  cy="136" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <circle cx="122" cy="136" r="5.5" stroke="rgba(196,160,90,.2)" stroke-width=".8" fill="none"/>
+        <!-- Checkmark row1 col2 -->
+        <path d="M70 87 L73 90 L79 84" stroke="rgba(196,160,90,.55)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">08</div>
+      <div class="t-tag">Сервис</div>
+      <div class="t-nm">Бронирование</div>
+      <div class="t-id">#page-booking</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+  <!-- 09 ACCOUNT -->
+  <a class="tile" href="venecia-multipage.html" target="_blank">
+    <div class="tv">
+      <svg viewBox="0 0 200 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="50" width="164" height="102" rx="8" stroke="rgba(196,160,90,.5)" stroke-width="1.3" fill="rgba(196,160,90,.04)"/>
+        <!-- Chip -->
+        <rect x="36" y="68" width="26" height="20" rx="3" stroke="rgba(196,160,90,.55)" stroke-width="1" fill="rgba(196,160,90,.1)"/>
+        <line x1="36" y1="75" x2="62" y2="75" stroke="rgba(196,160,90,.28)" stroke-width=".8"/>
+        <line x1="36" y1="81" x2="62" y2="81" stroke="rgba(196,160,90,.28)" stroke-width=".8"/>
+        <line x1="49" y1="68" x2="49" y2="88" stroke="rgba(196,160,90,.28)" stroke-width=".8"/>
+        <!-- Number dots -->
+        <circle cx="38"  cy="112" r="2.3" fill="rgba(196,160,90,.5)"/>
+        <circle cx="46"  cy="112" r="2.3" fill="rgba(196,160,90,.5)"/>
+        <circle cx="54"  cy="112" r="2.3" fill="rgba(196,160,90,.5)"/>
+        <circle cx="62"  cy="112" r="2.3" fill="rgba(196,160,90,.5)"/>
+        <circle cx="75"  cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="83"  cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="91"  cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="99"  cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="112" cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="120" cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="128" cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="136" cy="112" r="2.3" fill="rgba(196,160,90,.28)"/>
+        <circle cx="151" cy="110" r="3"   fill="rgba(196,160,90,.55)"/>
+        <circle cx="161" cy="110" r="3"   fill="rgba(196,160,90,.42)"/>
+        <!-- Platinum text -->
+        <text x="37" y="138" font-family="'Cormorant Garamond',serif" font-size="9" fill="rgba(196,160,90,.55)" letter-spacing="3">PLATINUM</text>
+        <!-- Logo circles -->
+        <circle cx="150" cy="72" r="15" stroke="rgba(196,160,90,.4)" stroke-width="1.2" fill="rgba(196,160,90,.06)"/>
+        <circle cx="163" cy="72" r="15" stroke="rgba(196,160,90,.3)" stroke-width="1.2" fill="rgba(196,160,90,.04)"/>
+        <ellipse cx="100" cy="158" rx="72" ry="7" fill="rgba(196,160,90,.04)"/>
+      </svg>
+    </div>
+    <div class="tt">
+      <div class="t-n">09</div>
+      <div class="t-tag">Личное</div>
+      <div class="t-nm">Личный кабинет</div>
+      <div class="t-id">#page-account</div>
+      <div class="t-arr">Открыть</div>
+    </div>
+  </a>
+
+</div><!-- /row2 -->
+
+
+<!-- BOOKING TABS -->
+<div class="slabel" style="margin-top:24px">Вкладки бронирования · #page-booking</div>
+<div class="sgrid sg6">
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Форма 1</div>
+    <div class="st-nm">Групповая тренировка</div>
+    <div class="st-id">book-group</div>
+    <div class="st-desc">Направление, дата, время, контакты</div>
+    <div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Форма 2</div>
+    <div class="st-nm">Персональная тренировка</div>
+    <div class="st-id">book-personal</div>
+    <div class="st-desc">Тренер, цель, уровень, пожелания</div>
+    <div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Форма 3</div>
+    <div class="st-nm">Персональная студия</div>
+    <div class="st-id">book-studio</div>
+    <div class="st-desc">Студия №1–3, длительность, формат</div>
+    <div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Форма 4</div>
+    <div class="st-nm">VIP-раздевалка</div>
+    <div class="st-id">book-vip</div>
+    <div class="st-desc">Тип, дата, пожелания</div>
+    <div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Форма 5</div>
+    <div class="st-nm">Салон и клиника</div>
+    <div class="st-id">book-salon</div>
+    <div class="st-desc">Специалист, направление, дата</div>
+    <div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Форма 6</div>
+    <div class="st-nm">Аренда шкафчика</div>
+    <div class="st-id">book-locker</div>
+    <div class="st-desc">Тип, период, зона</div>
+    <div class="st-arr">→</div>
+  </a>
+</div>
+
+<!-- ACCOUNT TABS -->
+<div class="slabel" style="margin-top:1px">Разделы личного кабинета · #page-account</div>
+<div class="sgrid sg7">
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 1</div><div class="st-nm">Карта и статус</div><div class="st-id">acc-membership</div><div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 2</div><div class="st-nm">Бронирования</div><div class="st-id">acc-bookings</div><div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 3</div><div class="st-nm">Оплаты</div><div class="st-id">acc-payments</div><div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 4</div><div class="st-nm">Шкафчик</div><div class="st-id">acc-locker</div><div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 5</div><div class="st-nm">VIP-раздевалка</div><div class="st-id">acc-vip</div><div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 6</div><div class="st-nm">СПА-кабинет</div><div class="st-id">acc-spa</div><div class="st-arr">→</div>
+  </a>
+  <a class="stile" href="venecia-multipage.html" target="_blank">
+    <div class="st-tag">Кабинет 7</div><div class="st-nm">Профиль</div><div class="st-id">acc-profile</div><div class="st-arr">→</div>
+  </a>
+</div>
+
+<div class="pgf">
+  <div class="pgf-note">Навигация: <code>navigate('id')</code> · Все страницы в одном файле SPA</div>
+  <div class="pgf-note" style="opacity:.45">venecia-multipage.html</div>
+</div>
+
+</body>
+</html>
