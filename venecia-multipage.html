@@ -3561,10 +3561,12 @@ function scrollToId(id) {
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', () => {
-  // Set today's date as default for date inputs
   const today = new Date().toISOString().split('T')[0];
   document.querySelectorAll('input[type="date"]').forEach(i => { if (!i.value) i.value = today; });
-  navigate('home');
+  // Support deep linking via sessionStorage (set by individual page files)
+  const target = sessionStorage.getItem('vw_page');
+  if (target) { sessionStorage.removeItem('vw_page'); navigate(target); }
+  else navigate('home');
 });
 </script>
 </body>
