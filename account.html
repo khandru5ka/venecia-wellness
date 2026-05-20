@@ -776,14 +776,18 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
 .mega-nav {
   position: fixed; inset: 0; z-index: 1500;
   background: var(--bg);
-  display: none; flex-direction: column;
+  display: flex; flex-direction: column;
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  opacity: 0; visibility: hidden;
+  transform: translateY(-16px);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+  pointer-events: none;
 }
 .mega-nav.open {
-  display: flex;
+  opacity: 1; visibility: visible;
   transform: translateY(0);
+  pointer-events: all;
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 .mega-nav-header {
   display: grid;
@@ -1512,7 +1516,6 @@ footer {
   </a>
   <div class="header-right">
     <button class="btn-lang">RU</button>
-    <button class="btn-outline" style="padding:10px 20px;font-size:10px;border-radius:4px" onclick="navigate('directory')">Все разделы</button>
     <button class="btn-cta-header" onclick="navigate('booking')">Клубные карты</button>
     <button class="btn-cta-header" style="background:none;color:var(--cta);border:1px solid var(--cta);border-radius:4px;margin-left:0" onclick="navigate('account')">Кабинет</button>
   </div>
@@ -1702,13 +1705,16 @@ footer {
             <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:6px">СПА-визитов</div>
           </div>
         </div>
-        <div style="background:var(--card);border:1px solid var(--border-hard);padding:28px;margin-bottom:16px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-            <span style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">До следующего уровня</span>
-            <span style="font-size:12px;color:var(--gold)">47 / 60 посещений</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:10px">Ещё 13 посещений — и вы получите статус Diamond с дополнительными привилегиями</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px">
+          <button onclick="navigate('booking')" style="background:var(--cta);color:#fff;border:none;padding:16px 12px;font-family:var(--sans);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;font-weight:400;transition:background 0.3s;border-radius:3px" onmouseenter="this.style.background='var(--cta-hover)'" onmouseleave="this.style.background='var(--cta)'">
+            Расписание<br>тренировок
+          </button>
+          <button onclick="navigate('booking')" style="background:var(--card);color:var(--gold);border:1px solid var(--gold);padding:16px 12px;font-family:var(--sans);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;font-weight:400;transition:all 0.3s;border-radius:3px" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='var(--card)';this.style.color='var(--gold)'">
+            Запись в<br>косметологию
+          </button>
+          <button onclick="navigate('booking')" style="background:var(--card);color:var(--gold);border:1px solid var(--gold);padding:16px 12px;font-family:var(--sans);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;font-weight:400;transition:all 0.3s;border-radius:3px" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='var(--card)';this.style.color='var(--gold)'">
+            Запись в<br>салон красоты
+          </button>
         </div>
       </div>
 
@@ -1889,17 +1895,8 @@ function navigate(page) {
 // ─── MEGA NAV ───
 function toggleMegaNav() {
   const nav = document.getElementById('megaNav');
-  const isOpen = nav.classList.contains('open');
-  if (isOpen) {
-    nav.style.transition = 'transform 0.45s cubic-bezier(0.77,0,0.18,1)';
-    nav.style.transform = 'translateY(-100%)';
-    setTimeout(() => { nav.classList.remove('open'); nav.style.transform = ''; }, 450);
-    document.body.style.overflow = '';
-  } else {
-    nav.classList.add('open');
-    nav.style.transform = 'translateY(0)';
-    document.body.style.overflow = 'hidden';
-  }
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function toggleMobileNav() { toggleMegaNav(); }
 

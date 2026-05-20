@@ -776,14 +776,18 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
 .mega-nav {
   position: fixed; inset: 0; z-index: 1500;
   background: var(--bg);
-  display: none; flex-direction: column;
+  display: flex; flex-direction: column;
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  opacity: 0; visibility: hidden;
+  transform: translateY(-16px);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+  pointer-events: none;
 }
 .mega-nav.open {
-  display: flex;
+  opacity: 1; visibility: visible;
   transform: translateY(0);
+  pointer-events: all;
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 .mega-nav-header {
   display: grid;
@@ -1512,7 +1516,6 @@ footer {
   </a>
   <div class="header-right">
     <button class="btn-lang">RU</button>
-    <button class="btn-outline" style="padding:10px 20px;font-size:10px;border-radius:4px" onclick="navigate('directory')">Все разделы</button>
     <button class="btn-cta-header" onclick="navigate('booking')">Клубные карты</button>
     <button class="btn-cta-header" style="background:none;color:var(--cta);border:1px solid var(--cta);border-radius:4px;margin-left:0" onclick="navigate('account')">Кабинет</button>
   </div>
@@ -1669,21 +1672,79 @@ footer {
     </div>
   </div>
 
-  <div class="spa-features">
-    <div class="spa-feature">
-      <div class="spa-icon">🏊</div>
-      <h3>Бассейн</h3>
-      <p>22 метра, две дорожки. Панорамный вид на парк и небоскрёбы Москва-Сити. Гидромассаж и противоток для профессиональных тренировок.</p>
+  <!-- CAROUSEL -->
+  <div style="position:relative;overflow:hidden;border-bottom:1px solid var(--border-hard)" id="spaCarousel">
+    <div id="spaSlides" style="display:flex;transition:transform 0.5s ease">
+      <!-- Slide 1: Pool -->
+      <div style="min-width:100%;background:var(--card);padding:64px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div style="font-size:8.5px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>01 / 04 · Бассейн</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Панорамный<br>бассейн <em style="font-style:italic;color:var(--gold)">22 метра</em></h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Две дорожки, ласковый свет и завораживающий вид на Москву-реку. Открыт для свободного плавания, аквафитнеса и персональных тренировок.</p>
+          <div style="display:flex;gap:24px;flex-wrap:wrap">
+            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">22м</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">длина</div></div>
+            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">28°C</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">температура</div></div>
+            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">2</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">дорожки</div></div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:72px">🏊</div>
+      </div>
+      <!-- Slide 2: Jacuzzi -->
+      <div style="min-width:100%;background:var(--bg);padding:64px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div style="font-size:8.5px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>02 / 04 · Джакузи</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Зона<br><em style="font-style:italic;color:var(--gold)">гидромассажа</em></h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Погружение в тёплые воды джакузи — момент полного уединения. Гидромассажные форсунки снимают мышечное напряжение после тренировки.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Температура 36–38°C</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Гидромассажные форсунки 12 шт</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Аромаподача</div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:72px">💧</div>
+      </div>
+      <!-- Slide 3: Hammam -->
+      <div style="min-width:100%;background:var(--card);padding:64px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div style="font-size:8.5px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>03 / 04 · Хамам</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Хамам со<br><em style="font-style:italic;color:var(--gold)">звёздным небом</em></h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Аутентичный хамам с мраморными мозелями, парогенератором с ароматическими маслами. Потолок «звёздное небо» создаёт ощущение медитации.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Температура 45–55°C, влажность 90%</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ароматические масла — эвкалипт, мята</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Эффект «звёздного неба»</div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:72px">🌙</div>
+      </div>
+      <!-- Slide 4: Sauna -->
+      <div style="min-width:100%;background:var(--bg);padding:64px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div style="font-size:8.5px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>04 / 04 · Сауна</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Финская<br><em style="font-style:italic;color:var(--gold)">сауна</em></h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Классическая финская сауна с камнями и берёзовыми вениками. Сухой жар 85–95°C очищает, тонизирует и восстанавливает. Контрастный душ рядом.</p>
+          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:24px">
+            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">95°C</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">температура</div></div>
+            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">8</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">мест</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Финская печь Harvia</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ароматные травяные отвары</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ледяной водопад рядом</div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:72px">🔥</div>
+      </div>
     </div>
-    <div class="spa-feature">
-      <div class="spa-icon">💧</div>
-      <h3>Джакузи</h3>
-      <p>Зона гидромассажа с ощущением полного уединения. Замедлиться, насладиться моментом и отпустить всё лишнее.</p>
-    </div>
-    <div class="spa-feature">
-      <div class="spa-icon">🌿</div>
-      <h3>Сауна и хамам</h3>
-      <p>Хамам с эффектом «звёздного неба». Финская сауна. Контрастные ритуалы: душ впечатлений и ледяной водопад.</p>
+    <!-- Controls -->
+    <button onclick="spaSlide(-1)" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(240,235,225,0.9);border:1px solid var(--border-hard);cursor:pointer;font-size:18px;color:var(--cream);transition:all 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(240,235,225,0.9)';this.style.color='var(--cream)'">‹</button>
+    <button onclick="spaSlide(1)"  style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(240,235,225,0.9);border:1px solid var(--border-hard);cursor:pointer;font-size:18px;color:var(--cream);transition:all 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(240,235,225,0.9)';this.style.color='var(--cream)'">›</button>
+    <!-- Dots -->
+    <div id="spaDots" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px">
+      <button onclick="spaGoTo(0)" class="spa-dot" style="width:8px;height:8px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;transition:all 0.3s;padding:0"></button>
+      <button onclick="spaGoTo(1)" class="spa-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;transition:all 0.3s;padding:0"></button>
+      <button onclick="spaGoTo(2)" class="spa-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;transition:all 0.3s;padding:0"></button>
+      <button onclick="spaGoTo(3)" class="spa-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;transition:all 0.3s;padding:0"></button>
     </div>
   </div>
 
@@ -1806,20 +1867,24 @@ function navigate(page) {
   if (a) a.classList.add('active');
 }
 
+
+// ─── SPA CAROUSEL ───
+let spaIdx = 0;
+function spaSlide(dir) { spaGoTo(spaIdx + dir); }
+function spaGoTo(n) {
+  const slides = document.getElementById('spaSlides');
+  const dots   = document.querySelectorAll('.spa-dot');
+  if (!slides) return;
+  const total = 4;
+  spaIdx = ((n % total) + total) % total;
+  slides.style.transform = 'translateX(-' + (spaIdx * 100) + '%)';
+  dots.forEach((d,i) => d.style.background = i===spaIdx ? 'var(--gold)' : 'var(--border-hard)');
+}
 // ─── MEGA NAV ───
 function toggleMegaNav() {
   const nav = document.getElementById('megaNav');
-  const isOpen = nav.classList.contains('open');
-  if (isOpen) {
-    nav.style.transition = 'transform 0.45s cubic-bezier(0.77,0,0.18,1)';
-    nav.style.transform = 'translateY(-100%)';
-    setTimeout(() => { nav.classList.remove('open'); nav.style.transform = ''; }, 450);
-    document.body.style.overflow = '';
-  } else {
-    nav.classList.add('open');
-    nav.style.transform = 'translateY(0)';
-    document.body.style.overflow = 'hidden';
-  }
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function toggleMobileNav() { toggleMegaNav(); }
 

@@ -776,14 +776,18 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
 .mega-nav {
   position: fixed; inset: 0; z-index: 1500;
   background: var(--bg);
-  display: none; flex-direction: column;
+  display: flex; flex-direction: column;
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  opacity: 0; visibility: hidden;
+  transform: translateY(-16px);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+  pointer-events: none;
 }
 .mega-nav.open {
-  display: flex;
+  opacity: 1; visibility: visible;
   transform: translateY(0);
+  pointer-events: all;
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 .mega-nav-header {
   display: grid;
@@ -1512,7 +1516,6 @@ footer {
   </a>
   <div class="header-right">
     <button class="btn-lang">RU</button>
-    <button class="btn-outline" style="padding:10px 20px;font-size:10px;border-radius:4px" onclick="navigate('directory')">Все разделы</button>
     <button class="btn-cta-header" onclick="navigate('booking')">Клубные карты</button>
     <button class="btn-cta-header" style="background:none;color:var(--cta);border:1px solid var(--cta);border-radius:4px;margin-left:0" onclick="navigate('account')">Кабинет</button>
   </div>
@@ -1669,6 +1672,66 @@ footer {
     </div>
   </div>
 
+  <!-- BEAUTY INTRO BLOCK -->
+  <section style="background:var(--cream);padding:80px;position:relative;overflow:hidden">
+    <div style="position:absolute;right:-40px;bottom:-30px;font-family:var(--serif);font-size:220px;font-weight:300;color:rgba(240,235,225,0.06);line-height:1;pointer-events:none">✦</div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <div style="font-size:9px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Салон красоты</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,60px);font-weight:300;color:#f0ebe1;line-height:1.05;margin-bottom:24px">Мастера.<br><em style="font-style:italic;color:var(--gold)">Только наши.</em><br>Только лучшие.</h2>
+        <p style="font-size:14px;color:rgba(240,235,225,0.65);line-height:1.9;margin-bottom:32px">В Венеции работают мастера, прошедшие строгий отбор. Мы не пускаем «своего мастера» — только специалисты клуба, разделяющие наши стандарты качества и сервиса.</p>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <span style="color:var(--gold);flex-shrink:0;font-size:16px;margin-top:2px">✦</span>
+            <div><div style="font-size:12px;color:#f0ebe1;margin-bottom:3px;font-weight:400">Стажировки в Лондоне и Париже</div><div style="font-size:11px;color:rgba(240,235,225,0.5)">Наш топ-стилист регулярно проходит обучение у мировых брендов</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <span style="color:var(--gold);flex-shrink:0;font-size:16px;margin-top:2px">✦</span>
+            <div><div style="font-size:12px;color:#f0ebe1;margin-bottom:3px;font-weight:400">Профессиональные бренды</div><div style="font-size:11px;color:rgba(240,235,225,0.5)">L'Oréal Professionnel, Wella, Kerastase, OPI, Orly — только топовая косметика</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <span style="color:var(--gold);flex-shrink:0;font-size:16px;margin-top:2px">✦</span>
+            <div><div style="font-size:12px;color:#f0ebe1;margin-bottom:3px;font-weight:400">Никаких «чужих» мастеров</div><div style="font-size:11px;color:rgba(240,235,225,0.5)">Гарантия единого уровня сервиса и стандарта безопасности для каждой гостьи</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="background:rgba(240,235,225,0.07);border:1px solid rgba(240,235,225,0.12);padding:28px;text-align:center">
+          <div style="font-size:32px;margin-bottom:12px">💇‍♀️</div>
+          <div style="font-family:var(--serif);font-size:16px;color:#f0ebe1;margin-bottom:6px">Волосы</div>
+          <div style="font-size:10px;color:rgba(240,235,225,0.4)">Стрижки, окрашивание, уходы</div>
+        </div>
+        <div style="background:rgba(240,235,225,0.07);border:1px solid rgba(240,235,225,0.12);padding:28px;text-align:center">
+          <div style="font-size:32px;margin-bottom:12px">💅</div>
+          <div style="font-family:var(--serif);font-size:16px;color:#f0ebe1;margin-bottom:6px">Ногти</div>
+          <div style="font-size:10px;color:rgba(240,235,225,0.4)">Маникюр, педикюр, дизайн</div>
+        </div>
+        <div style="background:rgba(240,235,225,0.07);border:1px solid rgba(240,235,225,0.12);padding:28px;text-align:center">
+          <div style="font-size:32px;margin-bottom:12px">👁</div>
+          <div style="font-family:var(--serif);font-size:16px;color:#f0ebe1;margin-bottom:6px">Брови и ресницы</div>
+          <div style="font-size:10px;color:rgba(240,235,225,0.4)">Ламинирование, коррекция, татуаж</div>
+        </div>
+        <div style="background:rgba(240,235,225,0.07);border:1px solid rgba(240,235,225,0.12);padding:28px;text-align:center">
+          <div style="font-size:32px;margin-bottom:12px">✨</div>
+          <div style="font-family:var(--serif);font-size:16px;color:#f0ebe1;margin-bottom:6px">Макияж</div>
+          <div style="font-size:10px;color:rgba(240,235,225,0.4)">Дневной, вечерний, свадебный</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg);padding:40px 80px;border-bottom:1px solid var(--border-hard)">
+    <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:center;justify-content:center">
+      <div style="text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)">15</div><div style="font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">лет опыта стилиста</div></div>
+      <div style="width:1px;height:48px;background:var(--border-hard)"></div>
+      <div style="text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)">5</div><div style="font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">направлений услуг</div></div>
+      <div style="width:1px;height:48px;background:var(--border-hard)"></div>
+      <div style="text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)">0</div><div style="font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">чужих мастеров</div></div>
+      <div style="width:1px;height:48px;background:var(--border-hard)"></div>
+      <div style="text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)">Pro</div><div style="font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">косметика брендов</div></div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="section-eyebrow">Услуги и цены</div>
     <h2 class="section-title" style="margin-bottom:48px">Всё для вашей<br><em>красоты</em></h2>
@@ -1784,17 +1847,8 @@ function navigate(page) {
 // ─── MEGA NAV ───
 function toggleMegaNav() {
   const nav = document.getElementById('megaNav');
-  const isOpen = nav.classList.contains('open');
-  if (isOpen) {
-    nav.style.transition = 'transform 0.45s cubic-bezier(0.77,0,0.18,1)';
-    nav.style.transform = 'translateY(-100%)';
-    setTimeout(() => { nav.classList.remove('open'); nav.style.transform = ''; }, 450);
-    document.body.style.overflow = '';
-  } else {
-    nav.classList.add('open');
-    nav.style.transform = 'translateY(0)';
-    document.body.style.overflow = 'hidden';
-  }
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function toggleMobileNav() { toggleMegaNav(); }
 

@@ -776,14 +776,18 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
 .mega-nav {
   position: fixed; inset: 0; z-index: 1500;
   background: var(--bg);
-  display: none; flex-direction: column;
+  display: flex; flex-direction: column;
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  opacity: 0; visibility: hidden;
+  transform: translateY(-16px);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+  pointer-events: none;
 }
 .mega-nav.open {
-  display: flex;
+  opacity: 1; visibility: visible;
   transform: translateY(0);
+  pointer-events: all;
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 .mega-nav-header {
   display: grid;
@@ -1512,7 +1516,6 @@ footer {
   </a>
   <div class="header-right">
     <button class="btn-lang">RU</button>
-    <button class="btn-outline" style="padding:10px 20px;font-size:10px;border-radius:4px" onclick="navigate('directory')">Все разделы</button>
     <button class="btn-cta-header" onclick="navigate('booking')">Клубные карты</button>
     <button class="btn-cta-header" style="background:none;color:var(--cta);border:1px solid var(--cta);border-radius:4px;margin-left:0" onclick="navigate('account')">Кабинет</button>
   </div>
@@ -1750,27 +1753,86 @@ footer {
     </div>
 
     <!-- Secondary sections row -->
-    <div style="padding:48px 80px;border-bottom:1px solid var(--border-hard);display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border-hard)">
-
-      <div style="background:var(--card);padding:40px 36px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="navigate('team')">
-        <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">О клубе</div>
-        <div style="font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:12px">Команда</div>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">8 специалистов, международные сертификаты, видеогид по всем зонам клуба</p>
-        <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)">Познакомиться →</div>
+    <!-- TEAM SECTION -->
+    <div style="padding:64px 80px;border-bottom:1px solid var(--border-hard);background:var(--bg)">
+      <div style="margin-bottom:48px">
+        <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Наша команда</div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px">
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,3.5vw,52px);font-weight:300;color:var(--cream);line-height:1.05">Специалисты, которым<br><em style="font-style:italic;color:var(--gold)">вы доверяете</em></h2>
+          <a href="team.html" style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:opacity 0.3s" onmouseenter="this.style.opacity='0.7'" onmouseleave="this.style.opacity='1'">Вся команда →</a>
+        </div>
       </div>
-
-      <div style="background:var(--card);padding:40px 36px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="navigate('booking')">
-        <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Онлайн-сервис</div>
-        <div style="font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:12px">Бронирование</div>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">Тренировки, СПА, VIP-раздевалки, шкафчики — запись в несколько кликов</p>
-        <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)">Забронировать →</div>
+      <!-- Fitness team -->
+      <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted);padding-bottom:12px;border-bottom:1px solid var(--border-hard);margin-bottom:20px">Фитнес и тренировки</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px">
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('team')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">👩</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Анна Соколова</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Йога · RYT-500</div>
+            <div style="font-size:10px;color:var(--text-muted)">Хатха, виньяса, инь-йога</div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('team')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">👩‍🦱</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Мария Белова</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Пилатес · BASI</div>
+            <div style="font-size:10px;color:var(--text-muted)">Реформер, реабилитация</div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('team')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">💪</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Ольга Морозова</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Силовые · NASM</div>
+            <div style="font-size:10px;color:var(--text-muted)">Коррекция фигуры, FMS</div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('team')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">🥊</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Дарья Волкова</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Бокс · КМС</div>
+            <div style="font-size:10px;color:var(--text-muted)">Женский бокс, кикбоксинг</div>
+          </div>
+        </div>
       </div>
-
-      <div style="background:var(--card);padding:40px 36px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="navigate('account')">
-        <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Личное пространство</div>
-        <div style="font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:12px">Кабинет</div>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">Карта Platinum, статус, история визитов, шкафчик и VIP-раздевалка</p>
-        <div style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)">Войти →</div>
+      <!-- Cosmetology team -->
+      <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-muted);padding-bottom:12px;border-bottom:1px solid var(--border-hard);margin-bottom:20px">Косметология и красота</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('clinic')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">💆‍♀️</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Елена Петрова</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Косметолог · 9 лет</div>
+            <div style="font-size:10px;color:var(--text-muted)">Инъекции, аппаратная</div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('beauty')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">💇‍♀️</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Виктория Смирнова</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Стилист · 15 лет</div>
+            <div style="font-size:10px;color:var(--text-muted)">Окрашивание, балаяж</div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('beauty')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">✨</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Мастер по ногтям</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Маникюр · Педикюр</div>
+            <div style="font-size:10px;color:var(--text-muted)">Гель-лак, наращивание</div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'" onclick="navigate('beauty')">
+          <div style="height:120px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px">👁</div>
+          <div style="padding:16px">
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:2px">Мастер по бровям</div>
+            <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Брови · Ресницы</div>
+            <div style="font-size:10px;color:var(--text-muted)">Ламинирование, татуаж</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1831,17 +1893,8 @@ function navigate(page) {
 // ─── MEGA NAV ───
 function toggleMegaNav() {
   const nav = document.getElementById('megaNav');
-  const isOpen = nav.classList.contains('open');
-  if (isOpen) {
-    nav.style.transition = 'transform 0.45s cubic-bezier(0.77,0,0.18,1)';
-    nav.style.transform = 'translateY(-100%)';
-    setTimeout(() => { nav.classList.remove('open'); nav.style.transform = ''; }, 450);
-    document.body.style.overflow = '';
-  } else {
-    nav.classList.add('open');
-    nav.style.transform = 'translateY(0)';
-    document.body.style.overflow = 'hidden';
-  }
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function toggleMobileNav() { toggleMegaNav(); }
 

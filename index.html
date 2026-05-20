@@ -776,14 +776,18 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
 .mega-nav {
   position: fixed; inset: 0; z-index: 1500;
   background: var(--bg);
-  display: none; flex-direction: column;
+  display: flex; flex-direction: column;
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  opacity: 0; visibility: hidden;
+  transform: translateY(-16px);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+  pointer-events: none;
 }
 .mega-nav.open {
-  display: flex;
+  opacity: 1; visibility: visible;
   transform: translateY(0);
+  pointer-events: all;
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 .mega-nav-header {
   display: grid;
@@ -1512,7 +1516,6 @@ footer {
   </a>
   <div class="header-right">
     <button class="btn-lang">RU</button>
-    <button class="btn-outline" style="padding:10px 20px;font-size:10px;border-radius:4px" onclick="navigate('directory')">Все разделы</button>
     <button class="btn-cta-header" onclick="navigate('booking')">Клубные карты</button>
     <button class="btn-cta-header" style="background:none;color:var(--cta);border:1px solid var(--cta);border-radius:4px;margin-left:0" onclick="navigate('account')">Кабинет</button>
   </div>
@@ -1700,23 +1703,23 @@ footer {
   </section>
 
   <!-- ── WOMEN ONLY STATEMENT ────────────────────────── -->
-  <section style="background:var(--cream);padding:72px 80px;position:relative;overflow:hidden;border-bottom:3px solid var(--gold)">
+  <section style="background:var(--cream);padding:72px 80px;position:relative;overflow:hidden;border-bottom:3px solid var(--gold);color:#f0ebe1">
     <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,146,74,0.07) 0%,transparent 60%);pointer-events:none"></div>
     <div style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:260px;font-weight:300;color:rgba(184,146,74,0.06);line-height:1;pointer-events:none;letter-spacing:-0.02em">♀</div>
     <div style="position:relative;z-index:1;max-width:900px">
       <div style="display:inline-flex;align-items:center;gap:12px;background:var(--gold);padding:8px 20px;margin-bottom:32px">
         <span style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:#fff;font-family:var(--sans);font-weight:400">Закрытый клуб · Только для женщин</span>
       </div>
-      <h2 style="font-family:var(--serif);font-size:clamp(40px,5.5vw,80px);font-weight:300;color:var(--cream);line-height:1.02;margin-bottom:28px">
+      <h2 style="font-family:var(--serif);font-size:clamp(40px,5.5vw,80px);font-weight:300;color:#f0ebe1;line-height:1.02;margin-bottom:28px">
         Мы создали мир,<br>
         где <em style="font-style:italic;color:var(--gold)">вы в центре.</em><br>
         Только вы.
       </h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px">
-        <p style="font-size:15px;color:rgba(42,32,24,0.72);line-height:1.9;font-weight:300">
+        <p style="font-size:15px;color:rgba(240,235,225,0.75);line-height:1.9;font-weight:300">
           Венеция — единственное в Москве велнес-пространство, куда вход разрешён исключительно женщинам. Никаких исключений. Никаких компромиссов. Это принципиальное решение — не маркетинг, а убеждение.
         </p>
-        <p style="font-size:15px;color:rgba(42,32,24,0.72);line-height:1.9;font-weight:300">
+        <p style="font-size:15px;color:rgba(240,235,225,0.75);line-height:1.9;font-weight:300">
           Здесь можно быть собой без оглядки. Тренироваться, восстанавливаться и преображаться в пространстве, где каждая деталь — от архитектуры до аромата в раздевалке — продумана с заботой о женской природе.
         </p>
       </div>
@@ -2102,17 +2105,8 @@ function navigate(page) {
 // ─── MEGA NAV ───
 function toggleMegaNav() {
   const nav = document.getElementById('megaNav');
-  const isOpen = nav.classList.contains('open');
-  if (isOpen) {
-    nav.style.transition = 'transform 0.45s cubic-bezier(0.77,0,0.18,1)';
-    nav.style.transform = 'translateY(-100%)';
-    setTimeout(() => { nav.classList.remove('open'); nav.style.transform = ''; }, 450);
-    document.body.style.overflow = '';
-  } else {
-    nav.classList.add('open');
-    nav.style.transform = 'translateY(0)';
-    document.body.style.overflow = 'hidden';
-  }
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function toggleMobileNav() { toggleMegaNav(); }
 
