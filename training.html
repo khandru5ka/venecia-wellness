@@ -1,7 +1,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Клиника красоты — Венеция Велнес</title>
+<title>Тренировка — Венеция Велнес</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -1397,7 +1397,7 @@ footer {
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
   <nav class="main-nav">
-    <a href="fitness.html">Фитнес</a>
+    <a href="fitness.html" class="active">Фитнес</a>
     <a href="clinic.html">Косметология</a>
     <a href="beauty.html">Салон красоты</a>
     <a href="spa.html">Велнес и СПА</a>
@@ -1409,16 +1409,12 @@ footer {
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
-    <button class="mobile-toggle" onclick="toggleMobileMenu()" id="mobileToggleBtn">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="mobile-toggle" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
 <div class="mobile-overlay" id="mobileMenuOverlay">
   <div class="mobile-overlay-header">
-    <a class="logo" href="index.html">
-      <span class="logo-main">В Е Н Е Ц И Я</span>
-    </a>
+    <a class="logo" href="index.html"><span class="logo-main">В Е Н Е Ц И Я</span></a>
     <button class="mobile-close" onclick="toggleMobileMenu()">✕ Закрыть</button>
   </div>
   <nav class="mobile-nav-links">
@@ -1437,268 +1433,206 @@ footer {
   </div>
 </div>
 
-
-<!-- PAGE CONTENT -->
-<div class="page active" id="page-clinic">
-  <div class="page-hero">
-    <div class="page-hero-bg-text">CLINIC</div>
-    <div>
-      <div class="breadcrumb"><span onclick="navigate('home')">Главная</span> / Клиника красоты</div>
-      <h1 class="section-title">Клиника<br><em>красоты</em></h1>
-      <p class="section-desc">Профессиональная косметология, аппаратные процедуры и инъекционные техники под руководством врачей-косметологов</p>
-      <button class="btn-primary" style="margin-top:32px" onclick="navigate('booking')">Записаться на процедуру</button>
+<!-- HERO BANNER -->
+<div style="height:70vh;min-height:500px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:72px">
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a1410 0%,#241a0f 60%,#1c1208 100%)"></div>
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+    <circle cx="900" cy="350" r="350" fill="none" stroke="#b8924a" stroke-width="0.8"/>
+    <circle cx="900" cy="350" r="200" fill="none" stroke="#b8924a" stroke-width="0.5"/>
+    <line x1="0" y1="500" x2="700" y2="0" stroke="#b8924a" stroke-width="0.6"/>
+  </svg>
+  <div style="position:absolute;right:80px;bottom:72px;font-family:var(--serif);font-size:120px;font-weight:300;color:rgba(184,146,74,0.07);line-height:1;pointer-events:none" id="heroEmoji">🧘</div>
+  <div style="position:relative;z-index:2;padding:0 80px;max-width:640px">
+    <div style="font-size:9px;letter-spacing:0.44em;text-transform:uppercase;color:#b8924a;margin-bottom:16px">
+      <a href="index.html" style="color:rgba(240,235,225,0.4);text-decoration:none">Главная</a>
+      <span style="color:rgba(184,146,74,0.4)"> / </span>
+      <a href="fitness.html" style="color:rgba(240,235,225,0.4);text-decoration:none">Фитнес</a>
+      <span style="color:rgba(184,146,74,0.4)"> / </span>
+      <span id="breadcrumbTitle">Тренировка</span>
+    </div>
+    <h1 style="font-family:var(--serif);font-size:clamp(44px,7vw,88px);font-weight:300;color:#f2ece0;line-height:0.95;margin-bottom:20px" id="pageTitle">Название<br><em style="color:#b8924a">тренировки</em></h1>
+    <p style="font-size:14px;color:rgba(240,235,225,0.6);max-width:440px;line-height:1.85;margin-bottom:32px" id="pageDesc">Описание тренировки</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button onclick="location.href='account.html'" style="background:#b8924a;color:#fff;border:none;padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Записаться</button>
+      <button onclick="location.href='booking.html'" style="background:none;color:#f2ece0;border:1px solid rgba(240,235,225,0.3);padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Клубная карта</button>
     </div>
   </div>
+</div>
 
-  <!-- CLINIC INTRO BLOCK -->
-  <section style="background:var(--cream);padding:80px;position:relative;overflow:hidden">
-    <div style="position:absolute;right:-60px;bottom:-40px;font-family:var(--serif);font-size:240px;font-weight:300;color:rgba(240,235,225,0.06);line-height:1;pointer-events:none">M.D.</div>
-    <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+<!-- ABOUT SECTION -->
+<section style="background:var(--bg);padding:64px 80px;border-bottom:1px solid var(--border-hard)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start">
+    <div>
+      <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>О тренировке</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--cream);margin-bottom:20px" id="aboutTitle">О тренировке</h2>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:20px" id="aboutText1">Полное описание что происходит на этой тренировке, для кого она подходит, какой результат ожидать.</p>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.9" id="aboutText2">Дополнительная информация о тренировке, особенностях и рекомендациях.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)" id="statsGrid">
+        <div style="background:var(--card);padding:24px;text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)" id="stat1val">60</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:4px" id="stat1lbl">минут</div></div>
+        <div style="background:var(--card);padding:24px;text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)" id="stat2val">Все</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:4px" id="stat2lbl">уровни</div></div>
+        <div style="background:var(--card);padding:24px;text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)" id="stat3val">12</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:4px" id="stat3lbl">мест в группе</div></div>
+        <div style="background:var(--card);padding:24px;text-align:center"><div style="font-family:var(--serif);font-size:36px;color:var(--gold)" id="stat4val">Ежедн.</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:4px" id="stat4lbl">расписание</div></div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--gold);padding:24px">
+        <div style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Запись</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Запись на тренировку доступна в личном кабинете для держателей клубных карт</p>
+        <button onclick="location.href='account.html'" style="width:100%;font-family:var(--sans);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:12px;cursor:pointer;border-radius:2px">Войти в кабинет →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE SECTION -->
+<section style="background:var(--card);padding:64px 80px;border-bottom:1px solid var(--border-hard)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+    <div>
+      <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Расписание</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--cream)">Расписание <em style="font-style:italic;color:var(--gold)">тренировок</em></h2>
+    </div>
+    <a href="fitness.html" style="font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none">Полное расписание →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px" id="trainingSchedule">
+    <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Понедельник · Среда · Пятница</div>
+      <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">07:30</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Утренний поток</div>
+      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Вторник · Четверг</div>
+      <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">09:00</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Дневной поток</div>
+      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Ежедневно</div>
+      <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">12:00</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Обеденный поток</div>
+      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Ежедневно</div>
+      <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">19:00</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Вечерний поток</div>
+      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS SECTION -->
+<section style="background:var(--bg);padding:64px 80px;border-bottom:1px solid var(--border-hard)">
+  <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Тренеры</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--cream);margin-bottom:32px">Кто ведёт <em style="font-style:italic;color:var(--gold)">занятия</em></h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)" id="trainerCards">
+    <div style="background:var(--card);padding:32px 24px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="location.href='team.html'">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">👩‍🦰</div>
       <div>
-        <div style="font-size:9px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Клиника красоты</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,60px);font-weight:300;color:#f0ebe1;line-height:1.05;margin-bottom:24px">Медицина.<br><em style="font-style:italic;color:var(--gold)">Эстетика.<br>Результат.</em></h2>
-        <p style="font-size:14px;color:rgba(240,235,225,0.65);line-height:1.9;margin-bottom:32px">Наша клиника — это не кабинет красоты. Это лицензированное медицинское учреждение с врачами-косметологами, сертифицированным оборудованием европейского класса и протоколами, принятыми в ведущих клиниках Москвы.</p>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <div style="display:flex;align-items:flex-start;gap:14px">
-            <span style="color:var(--gold);flex-shrink:0;font-size:16px;margin-top:2px">✦</span>
-            <div><div style="font-size:12px;color:#f0ebe1;margin-bottom:3px;font-weight:400">Только врачи с медицинским образованием</div><div style="font-size:11px;color:rgba(240,235,225,0.5)">Никаких косметологов без диплома — только сертифицированные специалисты</div></div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:14px">
-            <span style="color:var(--gold);flex-shrink:0;font-size:16px;margin-top:2px">✦</span>
-            <div><div style="font-size:12px;color:#f0ebe1;margin-bottom:3px;font-weight:400">Препараты оригинального производства</div><div style="font-size:11px;color:rgba(240,235,225,0.5)">Juvederm, Botox, Sculptra, Teosyal — только зарегистрированные в РФ</div></div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:14px">
-            <span style="color:var(--gold);flex-shrink:0;font-size:16px;margin-top:2px">✦</span>
-            <div><div style="font-size:12px;color:#f0ebe1;margin-bottom:3px;font-weight:400">Оборудование медицинского класса</div><div style="font-size:11px;color:rgba(240,235,225,0.5)">HIFU Ultraformer III, Fotona лазер, Harmony XL — не косметические, а медицинские аппараты</div></div>
-          </div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(240,235,225,0.12)">
-        <div style="background:rgba(240,235,225,0.05);padding:32px;text-align:center">
-          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line-height:1">9</div>
-          <div style="font-size:8.5px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:8px">лет опыта</div>
-        </div>
-        <div style="background:rgba(240,235,225,0.05);padding:32px;text-align:center">
-          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line-height:1">25+</div>
-          <div style="font-size:8.5px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:8px">процедур</div>
-        </div>
-        <div style="background:rgba(240,235,225,0.05);padding:32px;text-align:center">
-          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line-height:1">100%</div>
-          <div style="font-size:8.5px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:8px">медики</div>
-        </div>
-        <div style="background:rgba(240,235,225,0.05);padding:32px;text-align:center">
-          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line-height:1">EU</div>
-          <div style="font-size:8.5px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:8px">оборудование</div>
-        </div>
+        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Анна Соколова</div>
+        <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Йога · RYT-500</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.6">8 лет практики. Хатха, виньяса, инь-йога, пранаяма</div>
       </div>
     </div>
-  </section>
-
-  <!-- PROCEDURES HIGHLIGHT -->
-  <section style="background:var(--bg);padding:60px 80px;border-bottom:1px solid var(--border-hard)">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)">
-      <div style="background:var(--bg);padding:32px 24px;transition:background 0.3s;cursor:pointer" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="font-size:28px;margin-bottom:16px">💉</div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:8px">Инъекционная косметология</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7">Ботокс, филлеры, биоревитализация, PRP — натуральный результат без операций</div>
-      </div>
-      <div style="background:var(--bg);padding:32px 24px;transition:background 0.3s;cursor:pointer" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="font-size:28px;margin-bottom:16px">✨</div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:8px">Лазерные технологии</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7">Fotona, IPL-фотоомоложение, лазерная эпиляция — точность медицинского лазера</div>
-      </div>
-      <div style="background:var(--bg);padding:32px 24px;transition:background 0.3s;cursor:pointer" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="font-size:28px;margin-bottom:16px">🔬</div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:8px">Аппаратная эстетика</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7">SMAS-лифтинг Ultraformer III, RF-лифтинг, LPG — глубокое воздействие без хирургии</div>
-      </div>
-      <div style="background:var(--bg);padding:32px 24px;transition:background 0.3s;cursor:pointer" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="font-size:28px;margin-bottom:16px">🌿</div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:8px">Уходовые протоколы</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.7">Авторские программы омоложения, детокс, восстановление кожи после стресса</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM BLOCK -->
-  <section style="background:var(--card);padding:64px 80px;border-bottom:1px solid var(--border-hard)">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+    <div style="background:var(--card);padding:32px 24px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="location.href='team.html'">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">👩‍🦳</div>
       <div>
-        <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Наши специалисты</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:0">Записаться к <em style="font-style:italic;color:var(--gold)">специалисту</em></h2>
-      </div>
-      <a href="team.html" style="font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);text-decoration:none">Вся команда →</a>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(1,1fr);gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)">
-      <div style="background:var(--bg);border:1px solid var(--border-hard);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <div style="height:140px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:52px">💆‍♀️</div>
-        <div style="padding:20px 18px 16px">
-          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:3px">Елена Петрова</div>
-          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Врач-косметолог · 9 лет</div>
-          <div style="font-size:10px;color:var(--text-muted);margin-bottom:14px">Инъекции, аппаратная косметология</div>
-          <button onclick="location.href='booking.html'" style="width:100%;font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--cta);color:#fff;border:none;padding:10px;cursor:pointer;transition:background 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--cta-hover)'" onmouseleave="this.style.background='var(--cta)'">Записаться</button>
-        </div>
+        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Ольга Морозова</div>
+        <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Силовые · NASM-CPT</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.6">12 лет стажа. Женский фитнес, коррекция фигуры</div>
       </div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="section-eyebrow">Прайс-лист</div>
-    <h2 class="section-title" style="margin-bottom:48px">Процедуры<br>и <em>цены</em></h2>
-    <div class="price-tabs">
-      <div class="price-tab active" onclick="setClinicTab(this,'clinic-facial')">Уход за лицом</div>
-      <div class="price-tab" onclick="setClinicTab(this,'clinic-body')">Уход за телом</div>
-      <div class="price-tab" onclick="setClinicTab(this,'clinic-inject')">Инъекции</div>
-      <div class="price-tab" onclick="setClinicTab(this,'clinic-laser')">Лазер и аппараты</div>
+    <div style="background:var(--card);padding:32px 24px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="location.href='team.html'">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">🧖‍♀️</div>
+      <div>
+        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Наталья Орлова</div>
+        <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Растяжка · МФР</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.6">Реабилитолог. Стретчинг, МФР, восстановление</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="price-category active" id="clinic-facial">
-      <div class="price-cat-title">Уход за лицом</div>
-      <div class="price-cat-desc">Профессиональные уходовые процедуры для лица от сертифицированных косметологов</div>
-      <table class="price-table">
-        <tr><td>Базовый уход за лицом<br><span class="desc">Очищение, тонизирование, увлажнение — 60 мин</span></td><td></td><td>8 500 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Базовый уход за лицом','—')">Записаться</button></td></tr>
-        <tr><td>Глубокое очищение<br><span class="desc">Механическая и ультразвуковая чистка — 75 мин</span></td><td></td><td>12 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Глубокое очищение','—')">Записаться</button></td></tr>
-        <tr><td>Химический пилинг<br><span class="desc">AHA/BHA, ретинол — 45 мин</span></td><td></td><td>14 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Химический пилинг','—')">Записаться</button></td></tr>
-        <tr><td>Биоревитализация<br><span class="desc">Инъекции гиалуроновой кислоты — 60 мин</span></td><td></td><td>22 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Биоревитализация','—')">Записаться</button></td></tr>
-        <tr><td>Мезотерапия лица<br><span class="desc">Персональный коктейль витаминов — 60 мин</span></td><td></td><td>18 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Мезотерапия лица','—')">Записаться</button></td></tr>
-        <tr><td>Золотое омоложение<br><span class="desc">Премиальная комплексная программа — 120 мин</span></td><td></td><td>38 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Золотое омоложение','—')">Записаться</button></td></tr>
-      </table>
-    </div>
-
-    <div class="price-category" id="clinic-body">
-      <div class="price-cat-title">Уход за телом</div>
-      <div class="price-cat-desc">Профессиональные процедуры для тела — коррекция контура, обёртывания, антицеллюлитные программы</div>
-      <table class="price-table">
-        <tr><td>Антицеллюлитное обёртывание<br><span class="desc">Водоросли + термоэффект — 90 мин</span></td><td></td><td>11 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Антицеллюлитное обёртывание','—')">Записаться</button></td></tr>
-        <tr><td>LPG-массаж<br><span class="desc">Аппаратный лимфодренаж — 50 мин</span></td><td></td><td>9 500 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('LPG-массаж','—')">Записаться</button></td></tr>
-        <tr><td>Прессотерапия<br><span class="desc">Лимфодренаж + дренаж — 40 мин</span></td><td></td><td>7 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Прессотерапия','—')">Записаться</button></td></tr>
-        <tr><td>Кавитация<br><span class="desc">Ультразвуковая коррекция фигуры — 60 мин</span></td><td></td><td>13 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Кавитация','—')">Записаться</button></td></tr>
-        <tr><td>Программа Body Sculpture<br><span class="desc">Комплексная коррекция тела — 5 сеансов</span></td><td></td><td>52 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Body Sculpture','—')">Записаться</button></td></tr>
-      </table>
-    </div>
-
-    <div class="price-category" id="clinic-inject">
-      <div class="price-cat-title">Инъекционные процедуры</div>
-      <div class="price-cat-desc">Только сертифицированные препараты, только врачи-косметологи с медицинским образованием</div>
-      <table class="price-table">
-        <tr><td>Ботулинотерапия (1 зона)<br><span class="desc">Лоб, межбровье, периорбитальная зона</span></td><td></td><td>от 18 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Ботулинотерапия','—')">Записаться</button></td></tr>
-        <tr><td>Контурная пластика губ<br><span class="desc">Филлеры на основе гиалуроновой кислоты — 1 мл</span></td><td></td><td>от 32 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Контурная пластика губ','—')">Записаться</button></td></tr>
-        <tr><td>Контурная пластика скул<br><span class="desc">Моделирование скуловой зоны</span></td><td></td><td>от 28 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Контурная пластика скул','—')">Записаться</button></td></tr>
-        <tr><td>Мезонити<br><span class="desc">Лифтинг нитями Lift-X — 45–90 мин</span></td><td></td><td>от 65 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Мезонити','—')">Записаться</button></td></tr>
-        <tr><td>PRP-терапия (плазмолифтинг)<br><span class="desc">Собственная плазма — 60 мин</span></td><td></td><td>25 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('PRP-терапия','—')">Записаться</button></td></tr>
-      </table>
-    </div>
-
-    <div class="price-category" id="clinic-laser">
-      <div class="price-cat-title">Лазер и аппаратные процедуры</div>
-      <div class="price-cat-desc">Современное медицинское оборудование для эффективного и безопасного воздействия</div>
-      <table class="price-table">
-        <tr><td>Фотоомоложение<br><span class="desc">IPL — фотосvetление, выравнивание тона</span></td><td></td><td>от 15 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Фотоомоложение','—')">Записаться</button></td></tr>
-        <tr><td>Лазерная эпиляция<br><span class="desc">Диодный лазер — 1 зона</span></td><td></td><td>от 5 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Лазерная эпиляция','—')">Записаться</button></td></tr>
-        <tr><td>RF-лифтинг<br><span class="desc">Радиочастотное омоложение — 60 мин</span></td><td></td><td>18 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('RF-лифтинг','—')">Записаться</button></td></tr>
-        <tr><td>SMAS-лифтинг (HIFU)<br><span class="desc">Ультразвуковой лифтинг — 90 мин</span></td><td></td><td>55 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('SMAS-лифтинг','—')">Записаться</button></td></tr>
-        <tr><td>Карбокситерапия<br><span class="desc">Углекислотная мезотерапия — 45 мин</span></td><td></td><td>12 000 ₽</td><td><button class="book-procedure-btn" onclick="openBookingModal('Карбокситерапия','—')">Записаться</button></td></tr>
-      </table>
-    </div>
-  </section>
-
-  <footer style="background:var(--card);border-top:1px solid var(--border-hard);padding:24px 80px;text-align:center">
-    <p class="footer-copy">© 2025 Венеция. Велнес — <span style="color:var(--gold);cursor:pointer" onclick="navigate('home')">На главную</span></p>
-  </footer>
-</div><!-- /page-clinic -->
-
-<!-- BOOKING MODAL -->
-<!-- ─── BOOKING MODAL ─── -->
+<!-- MODAL + TOAST -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <div class="modal-close" onclick="closeModal()">×</div>
-
-<!-- TOAST -->
-<!-- ─── TOAST ─── -->
-<div class="toast" id="toast">
-  <span class="toast-icon">✓</span>
-  <span class="toast-text" id="toastText">Запрос принят!</span>
+    <div class="modal-title" id="modalTitle">Записаться</div>
+    <div class="modal-subtitle">Заполните форму</div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="form-group"><label class="form-label">Имя</label><input class="form-input" placeholder="Ваше имя"></div>
+      <div class="form-group"><label class="form-label">Телефон</label><input class="form-input" placeholder="+7 (___) ___-__-__"></div>
+      <div class="form-group"><label class="form-label">Дата</label><input class="form-input" type="date"></div>
+      <button class="btn-submit" style="width:100%" onclick="submitModal()">Записаться</button>
+    </div>
+  </div>
 </div>
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span class="toast-text" id="toastText">Готово!</span></div>
 
 <script>
+// Training data per type
+const TRAININGS = {
+  yoga: {
+    title: 'Йога', titleEm: 'всех стилей', emoji: '🧘', breadcrumb: 'Йога',
+    desc: 'Хатха, виньяса, инь-йога — для начинающих и продвинутых',
+    about1: 'Йога в Венеции — это пространство для осознанного движения. Мы предлагаем несколько стилей: динамичная виньяса для тех, кто ищет энергии, медитативная инь-йога для восстановления и классическая хатха для баланса.',
+    about2: 'Все занятия проходят в специализированной студии с деревянным полом, зеркалами и необходимым инвентарём. Ковры, блоки и ремни предоставляются.',
+    s1v:'60', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'10', s3l:'мест', s4v:'6', s4l:'раз в нед'
+  },
+  pilates: {
+    title: 'Пилатес', titleEm: 'на реформерах', emoji: '🏃‍♀️', breadcrumb: 'Пилатес',
+    desc: 'Классический и современный пилатес на реформерах Balanced Body',
+    about1: 'Студия пилатеса Венеции оснащена профессиональными реформерами Balanced Body — оборудованием, которое используют ведущие студии мира. Занятия ведёт сертифицированный инструктор BASI Pilates.',
+    about2: 'Пилатес на реформерах — это работа с глубокими мышцами, осанкой и гибкостью. Подходит для реабилитации, послеродового восстановления и профессиональных спортсменов.',
+    s1v:'55', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'6', s3l:'мест', s4v:'BASI', s4l:'сертификат'
+  },
+  boxing: {
+    title: 'Боксинг', titleEm: 'для женщин', emoji: '🥊', breadcrumb: 'Боксинг',
+    desc: 'Авторская программа женского бокса — кардио, сила и уверенность',
+    about1: 'Женский боксинг в Венеции — это не спарринги и синяки. Это мощное кардио, работа с координацией и колоссальный выброс эмоций в безопасной атмосфере. Тренер — КМС по боксу.',
+    about2: 'Занятия проходят в профессиональной боевой зоне с рингом. Всё снаряжение предоставляется. Никаких контактных спаррингов — только работа с мешком и лапами.',
+    s1v:'50', s1l:'минут', s2v:'Новички', s2l:'приветствуются', s3v:'8', s3l:'мест', s4v:'Ринг', s4l:'профессиональный'
+  },
+  stretching: {
+    title: 'Растяжка', titleEm: 'и стретчинг', emoji: '🤸‍♀️', breadcrumb: 'Растяжка',
+    desc: 'Глубокий стретчинг, МФР и восстановление — для гибкости и здоровья',
+    about1: 'Зона растяжки Венеции — идеальное завершение тренировочного дня. Специалист по стретчингу и МФР работает с мышечными зажимами, улучшает гибкость и ускоряет восстановление.',
+    about2: 'Занятия подходят для всех — от профессиональных спортсменов до тех, кто впервые пришёл на тренировку. Коврики, блоки и роллеры предоставляются.',
+    s1v:'60', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'12', s3l:'мест', s4v:'МФР', s4l:'методика'
+  }
+};
 
-// ─── NAVIGATION ───
-function navigate(page) {
-  const urls = {
-    'home': 'index.html',
-    'directory': 'directory.html',
-    'fitness': 'fitness.html',
-    'spa': 'spa.html',
-    'clinic': 'clinic.html',
-    'beauty': 'beauty.html',
-    'team': 'team.html',
-    'booking': 'booking.html',
-    'account': 'account.html'
-  };
-  const url = urls[page];
-  if (url) window.location.href = url;
-}
+// Auto-detect training type from URL
+const params = new URLSearchParams(location.search);
+const type = params.get('type') || 'yoga';
+const t = TRAININGS[type] || TRAININGS.yoga;
 
+document.getElementById('pageTitle').innerHTML = t.title + '<br><em style="color:#b8924a">' + t.titleEm + '</em>';
+document.getElementById('pageDesc').textContent = t.desc;
+document.getElementById('breadcrumbTitle').textContent = t.breadcrumb;
+document.getElementById('aboutTitle').textContent = 'О ' + t.title.toLowerCase() + 'е';
+document.getElementById('aboutText1').textContent = t.about1;
+document.getElementById('aboutText2').textContent = t.about2;
+document.getElementById('heroEmoji').textContent = t.emoji;
+document.getElementById('stat1val').textContent = t.s1v; document.getElementById('stat1lbl').textContent = t.s1l;
+document.getElementById('stat2val').textContent = t.s2v; document.getElementById('stat2lbl').textContent = t.s2l;
+document.getElementById('stat3val').textContent = t.s3v; document.getElementById('stat3lbl').textContent = t.s3l;
+document.getElementById('stat4val').textContent = t.s4v; document.getElementById('stat4lbl').textContent = t.s4l;
+document.title = t.title + ' — Венеция Велнес';
 
-// ─── MEGA NAV ───
 function toggleMobileMenu() {
   const ov = document.getElementById('mobileMenuOverlay');
   ov.classList.toggle('open');
   document.body.style.overflow = ov.classList.contains('open') ? 'hidden' : '';
 }
-function toggleMobileNav() { toggleMobileMenu(); }
-function toggleMegaNav()   { toggleMobileMenu(); }
-
-// ─── ACCORDION ───
-function toggleAccordion(header) {
-  const item = header.parentElement;
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
 }
-
-// ─── SCHEDULE DAY ───
-function setDay(tab, day) {
-  document.querySelectorAll('.sched-tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-}
-
-// ─── CLINIC TABS ───
-function setClinicTab(tab, catId) {
-  document.querySelectorAll('#page-clinic .price-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-clinic .price-category').forEach(c => c.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById(catId).classList.add('active');
-}
-
-// ─── BEAUTY TABS ───
-function setBeautyTab(tab, catId) {
-  document.querySelectorAll('#page-beauty .price-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-beauty .price-category').forEach(c => c.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById(catId).classList.add('active');
-}
-
-// ─── BOOKING TABS ───
-function setBookTab(tab, formId) {
-  document.querySelectorAll('.book-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.booking-form').forEach(f => f.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById(formId).classList.add('active');
-}
-
-// ─── ACCOUNT TABS ───
-function setAccountTab(link, paneId) {
-  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-  document.querySelectorAll('.account-content-pane').forEach(p => p.classList.remove('active'));
-  link.classList.add('active');
-  document.getElementById(paneId).classList.add('active');
-}
-
-// ─── MODAL ───
-function openBookingModal(title, time) {
+function openBookingModal(title) {
   document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalSubtitle').textContent = time !== '—' ? `Время: ${time}` : 'Запишитесь к нашему специалисту';
   document.getElementById('bookingModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1706,48 +1640,12 @@ function closeModal() {
   document.getElementById('bookingModal').classList.remove('open');
   document.body.style.overflow = '';
 }
-function submitModal() {
-  closeModal();
-  showToast('Запись оформлена! Ждём вас в клубе.');
-}
+function submitModal() { closeModal(); showToast('Запись оформлена!'); }
 document.getElementById('bookingModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
-
-// ─── SUBMIT BOOKING ───
-function submitBooking(formId) {
-  const messages = {
-    'book-group': 'Место на групповой тренировке забронировано!',
-    'book-personal': 'Запись к тренеру подтверждена!',
-    'book-studio': 'Студия забронирована! Ждём вас.',
-    'book-vip': 'VIP-раздевалка забронирована!',
-    'book-salon': 'Запись к специалисту принята!',
-    'book-locker': 'Шкафчик арендован!'
-  };
-  showToast(messages[formId] || 'Заявка принята!');
-}
-
-// ─── TOAST ───
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toastText').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3800);
-}
-
-// ─── SCROLL TO ───
-function scrollToId(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
-
-// ─── INIT ───
-document.addEventListener('DOMContentLoaded', () => {
-  const today = new Date().toISOString().split('T')[0];
-  document.querySelectorAll('input[type="date"]').forEach(i => { if (!i.value) i.value = today; });
-});
-
-
+const today = new Date().toISOString().split('T')[0];
+document.querySelectorAll('input[type="date"]').forEach(i => { if (!i.value) i.value = today; });
 </script>
 </body>
 </html>

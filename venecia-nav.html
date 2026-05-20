@@ -8,244 +8,111 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:#f4efe6;color:#2a2018;font-family:'Jost',sans-serif;font-weight:300;min-height:100vh}
-
 header{padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(184,146,74,.22);background:#f4efe6;position:sticky;top:0;z-index:10}
 .logo{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.35em;text-transform:uppercase;color:#b8924a}
 .back{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#7a6a55;text-decoration:none;transition:color .25s}
 .back:hover{color:#b8924a}
-
-.hero{padding:56px 48px 40px;border-bottom:1px solid rgba(184,146,74,.15)}
-.eyebrow{font-size:8.5px;letter-spacing:.42em;text-transform:uppercase;color:#b8924a;margin-bottom:12px}
-h1{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:#2a2018;line-height:1}
+.hero{padding:48px 48px 36px;border-bottom:1px solid rgba(184,146,74,.15)}
+.eyebrow{font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:#b8924a;margin-bottom:10px}
+h1{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#2a2018;line-height:1}
 h1 em{font-style:italic;color:#b8924a}
-
-.section{padding:32px 48px 0}
-.sec-title{font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:#b8924a;padding-bottom:14px;border-bottom:1px solid rgba(184,146,74,.2);margin-bottom:0}
-
-.page-list{display:flex;flex-direction:column}
-.page-row{display:grid;grid-template-columns:28px 200px 1fr auto;align-items:center;gap:24px;padding:20px 0;border-bottom:1px solid rgba(184,146,74,.12);text-decoration:none;color:inherit;transition:background .2s;border-radius:2px;cursor:pointer}
-.page-row:hover{background:rgba(184,146,74,.05);padding-left:8px;padding-right:8px;margin:0 -8px}
-.page-row:hover .row-arrow{color:#b8924a;transform:translateX(4px)}
-.row-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(184,146,74,.4)}
-.row-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#2a2018}
-.row-desc{font-size:12px;color:#7a6a55;line-height:1.6}
-.row-url{font-family:'Courier New',monospace;font-size:10px;color:#b8924a;background:rgba(184,146,74,.08);padding:4px 10px;white-space:nowrap;border:1px solid rgba(184,146,74,.18)}
-.row-arrow{color:#ccc;font-size:14px;transition:all .25s;margin-left:8px}
-
-/* Sub rows */
-.sub-list{display:flex;flex-direction:column;margin:0 48px;border-left:1px solid rgba(184,146,74,.2)}
-.sub-row{display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:20px;padding:12px 0 12px 24px;border-bottom:1px solid rgba(184,146,74,.08);text-decoration:none;color:inherit;transition:padding .2s;cursor:pointer}
-.sub-row:hover{padding-left:32px}
-.sub-row:hover .sub-arrow{color:#b8924a}
-.sub-name{font-size:13px;color:#2a2018;font-weight:400}
-.sub-desc{font-size:11px;color:#9a8870}
-.sub-id{font-family:'Courier New',monospace;font-size:9px;color:#b8924a;opacity:.7}
-.sub-arrow{color:#ccc;font-size:12px;transition:color .25s}
-
-.footer{padding:32px 48px 48px;margin-top:24px;border-top:1px solid rgba(184,146,74,.15)}
-.footer-note{font-size:10px;color:#9a8870}
-.footer-note code{font-family:'Courier New',monospace;color:#b8924a;background:rgba(184,146,74,.08);padding:2px 6px}
-
+.section-hd{padding:20px 48px 12px;font-size:7.5px;letter-spacing:.44em;text-transform:uppercase;color:#b8924a;display:flex;align-items:center;gap:14px}
+.section-hd::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(184,146,74,.25),transparent)}
+.grid{display:flex;flex-direction:column;margin:0 48px;border:1px solid rgba(184,146,74,.18);border-top:none}
+.row{display:grid;grid-template-columns:28px 190px 1fr 180px;align-items:center;gap:20px;padding:16px 20px;border-top:1px solid rgba(184,146,74,.12);text-decoration:none;color:inherit;transition:background .2s;cursor:pointer}
+.row:hover{background:rgba(184,146,74,.05)}
+.row:hover .arr{color:#b8924a;transform:translateX(4px)}
+.rn{font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(184,146,74,.4)}
+.rname{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#2a2018}
+.rdesc{font-size:11px;color:#7a6a55;line-height:1.55}
+.rurl{font-family:'Courier New',monospace;font-size:9.5px;color:#b8924a;background:rgba(184,146,74,.08);padding:4px 10px;border:1px solid rgba(184,146,74,.18);white-space:nowrap;text-align:right}
+.arr{color:#ccc;font-size:14px;transition:all .25s;grid-column:5}
+.new{display:inline-block;font-size:7px;letter-spacing:.25em;text-transform:uppercase;background:rgba(139,32,32,0.1);color:#8b2020;border:1px solid rgba(139,32,32,0.2);padding:2px 7px;vertical-align:middle;margin-left:6px}
+.sub-grid{display:flex;flex-direction:column;margin:0 48px 0 80px;border:1px solid rgba(184,146,74,.1);border-top:none}
+.sub-row{display:grid;grid-template-columns:150px 1fr 160px;align-items:center;gap:16px;padding:11px 16px;border-top:1px solid rgba(184,146,74,.08);text-decoration:none;color:inherit;transition:padding .18s;cursor:pointer}
+.sub-row:hover{padding-left:24px}
+.sub-row:hover .sarr{color:#b8924a}
+.sname{font-size:12px;color:#2a2018;font-weight:400}
+.sdesc{font-size:10px;color:#9a8870}
+.sid{font-family:'Courier New',monospace;font-size:8.5px;color:#b8924a;opacity:.6;text-align:right}
+.sarr{color:#ccc;font-size:11px;transition:color .25s}
+.note{padding:12px 48px;font-size:10px;color:#9a8870;background:rgba(184,146,74,.04);border-top:1px solid rgba(184,146,74,.12);margin:0 48px}
+.pgf{margin:0 48px;padding:20px 0 40px;border-top:1px solid rgba(184,146,74,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.pgf-n{font-size:9px;color:#9a8870}
+.pgf-n code{color:#b8924a;font-family:'Courier New',monospace;background:rgba(184,146,74,.07);padding:2px 6px}
 @media(max-width:768px){
-  header,.hero,.section,.footer{padding-left:20px;padding-right:20px}
-  .page-row{grid-template-columns:20px 1fr;gap:12px}
-  .row-desc,.row-url,.row-arrow{display:none}
-  .sub-list{margin:0 20px}
+  header,.hero,.section-hd,.grid,.sub-grid,.pgf,.note{padding-left:20px;padding-right:20px}
+  .sub-grid{margin-left:20px;margin-right:20px}
+  .row{grid-template-columns:20px 1fr}
+  .rdesc,.rurl,.arr{display:none}
   .sub-row{grid-template-columns:1fr auto}
-  .sub-desc{display:none}
+  .sdesc{display:none}
 }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">В Е Н Е Ц И Я</div>
-  <a class="back" href="venecia-multipage.html">← Открыть сайт</a>
+  <div class="logo">Венеция · Велнес</div>
+  <a class="back" href="index.html">← Открыть сайт</a>
 </header>
-
 <div class="hero">
-  <div class="eyebrow">Карта сайта · Navigation</div>
+  <div class="eyebrow">Sitemap · Карта страниц</div>
   <h1>Все страницы <em>проекта</em></h1>
 </div>
 
-
 <!-- MAIN PAGES -->
-<div class="section" style="margin-top:8px">
-  <div class="sec-title">Основные страницы</div>
-  <div class="page-list">
-
-    <a class="page-row" href="index.html">
-      <span class="row-num">01</span>
-      <span class="row-name">Главная</span>
-      <span class="row-desc">Философия клуба, членство, манифест, расписание дня</span>
-      <span class="row-url">index.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="directory.html">
-      <span class="row-num">02</span>
-      <span class="row-name">Все разделы</span>
-      <span class="row-desc">Разводящая страница с навигацией по всем направлениям</span>
-      <span class="row-url">directory.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="fitness.html">
-      <span class="row-num">03</span>
-      <span class="row-name">Фитнес</span>
-      <span class="row-desc">Зоны, оборудование, групповые программы, расписание</span>
-      <span class="row-url">fitness.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="spa.html">
-      <span class="row-num">04</span>
-      <span class="row-name">СПА и велнес</span>
-      <span class="row-desc">Бассейн 22м, хамам со звёздным небом, сауна, VIP-кабинет</span>
-      <span class="row-url">spa.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="clinic.html">
-      <span class="row-num">05</span>
-      <span class="row-name">Клиника красоты</span>
-      <span class="row-desc">Косметология, инъекции, лазер — прайс и запись</span>
-      <span class="row-url">clinic.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="beauty.html">
-      <span class="row-num">06</span>
-      <span class="row-name">Салон красоты</span>
-      <span class="row-desc">Волосы, ногти, макияж, эпиляция, брови — прайс и запись</span>
-      <span class="row-url">beauty.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="team.html">
-      <span class="row-num">07</span>
-      <span class="row-name">Команда</span>
-      <span class="row-desc">8 специалистов с сертификатами, видеогид по клубу</span>
-      <span class="row-url">team.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="booking.html">
-      <span class="row-num">08</span>
-      <span class="row-name">Бронирование</span>
-      <span class="row-desc">6 форм записи — тренировки, СПА, VIP, шкафчики, салон</span>
-      <span class="row-url">booking.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-    <a class="page-row" href="account.html">
-      <span class="row-num">09</span>
-      <span class="row-name">Личный кабинет</span>
-      <span class="row-desc">Карта Platinum, бронирования, оплаты, шкафчик, СПА-кабинет</span>
-      <span class="row-url">account.html</span>
-      <span class="row-arrow">→</span>
-    </a>
-
-  </div>
+<div class="section-hd">Основные страницы</div>
+<div class="grid">
+  <a class="row" href="index.html"><span class="rn">01</span><span class="rname">Главная</span><span class="rdesc">Философия, гостевой визит, членство, манифест</span><span class="rurl">index.html</span><span class="arr">→</span></a>
+  <a class="row" href="directory.html"><span class="rn">02</span><span class="rname">Все разделы</span><span class="rdesc">Разводящая страница — визуальная навигация</span><span class="rurl">directory.html</span><span class="arr">→</span></a>
+  <a class="row" href="fitness.html"><span class="rn">03</span><span class="rname">Фитнес</span><span class="rdesc">Зоны, тренеры, оборудование, расписание</span><span class="rurl">fitness.html</span><span class="arr">→</span></a>
+  <a class="row" href="training.html?type=yoga"><span class="rn">04</span><span class="rname">Страница тренировки <span class="new">template</span></span><span class="rdesc">training.html?type=yoga|pilates|boxing|stretching</span><span class="rurl">training.html</span><span class="arr">→</span></a>
+  <a class="row" href="spa.html"><span class="rn">05</span><span class="rname">Велнес и СПА</span><span class="rdesc">Бассейн (слайдер), хамам, сауна — отдельные блоки</span><span class="rurl">spa.html</span><span class="arr">→</span></a>
+  <a class="row" href="clinic.html"><span class="rn">06</span><span class="rname">Косметология</span><span class="rdesc">Команда + запись, прайс, 4 категории процедур</span><span class="rurl">clinic.html</span><span class="arr">→</span></a>
+  <a class="row" href="beauty.html"><span class="rn">07</span><span class="rname">Салон красоты</span><span class="rdesc">Команда + запись, прайс, 5 категорий услуг</span><span class="rurl">beauty.html</span><span class="arr">→</span></a>
+  <a class="row" href="team.html"><span class="rn">08</span><span class="rname">Команда</span><span class="rdesc">Манифест, фильтры Фитнес / Косметология / Салон</span><span class="rurl">team.html</span><span class="arr">→</span></a>
+  <a class="row" href="booking.html"><span class="rn">09</span><span class="rname">Бронирование</span><span class="rdesc">Раздел держателей карт + открытая запись</span><span class="rurl">booking.html</span><span class="arr">→</span></a>
+  <a class="row" href="account.html"><span class="rn">10</span><span class="rname">Личный кабинет</span><span class="rdesc">Карта, бронирования, оплаты, кликабельные тренеры</span><span class="rurl">account.html</span><span class="arr">→</span></a>
+  <a class="row" href="about.html"><span class="rn">11</span><span class="rname">О нас и контакты</span><span class="rdesc">История, философия, контактная форма</span><span class="rurl">about.html</span><span class="arr">→</span></a>
+  <a class="row" href="news.html"><span class="rn">12</span><span class="rname">Новости</span><span class="rdesc">Лента новостей клуба, featured-статья</span><span class="rurl">news.html</span><span class="arr">→</span></a>
+  <a class="row" href="news-article.html"><span class="rn">13</span><span class="rname">Статья новости <span class="new">new</span></span><span class="rdesc">Шаблон отдельной статьи с сайдбаром</span><span class="rurl">news-article.html</span><span class="arr">→</span></a>
+  <a class="row" href="services.html"><span class="rn">14</span><span class="rname">Сервисы и аренда</span><span class="rdesc">Для держателей карт vs для всех — визуальный split</span><span class="rurl">services.html</span><span class="arr">→</span></a>
+  <a class="row" href="payment.html"><span class="rn">15</span><span class="rname">Оплата</span><span class="rdesc">Форма заявки, способы, рассрочка, возврат</span><span class="rurl">payment.html</span><span class="arr">→</span></a>
 </div>
-
 
 <!-- BOOKING TABS -->
-<div class="section" style="margin-top:32px">
-  <div class="sec-title">Вкладки бронирования — booking.html</div>
+<div class="section-hd" style="margin-top:24px">Бронирование — booking.html</div>
+<div class="sub-grid">
+  <a class="sub-row" href="booking.html"><span class="sname">🏋️ Для держателей карт</span><span class="sdesc">По расписанию / по тренеру / студия</span><span class="sid">Fitness section</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="booking.html"><span class="sname">💎 Для всех — по услуге</span><span class="sdesc">Клиника и салон по услуге</span><span class="sid">Health → by service</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="booking.html"><span class="sname">💎 Для всех — по специалисту</span><span class="sdesc">Клиника и салон по мастеру</span><span class="sid">Health → by specialist</span><span class="sarr">→</span></a>
 </div>
-<div class="sub-list">
-  <a class="sub-row" href="booking.html">
-    <span class="sub-name">Групповая тренировка</span>
-    <span class="sub-desc">Направление, дата, время, контакты</span>
-    <span class="sub-id">book-group</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="booking.html">
-    <span class="sub-name">Персональная тренировка</span>
-    <span class="sub-desc">Тренер, цель, уровень, пожелания</span>
-    <span class="sub-id">book-personal</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="booking.html">
-    <span class="sub-name">Персональная студия</span>
-    <span class="sub-desc">Студия №1–3, длительность, формат</span>
-    <span class="sub-id">book-studio</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="booking.html">
-    <span class="sub-name">VIP-раздевалка</span>
-    <span class="sub-desc">Тип аренды, дата, пожелания</span>
-    <span class="sub-id">book-vip</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="booking.html">
-    <span class="sub-name">Запись в салон и клинику</span>
-    <span class="sub-desc">Специалист, направление, дата</span>
-    <span class="sub-id">book-salon</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="booking.html">
-    <span class="sub-name">Аренда шкафчика</span>
-    <span class="sub-desc">Тип, период, зона раздевалки</span>
-    <span class="sub-id">book-locker</span>
-    <span class="sub-arrow">→</span>
-  </a>
-</div>
-
 
 <!-- ACCOUNT TABS -->
-<div class="section" style="margin-top:32px">
-  <div class="sec-title">Разделы личного кабинета — account.html</div>
-</div>
-<div class="sub-list">
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">Карта и статус</span>
-    <span class="sub-desc">Platinum-карта, счётчики, прогресс до Diamond</span>
-    <span class="sub-id">acc-membership</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">Мои бронирования</span>
-    <span class="sub-desc">Статусы: подтверждено, ожидает, завершено</span>
-    <span class="sub-id">acc-bookings</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">Оплаты и история</span>
-    <span class="sub-desc">Таблица транзакций с датами</span>
-    <span class="sub-id">acc-payments</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">Мой шкафчик</span>
-    <span class="sub-desc">Шкафчик №42, кнопка продления</span>
-    <span class="sub-id">acc-locker</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">VIP-раздевалка</span>
-    <span class="sub-desc">Статус и следующее бронирование</span>
-    <span class="sub-id">acc-vip</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">СПА-кабинет</span>
-    <span class="sub-desc">2 из 4 сеансов, прогресс-бар</span>
-    <span class="sub-id">acc-spa</span>
-    <span class="sub-arrow">→</span>
-  </a>
-  <a class="sub-row" href="account.html">
-    <span class="sub-name">Настройки профиля</span>
-    <span class="sub-desc">Имя, email, телефон, цели</span>
-    <span class="sub-id">acc-profile</span>
-    <span class="sub-arrow">→</span>
-  </a>
+<div class="section-hd" style="margin-top:16px">Личный кабинет — account.html</div>
+<div class="sub-grid">
+  <a class="sub-row" href="account.html"><span class="sname">Карта и статус</span><span class="sdesc">Platinum + кнопки быстрой записи</span><span class="sid">acc-membership</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sname">Мои бронирования</span><span class="sdesc">Тренеры кликабельны, формат 09:00–09:55</span><span class="sid">acc-bookings</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sname">Оплаты и история</span><span class="sdesc">Таблица транзакций</span><span class="sid">acc-payments</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sname">Шкафчик</span><span class="sdesc">Шкафчик №42, кнопка продления</span><span class="sid">acc-locker</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sname">VIP-раздевалка</span><span class="sdesc">Статус и бронирование</span><span class="sid">acc-vip</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sname">СПА-кабинет</span><span class="sdesc">2 из 4 сеансов</span><span class="sid">acc-spa</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sname">Настройки профиля</span><span class="sdesc">Имя, email, цели</span><span class="sid">acc-profile</span><span class="sarr">→</span></a>
 </div>
 
-<div class="footer">
-  <div class="footer-note">Навигация внутри сайта: <code>navigate('id')</code> · Все страницы в одном файле <code>venecia-multipage.html</code></div>
+<!-- TRAINING TYPES -->
+<div class="section-hd" style="margin-top:16px">Страницы тренировок — training.html?type=...</div>
+<div class="note">Один шаблон, контент меняется по параметру URL. Добавляйте новые тренировки в объект TRAININGS в JS.</div>
+<div class="sub-grid">
+  <a class="sub-row" href="training.html?type=yoga"><span class="sname">Йога</span><span class="sdesc">Все стили, расписание, тренеры</span><span class="sid">?type=yoga</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="training.html?type=pilates"><span class="sname">Пилатес</span><span class="sdesc">На реформерах Balanced Body</span><span class="sid">?type=pilates</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="training.html?type=boxing"><span class="sname">Боксинг</span><span class="sdesc">Женский бокс, авторская программа</span><span class="sid">?type=boxing</span><span class="sarr">→</span></a>
+  <a class="sub-row" href="training.html?type=stretching"><span class="sname">Растяжка и МФР</span><span class="sdesc">Стретчинг и восстановление</span><span class="sid">?type=stretching</span><span class="sarr">→</span></a>
 </div>
 
+<div class="pgf">
+  <div class="pgf-n">Навигация: прямые URL · Все страницы отдельные файлы · <code>training.html?type=</code> — параметризованный шаблон</div>
+  <div class="pgf-n" style="opacity:.45">15 страниц + template</div>
+</div>
 </body>
 </html>

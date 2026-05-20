@@ -46,92 +46,105 @@ body {
 /* ─── HEADER ─── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 0 40px;
-  height: 88px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
+  padding: 0 48px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px;
   border-bottom: 1px solid var(--border-hard);
-  background: rgba(240,235,225,0.96);
+  background: rgba(240,235,225,0.97);
   backdrop-filter: blur(16px);
-  transition: all 0.4s;
 }
 .logo {
-  grid-column: 2;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
+  text-decoration: none; cursor: pointer; flex-shrink: 0;
 }
 .logo-main {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 0.35em;
-  color: var(--gold);
-  text-transform: uppercase;
-  line-height: 1;
-  display: block;
+  font-family: var(--serif); font-size: 18px; font-weight: 400;
+  letter-spacing: 0.32em; color: var(--gold);
+  text-transform: uppercase; line-height: 1; display: block;
 }
 .logo-sub {
-  font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 4px;
-  display: block;
+  font-family: var(--sans); font-size: 7.5px; font-weight: 400;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 3px; display: block;
 }
-.header-left { display: flex; align-items: center; gap: 12px; }
-.header-right { display: flex; align-items: center; gap: 12px; justify-content: flex-end; }
-.btn-menu {
-  display: flex; align-items: center; gap: 10px;
-  border: 1px solid var(--text);
-  border-radius: 40px;
-  padding: 10px 20px;
-  font-family: var(--sans); font-size: 11px; font-weight: 400;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--text); background: none; cursor: pointer;
-  transition: all 0.3s;
+.main-nav {
+  display: flex; align-items: center; gap: 0; flex: 1;
+  justify-content: center; overflow: hidden;
 }
-.btn-menu:hover { background: var(--text); color: var(--bg); }
-.btn-menu-icon { display: flex; flex-direction: column; gap: 4px; }
-.btn-menu-icon span { width: 16px; height: 1px; background: currentColor; display: block; }
-.btn-msg {
-  width: 40px; height: 40px;
-  border: 1px solid var(--text);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; background: none;
-  color: var(--text); font-size: 14px;
-  transition: all 0.3s;
+.main-nav a {
+  font-family: var(--sans); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted); text-decoration: none;
+  padding: 4px 12px; white-space: nowrap;
+  transition: color 0.25s; position: relative;
 }
-.btn-msg:hover { background: var(--text); color: var(--bg); }
-.btn-lang {
-  width: 40px; height: 40px;
-  border: 1px solid var(--text);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; background: none;
-  font-family: var(--sans); font-size: 10px;
-  font-weight: 400; letter-spacing: 0.1em;
-  color: var(--text); transition: all 0.3s;
+.main-nav a::after {
+  content: ''; position: absolute; bottom: -2px; left: 12px; right: 12px;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transition: transform 0.25s;
 }
-.btn-lang:hover { background: var(--text); color: var(--bg); }
-nav { display: none; }
+.main-nav a:hover { color: var(--gold); }
+.main-nav a:hover::after { transform: scaleX(1); }
+.main-nav a.active { color: var(--gold); }
+.main-nav a.active::after { transform: scaleX(1); }
+.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .btn-cta-header {
-  font-family: var(--sans); font-size: 11px; font-weight: 400;
-  letter-spacing: 0.15em; text-transform: uppercase;
+  font-family: var(--sans); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
   background: var(--cta); color: #fff;
-  border: none; padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer; transition: all 0.3s;
+  border: none; padding: 10px 20px;
+  border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
 .btn-cta-header:hover { background: var(--cta-hover); }
-.menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-.menu-toggle span { width: 24px; height: 1px; background: var(--gold); transition: all 0.3s; }
+.btn-outline-sm {
+  font-family: var(--sans); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: none; color: var(--text);
+  border: 1px solid rgba(58,50,40,0.35); padding: 9px 18px;
+  border-radius: 3px; cursor: pointer; transition: all 0.3s;
+  white-space: nowrap;
+}
+.btn-outline-sm:hover { background: var(--text); color: var(--bg); }
+.mobile-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.mobile-toggle span { width: 22px; height: 1px; background: var(--text); display: block; transition: all 0.3s; }
+/* Mobile overlay */
+.mobile-overlay {
+  position: fixed; inset: 0; z-index: 1500;
+  background: var(--bg); display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; transform: translateX(100%);
+  transition: all 0.35s ease;
+}
+.mobile-overlay.open {
+  opacity: 1; visibility: visible; transform: translateX(0);
+}
+.mobile-overlay-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 32px; height: 68px;
+  border-bottom: 1px solid var(--border-hard);
+}
+.mobile-close {
+  background: none; border: 1px solid var(--border-hard);
+  color: var(--text-muted); cursor: pointer;
+  padding: 8px 16px; font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s;
+}
+.mobile-close:hover { border-color: var(--gold); color: var(--gold); }
+.mobile-nav-links {
+  display: flex; flex-direction: column; padding: 32px;
+  gap: 0; flex: 1;
+}
+.mobile-nav-links a {
+  font-family: var(--serif); font-size: 26px; font-weight: 300;
+  color: var(--cream); text-decoration: none;
+  padding: 14px 0; border-bottom: 1px solid var(--border-hard);
+  transition: color 0.25s;
+}
+.mobile-nav-links a:hover { color: var(--gold); }
+.mobile-nav-links a:last-child { border-bottom: none; }
 
 /* ─── HERO ─── */
 .hero {
@@ -772,139 +785,6 @@ footer, footer a, footer p, footer div { color: #f0ebe1; }
 }
 .highlight-box p { font-size: 13px; color: var(--text-muted); font-style: italic; line-height: 1.8; }
 
-/* ─── MEGA NAV OVERLAY ─── */
-.mega-nav {
-  position: fixed; inset: 0; z-index: 1500;
-  background: var(--bg);
-  display: flex; flex-direction: column;
-  overflow-y: auto;
-  opacity: 0; visibility: hidden;
-  transform: translateY(-16px);
-  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
-  pointer-events: none;
-}
-.mega-nav.open {
-  opacity: 1; visibility: visible;
-  transform: translateY(0);
-  pointer-events: all;
-  transition: opacity 0.32s ease, transform 0.32s ease;
-}
-.mega-nav-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 0 48px;
-  height: 88px;
-  border-bottom: 1px solid var(--border-hard);
-  flex-shrink: 0;
-}
-.mega-nav-close {
-  justify-self: start;
-  display: flex; align-items: center; gap: 10px;
-  border: 1px solid var(--text);
-  border-radius: 40px;
-  padding: 10px 20px;
-  font-family: var(--sans); font-size: 11px; font-weight: 400;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--text); background: none; cursor: pointer;
-  transition: all 0.3s;
-}
-.mega-nav-close:hover { background: var(--text); color: var(--bg); }
-.mega-nav-logo {
-  justify-self: center; text-align: center;
-  font-family: var(--serif); font-size: 22px;
-  letter-spacing: 0.32em; color: var(--gold);
-  text-transform: uppercase; cursor: pointer;
-}
-.mega-nav-cta {
-  justify-self: end;
-}
-.mega-nav-body {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 0;
-}
-.mega-nav-sections {
-  padding: 56px 64px 56px 80px;
-  border-right: 1px solid var(--border-hard);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  align-content: start;
-}
-.mega-nav-col-title {
-  font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 32px;
-  grid-column: 1 / -1;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-hard);
-}
-.mega-section-item {
-  padding: 24px 32px 24px 0;
-  border-bottom: 1px solid var(--border-hard);
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-}
-.mega-section-item:hover { padding-left: 8px; }
-.mega-section-item:last-child { border-bottom: none; }
-.mega-section-label {
-  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 8px;
-}
-.mega-section-title {
-  font-family: var(--serif); font-size: 28px; font-weight: 300;
-  color: var(--cream); line-height: 1.1;
-  transition: color 0.3s;
-  margin-bottom: 8px;
-}
-.mega-section-item:hover .mega-section-title { color: var(--gold); }
-.mega-section-desc {
-  font-size: 11px; color: var(--text-muted); line-height: 1.7;
-  max-width: 240px;
-}
-.mega-section-arrow {
-  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-  font-size: 18px; color: var(--border-hard);
-  transition: all 0.3s;
-}
-.mega-section-item:hover .mega-section-arrow { color: var(--gold); transform: translateY(-50%) translateX(4px); }
-.mega-nav-sub {
-  padding: 56px 48px;
-  display: flex; flex-direction: column;
-  gap: 0;
-}
-.mega-sub-block { margin-bottom: 40px; }
-.mega-sub-heading {
-  font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 16px;
-  padding-bottom: 10px; border-bottom: 1px solid var(--border-hard);
-}
-.mega-sub-link {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 0;
-  font-size: 13px; font-weight: 300;
-  color: var(--text); cursor: pointer;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-.mega-sub-link::before { content: '—'; color: var(--border-hard); font-size: 10px; transition: color 0.3s; }
-.mega-sub-link:hover { color: var(--gold); padding-left: 4px; }
-.mega-sub-link:hover::before { color: var(--gold); }
-.mega-nav-footer-strip {
-  padding: 24px 80px;
-  border-top: 1px solid var(--border-hard);
-  display: flex; justify-content: space-between; align-items: center;
-  flex-shrink: 0;
-  background: var(--card);
-}
-.mega-nav-contact {
-  display: flex; gap: 48px;
-}
-.mega-contact-item { font-size: 12px; color: var(--text-muted); }
-.mega-contact-item strong { display: block; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 4px; }
 @media (max-width: 1024px) {
   .mega-nav-body { grid-template-columns: 1fr; }
   .mega-nav-sections { padding: 32px 24px; grid-template-columns: 1fr; border-right: none; }
@@ -1467,6 +1347,15 @@ footer {
 .highlight-box p { font-size: 13px; color: var(--text-muted); font-style: italic; line-height: 1.8; }
 
 @media(min-width:1200px){.mfc-link{display:inline !important}}
+@media(max-width:1100px){
+  .main-nav a{font-size:9px;padding:4px 8px}
+}
+@media(max-width:860px){
+  header{padding:0 20px}
+  .main-nav{display:none}
+  .mobile-toggle{display:flex}
+  .btn-outline-sm{display:none}
+}
 /* ─── RESPONSIVE END ─── */
 
 /* ─── RESPONSIVE ─── */
@@ -1502,160 +1391,52 @@ footer {
 <body>
 
 <!-- HEADER -->
-<!-- HEADER -->
 <header id="header">
-  <div class="header-left">
-    <button class="btn-menu" onclick="toggleMobileNav()">
-      <div class="btn-menu-icon"><span></span><span></span><span></span></div>
-      Меню
-    </button>
-    <a href="https://veneciawellness.ru" target="_blank" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s;white-space:nowrap;display:none" class="mfc-link" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--text-muted)'">МФК Венеция ↗</a>
-  </div>
-  <a class="logo" onclick="navigate('home')">
+  <a class="logo" href="index.html">
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <div class="header-right">
-    <button class="btn-lang">RU</button>
-    <button class="btn-cta-header" onclick="navigate('booking')">Клубные карты</button>
-    <button class="btn-cta-header" style="background:none;color:var(--cta);border:1px solid var(--cta);border-radius:4px;margin-left:0" onclick="navigate('account')">Кабинет</button>
+  <nav class="main-nav">
+    <a href="fitness.html">Фитнес</a>
+    <a href="clinic.html">Косметология</a>
+    <a href="beauty.html">Салон красоты</a>
+    <a href="spa.html">Велнес и СПА</a>
+    <a href="services.html">Сервисы</a>
+    <a href="team.html">Команда</a>
+    <a href="news.html">Новости</a>
+    <a href="about.html">Контакты</a>
+  </nav>
+  <div class="header-actions">
+    <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
+    <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
+    <button class="mobile-toggle" onclick="toggleMobileMenu()" id="mobileToggleBtn">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
-
-<!-- MEGA NAVIGATION OVERLAY -->
-<!-- ════════════════════════════════════════
-     MEGA NAVIGATION OVERLAY
-════════════════════════════════════════ -->
-<div class="mega-nav" id="megaNav">
-
-  <!-- Header -->
-  <div class="mega-nav-header">
-    <button class="mega-nav-close" onclick="toggleMegaNav()">
-      <span style="font-size:18px;line-height:1">✕</span>
-      Закрыть
-    </button>
-    <div class="mega-nav-logo" onclick="navigate('home');toggleMegaNav()">В Е Н Е Ц И Я</div>
-    <div class="mega-nav-cta">
-      <button class="btn-cta-header" onclick="navigate('booking');toggleMegaNav()">Клубные карты</button>
-    </div>
+<div class="mobile-overlay" id="mobileMenuOverlay">
+  <div class="mobile-overlay-header">
+    <a class="logo" href="index.html">
+      <span class="logo-main">В Е Н Е Ц И Я</span>
+    </a>
+    <button class="mobile-close" onclick="toggleMobileMenu()">✕ Закрыть</button>
   </div>
-
-  <!-- Body -->
-  <div class="mega-nav-body">
-
-    <!-- Left: Main sections -->
-    <div class="mega-nav-sections">
-      <div class="mega-nav-col-title">Все разделы клуба</div>
-
-      <div class="mega-section-item" onclick="navigate('fitness');toggleMegaNav()">
-        <div class="mega-section-label">01 · Активность</div>
-        <div class="mega-section-title">Фитнес</div>
-        <div class="mega-section-desc">Тренажёрный зал, групповые программы, персональные студии, бассейн</div>
-        <span class="mega-section-arrow">→</span>
-      </div>
-
-      <div class="mega-section-item" onclick="navigate('spa');toggleMegaNav()">
-        <div class="mega-section-label">02 · Восстановление</div>
-        <div class="mega-section-title">СПА и велнес</div>
-        <div class="mega-section-desc">Бассейн 22м, джакузи, хамам со звёздным небом, сауна</div>
-        <span class="mega-section-arrow">→</span>
-      </div>
-
-      <div class="mega-section-item" onclick="navigate('clinic');toggleMegaNav()">
-        <div class="mega-section-label">03 · Красота</div>
-        <div class="mega-section-title">Клиника красоты</div>
-        <div class="mega-section-desc">Косметология, инъекции, лазер, аппаратные процедуры</div>
-        <span class="mega-section-arrow">→</span>
-      </div>
-
-      <div class="mega-section-item" onclick="navigate('beauty');toggleMegaNav()">
-        <div class="mega-section-label">04 · Стиль</div>
-        <div class="mega-section-title">Салон красоты</div>
-        <div class="mega-section-desc">Волосы, ногти, макияж, эпиляция, брови и ресницы</div>
-        <span class="mega-section-arrow">→</span>
-      </div>
-
-      <div class="mega-section-item" onclick="navigate('team');toggleMegaNav()">
-        <div class="mega-section-label">05 · О нас</div>
-        <div class="mega-section-title">Команда</div>
-        <div class="mega-section-desc">Тренеры, косметологи, специалисты — видеогид по клубу</div>
-        <span class="mega-section-arrow">→</span>
-      </div>
-
-      <div class="mega-section-item" onclick="navigate('booking');toggleMegaNav()">
-        <div class="mega-section-label">06 · Сервис</div>
-        <div class="mega-section-title">Бронирование</div>
-        <div class="mega-section-desc">Тренировки, СПА, VIP-раздевалка, шкафчики, салон</div>
-        <span class="mega-section-arrow">→</span>
-      </div>
-    </div>
-
-    <!-- Right: Sub-navigation -->
-    <div class="mega-nav-sub">
-
-      <div class="mega-sub-block">
-        <div class="mega-sub-heading" style="display:flex;align-items:center;justify-content:space-between">
-          Фитнес и тренировки
-          <span style="font-size:7px;background:rgba(184,146,74,0.15);color:var(--gold);padding:3px 8px;letter-spacing:0.1em">Только для держателей карт</span>
-        </div>
-        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Тренажёрный зал и зоны</a>
-        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Групповые тренировки</a>
-        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Персональные тренировки</a>
-        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Пилатес на реформерах</a>
-        <a class="mega-sub-link" href="account.html" onclick="toggleMegaNav()" style="color:var(--gold)">Записаться → Личный кабинет</a>
-      </div>
-
-      <div class="mega-sub-block">
-        <div class="mega-sub-heading" style="display:flex;align-items:center;justify-content:space-between">
-          Здоровье и красота
-          <span style="font-size:7px;background:rgba(139,32,32,0.12);color:var(--cta);padding:3px 8px;letter-spacing:0.1em">Открытая запись</span>
-        </div>
-        <a class="mega-sub-link" href="spa.html" onclick="toggleMegaNav()">СПА и велнес</a>
-        <a class="mega-sub-link" href="clinic.html" onclick="toggleMegaNav()">Клиника красоты</a>
-        <a class="mega-sub-link" href="beauty.html" onclick="toggleMegaNav()">Салон красоты</a>
-        <a class="mega-sub-link" href="booking.html" onclick="toggleMegaNav()" style="color:var(--gold)">Записаться → Бронирование</a>
-      </div>
-
-      <div class="mega-sub-block">
-        <div class="mega-sub-heading">Клуб и сервисы</div>
-        <a class="mega-sub-link" href="team.html" onclick="toggleMegaNav()">Команда</a>
-        <a class="mega-sub-link" href="about.html" onclick="toggleMegaNav()">О нас и контакты</a>
-        <a class="mega-sub-link" href="news.html" onclick="toggleMegaNav()">Новости</a>
-        <a class="mega-sub-link" href="services.html" onclick="toggleMegaNav()">Доп. сервисы и аренда</a>
-        <a class="mega-sub-link" href="account.html" onclick="toggleMegaNav()">Личный кабинет</a>
-      </div>
-
-    </div>
+  <nav class="mobile-nav-links">
+    <a href="fitness.html">Фитнес и тренировки</a>
+    <a href="clinic.html">Косметология</a>
+    <a href="beauty.html">Салон красоты</a>
+    <a href="spa.html">Велнес и СПА</a>
+    <a href="services.html">Сервисы</a>
+    <a href="team.html">Команда</a>
+    <a href="news.html">Новости</a>
+    <a href="about.html">Контакты</a>
+  </nav>
+  <div style="padding:24px 32px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border-hard)">
+    <button class="btn-primary" style="width:100%" onclick="location.href='booking.html'">Клубные карты</button>
+    <button class="btn-outline" style="width:100%" onclick="location.href='account.html'">Личный кабинет</button>
   </div>
+</div>
 
-  <!-- Footer strip -->
-  <div class="mega-nav-footer-strip">
-    <div class="mega-nav-contact">
-      <div class="mega-contact-item">
-        <strong>Адрес</strong>
-        Москва, наб. Тараса Шевченко
-      </div>
-      <div class="mega-contact-item">
-        <strong>Телефон</strong>
-        +7 (495) 000-00-00
-      </div>
-      <div class="mega-contact-item">
-        <strong>Режим работы</strong>
-        Пн–Пт 07:00–23:00 · Сб–Вс 09:00–22:00
-      </div>
-      <div class="mega-contact-item">
-        <strong>Email</strong>
-        info@veneciawellness.ru
-      </div>
-    </div>
-    <div style="display:flex;gap:12px">
-      <a class="social-link" style="border-color:var(--border-hard);color:var(--text-muted)">✦</a>
-      <a class="social-link" style="border-color:var(--border-hard);color:var(--text-muted)">in</a>
-      <a class="social-link" style="border-color:var(--border-hard);color:var(--text-muted)">tg</a>
-    </div>
-  </div>
-
-</div><!-- /mega-nav -->
 
 <!-- PAGE CONTENT -->
 <div class="page active" id="page-home">
@@ -2099,12 +1880,13 @@ function navigate(page) {
 
 
 // ─── MEGA NAV ───
-function toggleMegaNav() {
-  const nav = document.getElementById('megaNav');
-  nav.classList.toggle('open');
-  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+function toggleMobileMenu() {
+  const ov = document.getElementById('mobileMenuOverlay');
+  ov.classList.toggle('open');
+  document.body.style.overflow = ov.classList.contains('open') ? 'hidden' : '';
 }
-function toggleMobileNav() { toggleMegaNav(); }
+function toggleMobileNav() { toggleMobileMenu(); }
+function toggleMegaNav()   { toggleMobileMenu(); }
 
 // ─── ACCORDION ───
 function toggleAccordion(header) {
