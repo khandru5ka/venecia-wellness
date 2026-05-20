@@ -1466,6 +1466,7 @@ footer {
 }
 .highlight-box p { font-size: 13px; color: var(--text-muted); font-style: italic; line-height: 1.8; }
 
+@media(min-width:1200px){.mfc-link{display:inline !important}}
 /* ─── RESPONSIVE END ─── */
 
 /* ─── RESPONSIVE ─── */
@@ -1508,7 +1509,7 @@ footer {
       <div class="btn-menu-icon"><span></span><span></span><span></span></div>
       Меню
     </button>
-    <button class="btn-msg" onclick="showToast('Напишите нам: info@veneciawellness.ru')">✉</button>
+    <a href="https://veneciawellness.ru" target="_blank" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s;white-space:nowrap;display:none" class="mfc-link" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--text-muted)'">МФК Венеция ↗</a>
   </div>
   <a class="logo" onclick="navigate('home')">
     <span class="logo-main">В Е Н Е Ц И Я</span>
@@ -1593,39 +1594,35 @@ footer {
     <div class="mega-nav-sub">
 
       <div class="mega-sub-block">
-        <div class="mega-sub-heading">Фитнес — быстрый доступ</div>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Тренажёрный зал 500м²</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Бассейн и аквафитнес</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Пилатес на реформерах</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Ринг и боевые искусства</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Персональные студии</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('scheduleGrid');toggleMegaNav()">Расписание занятий →</a>
+        <div class="mega-sub-heading" style="display:flex;align-items:center;justify-content:space-between">
+          Фитнес и тренировки
+          <span style="font-size:7px;background:rgba(184,146,74,0.15);color:var(--gold);padding:3px 8px;letter-spacing:0.1em">Только для держателей карт</span>
+        </div>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Тренажёрный зал и зоны</a>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Групповые тренировки</a>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Персональные тренировки</a>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Пилатес на реформерах</a>
+        <a class="mega-sub-link" href="account.html" onclick="toggleMegaNav()" style="color:var(--gold)">Записаться → Личный кабинет</a>
       </div>
 
       <div class="mega-sub-block">
-        <div class="mega-sub-heading">Бронирование</div>
-        <a class="mega-sub-link" onclick="navigate('booking');setBookTab(document.querySelector('.book-tab'),'book-group');toggleMegaNav()">Групповая тренировка</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Персональная с тренером</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Персональная студия</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">VIP-раздевалка</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Запись в салон / клинику</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Аренда шкафчика</a>
+        <div class="mega-sub-heading" style="display:flex;align-items:center;justify-content:space-between">
+          Здоровье и красота
+          <span style="font-size:7px;background:rgba(139,32,32,0.12);color:var(--cta);padding:3px 8px;letter-spacing:0.1em">Открытая запись</span>
+        </div>
+        <a class="mega-sub-link" href="spa.html" onclick="toggleMegaNav()">СПА и велнес</a>
+        <a class="mega-sub-link" href="clinic.html" onclick="toggleMegaNav()">Клиника красоты</a>
+        <a class="mega-sub-link" href="beauty.html" onclick="toggleMegaNav()">Салон красоты</a>
+        <a class="mega-sub-link" href="booking.html" onclick="toggleMegaNav()" style="color:var(--gold)">Записаться → Бронирование</a>
       </div>
 
       <div class="mega-sub-block">
-        <div class="mega-sub-heading">Личный кабинет</div>
-        <a class="mega-sub-link" onclick="navigate('account');toggleMegaNav()">Карта и статус</a>
-        <a class="mega-sub-link" onclick="navigate('account');setAccountTab(document.querySelectorAll('.sidebar-link')[1],'acc-bookings');toggleMegaNav()">Мои бронирования</a>
-        <a class="mega-sub-link" onclick="navigate('account');setAccountTab(document.querySelectorAll('.sidebar-link')[4],'acc-vip');toggleMegaNav()">VIP-раздевалка</a>
-        <a class="mega-sub-link" onclick="navigate('account');setAccountTab(document.querySelectorAll('.sidebar-link')[5],'acc-spa');toggleMegaNav()">СПА-кабинет</a>
-      </div>
-
-      <div class="mega-sub-block">
-        <div class="mega-sub-heading">Навигация</div>
-        <a class="mega-sub-link" onclick="navigate('directory');toggleMegaNav()" style="color:var(--gold);font-weight:400">↗ Все разделы клуба</a>
-        <a class="mega-sub-link" onclick="navigate('home');toggleMegaNav()">Главная страница</a>
-        <a class="mega-sub-link" onclick="navigate('team');toggleMegaNav()">Команда и видеогид</a>
-        <a class="mega-sub-link" onclick="navigate('account');toggleMegaNav()">Личный кабинет</a>
+        <div class="mega-sub-heading">Клуб и сервисы</div>
+        <a class="mega-sub-link" href="team.html" onclick="toggleMegaNav()">Команда</a>
+        <a class="mega-sub-link" href="about.html" onclick="toggleMegaNav()">О нас и контакты</a>
+        <a class="mega-sub-link" href="news.html" onclick="toggleMegaNav()">Новости</a>
+        <a class="mega-sub-link" href="services.html" onclick="toggleMegaNav()">Доп. сервисы и аренда</a>
+        <a class="mega-sub-link" href="account.html" onclick="toggleMegaNav()">Личный кабинет</a>
       </div>
 
     </div>
@@ -1682,20 +1679,7 @@ footer {
         <button class="btn-outline" onclick="navigate('directory')">Все разделы</button>
       </div>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hero-stat-num">500</div>
-        <div class="hero-stat-label">м² тренажёрный зал</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">15+</div>
-        <div class="hero-stat-label">форматов тренировок</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">22м</div>
-        <div class="hero-stat-label">бассейн</div>
-      </div>
-    </div>
+
     <div class="hero-scroll">
       <div class="scroll-line"></div>
       <span>Прокрутить</span>
@@ -1799,11 +1783,7 @@ footer {
           <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;font-family:var(--sans)">м² частного пространства</div>
           <p style="font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.7">Фитнес, СПА, клиника, салон и лаунж — единый организм, созданный для одной цели.</p>
         </div>
-        <div>
-          <div style="font-family:var(--serif);font-size:72px;font-weight:300;color:var(--gold);line-height:1">0</div>
-          <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;font-family:var(--sans)">мужчин. Ни одного. Никогда.</div>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.7">Первый в Москве велнес-клуб с полным закрытым доступом — без исключений и компромиссов.</p>
-        </div>
+
       </div>
     </div>
   </section>
@@ -1947,7 +1927,7 @@ footer {
       </div>
     </div>
     <div style="text-align:center;margin-top:56px">
-      <button class="btn-primary" onclick="showToast('Запрос на пробный день принят. Мы свяжемся с вами.')">Запросить пробный день</button>
+      <button class="btn-primary" onclick="showToast('Запрос на пробный день принят. Мы свяжемся с вами.')">Запросить гостевой визит</button>
     </div>
   </section>
 
@@ -1955,42 +1935,60 @@ footer {
   <section class="section">
     <div class="section-eyebrow">Направления</div>
     <h2 class="section-title" style="margin-bottom:48px">Выберите <em>своё</em> направление</h2>
-    <div class="services-grid">
-      <div class="service-card" onclick="navigate('fitness')">
-        <div class="service-icon">🏋️</div>
-        <h3>Фитнес</h3>
-        <p>Тренажёрный зал, групповые программы, персональные студии, бассейн, ринг и зона растяжки</p>
-        <div class="service-arrow">Подробнее</div>
+
+    <!-- Фитнес -->
+    <div style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border-hard)">
+        <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream)">Фитнес и тренировки</div>
+        <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;background:rgba(184,146,74,0.1);color:var(--gold);border:1px solid rgba(184,146,74,0.3);padding:4px 10px">Для держателей карт</div>
       </div>
-      <div class="service-card" onclick="navigate('spa')">
-        <div class="service-icon">🌿</div>
-        <h3>СПА и велнес</h3>
-        <p>Бассейн 22м, джакузи, сауна, хамам со звёздным небом, контрастные ритуалы и зона отдыха</p>
-        <div class="service-arrow">Подробнее</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)">
+        <div class="service-card" onclick="location.href='fitness.html'">
+          <div class="service-icon">🏋️</div>
+          <h3>Фитнес-зоны</h3>
+          <p>Тренажёрный зал 500м², ринг, зона растяжки, пилатес и персональные студии</p>
+          <div class="service-arrow">Подробнее</div>
+        </div>
+        <div class="service-card" onclick="location.href='fitness.html'">
+          <div class="service-icon">🤸</div>
+          <h3>Групповые тренировки</h3>
+          <p>15+ программ: йога, пилатес, сайкл, бокс, аквафитнес — расписание и запись</p>
+          <div class="service-arrow">Расписание</div>
+        </div>
+        <div class="service-card" onclick="location.href='account.html'">
+          <div class="service-icon">👤</div>
+          <h3>Персональный тренинг</h3>
+          <p>Запись к тренеру — через личный кабинет. Индивидуальная программа и закреплённый специалист</p>
+          <div class="service-arrow">Личный кабинет</div>
+        </div>
       </div>
-      <div class="service-card" onclick="navigate('clinic')">
-        <div class="service-icon">💎</div>
-        <h3>Клиника красоты</h3>
-        <p>Косметологические процедуры, аппаратная косметология, инъекционные техники, лазерные процедуры</p>
-        <div class="service-arrow">Подробнее</div>
+    </div>
+
+    <!-- Велнес и красота -->
+    <div>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border-hard)">
+        <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream)">Велнес и красота</div>
+        <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;background:rgba(139,32,32,0.08);color:var(--cta);border:1px solid rgba(139,32,32,0.2);padding:4px 10px">Открытая запись</div>
       </div>
-      <div class="service-card" onclick="navigate('beauty')">
-        <div class="service-icon">✨</div>
-        <h3>Салон красоты</h3>
-        <p>Уход за волосами, маникюр, педикюр, макияж, эпиляция — всё от мастеров клуба</p>
-        <div class="service-arrow">Подробнее</div>
-      </div>
-      <div class="service-card" onclick="navigate('team')">
-        <div class="service-icon">👑</div>
-        <h3>Наша команда</h3>
-        <p>Профессиональные тренеры, массажисты и специалисты с международными сертификатами</p>
-        <div class="service-arrow">Подробнее</div>
-      </div>
-      <div class="service-card" onclick="navigate('booking')">
-        <div class="service-icon">📅</div>
-        <h3>Бронирование</h3>
-        <p>Запись на групповые и персональные тренировки, СПА, клинику, VIP-раздевалки и шкафчики</p>
-        <div class="service-arrow">Забронировать</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)">
+        <div class="service-card" onclick="location.href='spa.html'">
+          <div class="service-icon">🌿</div>
+          <h3>СПА и велнес</h3>
+          <p>Бассейн 22м, джакузи, хамам со звёздным небом, финская сауна и VIP-кабинет</p>
+          <div class="service-arrow">Подробнее</div>
+        </div>
+        <div class="service-card" onclick="location.href='clinic.html'">
+          <div class="service-icon">💎</div>
+          <h3>Клиника красоты</h3>
+          <p>Косметология, инъекции, аппаратные и лазерные процедуры — запись без карты</p>
+          <div class="service-arrow">Записаться</div>
+        </div>
+        <div class="service-card" onclick="location.href='beauty.html'">
+          <div class="service-icon">✨</div>
+          <h3>Салон красоты</h3>
+          <p>Волосы, ногти, макияж, брови и эпиляция от мастеров клуба — открытая запись</p>
+          <div class="service-arrow">Записаться</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1999,18 +1997,18 @@ footer {
   <section class="section" style="background:var(--cream);border-top:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard);padding:80px;text-align:center;position:relative;overflow:hidden">
     <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,146,74,0.07),transparent 60%);pointer-events:none"></div>
     <div style="position:relative;z-index:1">
-      <div class="section-eyebrow" style="justify-content:center">Первый шаг</div>
+      <div class="section-eyebrow" style="justify-content:center">Гостевой визит</div>
       <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 20px">
-        Познакомьтесь с<br><em>Венецией</em> лично
+        Гостевой визит<br>в <em>Венецию</em>
       </h2>
       <p style="font-size:14px;color:rgba(42,32,24,0.65);max-width:480px;margin:0 auto 16px;text-align:center;line-height:1.9">
-        Мы не продаём карты онлайн. Каждое знакомство начинается с личной встречи — чтобы понять, подходим ли мы друг другу.
+        Проведите день в клубе до оформления карты. Попробуйте тренировку, СПА и познакомьтесь с командой — без обязательств.
       </p>
       <p style="font-size:11px;color:var(--text-muted);max-width:420px;margin:0 auto 40px;text-align:center;line-height:1.7">
-        Оставьте запрос — персональный менеджер свяжется с вами в течение часа и пригласит на экскурсию по клубу.
+        Оставьте запрос — менеджер свяжется в течение часа, согласует удобный день и время.
       </p>
       <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-        <button class="btn-primary" style="font-size:11px;padding:18px 48px" onclick="showToast('Запрос получен. Менеджер свяжется в течение часа.')">Запросить знакомство</button>
+        <button class="btn-primary" style="font-size:11px;padding:18px 48px" onclick="showToast('Запрос получен. Менеджер свяжется в течение часа.')">Запросить гостевой визит</button>
         <button class="btn-outline" style="font-size:11px;padding:18px 48px" onclick="navigate('directory')">Изучить клуб</button>
       </div>
     </div>

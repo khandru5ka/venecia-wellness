@@ -1466,6 +1466,7 @@ footer {
 }
 .highlight-box p { font-size: 13px; color: var(--text-muted); font-style: italic; line-height: 1.8; }
 
+@media(min-width:1200px){.mfc-link{display:inline !important}}
 /* ─── RESPONSIVE END ─── */
 
 /* ─── RESPONSIVE ─── */
@@ -1508,7 +1509,7 @@ footer {
       <div class="btn-menu-icon"><span></span><span></span><span></span></div>
       Меню
     </button>
-    <button class="btn-msg" onclick="showToast('Напишите нам: info@veneciawellness.ru')">✉</button>
+    <a href="https://veneciawellness.ru" target="_blank" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s;white-space:nowrap;display:none" class="mfc-link" onmouseenter="this.style.color='var(--gold)'" onmouseleave="this.style.color='var(--text-muted)'">МФК Венеция ↗</a>
   </div>
   <a class="logo" onclick="navigate('home')">
     <span class="logo-main">В Е Н Е Ц И Я</span>
@@ -1593,39 +1594,35 @@ footer {
     <div class="mega-nav-sub">
 
       <div class="mega-sub-block">
-        <div class="mega-sub-heading">Фитнес — быстрый доступ</div>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Тренажёрный зал 500м²</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Бассейн и аквафитнес</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Пилатес на реформерах</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Ринг и боевые искусства</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('fitness-zones');toggleMegaNav()">Персональные студии</a>
-        <a class="mega-sub-link" onclick="navigate('fitness');scrollToId('scheduleGrid');toggleMegaNav()">Расписание занятий →</a>
+        <div class="mega-sub-heading" style="display:flex;align-items:center;justify-content:space-between">
+          Фитнес и тренировки
+          <span style="font-size:7px;background:rgba(184,146,74,0.15);color:var(--gold);padding:3px 8px;letter-spacing:0.1em">Только для держателей карт</span>
+        </div>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Тренажёрный зал и зоны</a>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Групповые тренировки</a>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Персональные тренировки</a>
+        <a class="mega-sub-link" href="fitness.html" onclick="toggleMegaNav()">Пилатес на реформерах</a>
+        <a class="mega-sub-link" href="account.html" onclick="toggleMegaNav()" style="color:var(--gold)">Записаться → Личный кабинет</a>
       </div>
 
       <div class="mega-sub-block">
-        <div class="mega-sub-heading">Бронирование</div>
-        <a class="mega-sub-link" onclick="navigate('booking');setBookTab(document.querySelector('.book-tab'),'book-group');toggleMegaNav()">Групповая тренировка</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Персональная с тренером</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Персональная студия</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">VIP-раздевалка</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Запись в салон / клинику</a>
-        <a class="mega-sub-link" onclick="navigate('booking');toggleMegaNav()">Аренда шкафчика</a>
+        <div class="mega-sub-heading" style="display:flex;align-items:center;justify-content:space-between">
+          Здоровье и красота
+          <span style="font-size:7px;background:rgba(139,32,32,0.12);color:var(--cta);padding:3px 8px;letter-spacing:0.1em">Открытая запись</span>
+        </div>
+        <a class="mega-sub-link" href="spa.html" onclick="toggleMegaNav()">СПА и велнес</a>
+        <a class="mega-sub-link" href="clinic.html" onclick="toggleMegaNav()">Клиника красоты</a>
+        <a class="mega-sub-link" href="beauty.html" onclick="toggleMegaNav()">Салон красоты</a>
+        <a class="mega-sub-link" href="booking.html" onclick="toggleMegaNav()" style="color:var(--gold)">Записаться → Бронирование</a>
       </div>
 
       <div class="mega-sub-block">
-        <div class="mega-sub-heading">Личный кабинет</div>
-        <a class="mega-sub-link" onclick="navigate('account');toggleMegaNav()">Карта и статус</a>
-        <a class="mega-sub-link" onclick="navigate('account');setAccountTab(document.querySelectorAll('.sidebar-link')[1],'acc-bookings');toggleMegaNav()">Мои бронирования</a>
-        <a class="mega-sub-link" onclick="navigate('account');setAccountTab(document.querySelectorAll('.sidebar-link')[4],'acc-vip');toggleMegaNav()">VIP-раздевалка</a>
-        <a class="mega-sub-link" onclick="navigate('account');setAccountTab(document.querySelectorAll('.sidebar-link')[5],'acc-spa');toggleMegaNav()">СПА-кабинет</a>
-      </div>
-
-      <div class="mega-sub-block">
-        <div class="mega-sub-heading">Навигация</div>
-        <a class="mega-sub-link" onclick="navigate('directory');toggleMegaNav()" style="color:var(--gold);font-weight:400">↗ Все разделы клуба</a>
-        <a class="mega-sub-link" onclick="navigate('home');toggleMegaNav()">Главная страница</a>
-        <a class="mega-sub-link" onclick="navigate('team');toggleMegaNav()">Команда и видеогид</a>
-        <a class="mega-sub-link" onclick="navigate('account');toggleMegaNav()">Личный кабинет</a>
+        <div class="mega-sub-heading">Клуб и сервисы</div>
+        <a class="mega-sub-link" href="team.html" onclick="toggleMegaNav()">Команда</a>
+        <a class="mega-sub-link" href="about.html" onclick="toggleMegaNav()">О нас и контакты</a>
+        <a class="mega-sub-link" href="news.html" onclick="toggleMegaNav()">Новости</a>
+        <a class="mega-sub-link" href="services.html" onclick="toggleMegaNav()">Доп. сервисы и аренда</a>
+        <a class="mega-sub-link" href="account.html" onclick="toggleMegaNav()">Личный кабинет</a>
       </div>
 
     </div>
@@ -1703,10 +1700,42 @@ footer {
     <button onclick="filterTeam('beauty')" id="tf-beauty" style="padding:20px 28px;font-family:var(--sans);font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;border:none;background:none;cursor:pointer;color:var(--text-muted);border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.3s">Салон красоты</button>
   </div>
 
-  <section class="section">
-    <div class="highlight-box" style="margin:0 0 48px">
-      <p>«Мы — не просто тренеры и специалисты. Мы ваши проводники в мире здоровья и красоты. Каждый член нашей команды проходит строгий отбор и регулярно совершенствует своё мастерство.»</p>
+  <!-- TEAM MANIFESTO -->
+  <section style="background:var(--cream);padding:64px 80px;border-bottom:1px solid rgba(184,146,74,0.25)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Наш подход</div>
+        <blockquote style="font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:300;color:#f0ebe1;line-height:1.12;margin-bottom:28px">«Каждый специалист Венеции — это не просто профессионал. Это человек, который разделяет нашу философию заботы о женщине.»</blockquote>
+        <p style="font-size:14px;color:rgba(240,235,225,0.65);line-height:1.9;margin-bottom:20px">Мы не нанимаем «просто тренеров». Каждый кандидат проходит многоэтапный отбор: профессиональная квалификация, международные сертификаты, личные ценности — и только потом работа с гостьями клуба.</p>
+        <p style="font-size:14px;color:rgba(240,235,225,0.65);line-height:1.9">Регулярное обучение, стажировки за рубежом, участие в конференциях — наша команда не стоит на месте. Потому что вы заслуживаете лучшего.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:rgba(240,235,225,0.1)">
+        <div style="background:rgba(240,235,225,0.05);padding:28px 32px;display:flex;gap:24px;align-items:center">
+          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);flex-shrink:0;line-height:1">8</div>
+          <div>
+            <div style="font-size:12px;color:#f0ebe1;font-weight:400;margin-bottom:4px">специалистов в команде</div>
+            <div style="font-size:11px;color:rgba(240,235,225,0.5)">Тренеры, косметологи, стилисты, мастера</div>
+          </div>
+        </div>
+        <div style="background:rgba(240,235,225,0.05);padding:28px 32px;display:flex;gap:24px;align-items:center">
+          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);flex-shrink:0;line-height:1">100%</div>
+          <div>
+            <div style="font-size:12px;color:#f0ebe1;font-weight:400;margin-bottom:4px">с международными сертификатами</div>
+            <div style="font-size:11px;color:rgba(240,235,225,0.5)">NASM, RYT-500, BASI Pilates, L'Oréal Expert...</div>
+          </div>
+        </div>
+        <div style="background:rgba(240,235,225,0.05);padding:28px 32px;display:flex;gap:24px;align-items:center">
+          <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);flex-shrink:0;line-height:1">0</div>
+          <div>
+            <div style="font-size:12px;color:#f0ebe1;font-weight:400;margin-bottom:4px">«случайных» мастеров</div>
+            <div style="font-size:11px;color:rgba(240,235,225,0.5)">Только постоянные специалисты клуба, никаких «аренды кресла»</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <section class="section">
     <div class="section-eyebrow">Тренерский состав</div>
     <h2 class="section-title" style="margin-bottom:40px">Ваши <em>проводники</em></h2>
     <div class="team-grid">
@@ -1764,22 +1793,24 @@ footer {
           <div class="team-cert"><span>Реабилитология</span><span>МФР</span><span>Стретчинг</span></div>
         </div>
       </div>
-      <div class="team-card" data-cat="cosmo">
+      <div class="team-card" data-cat="cosmo" style="position:relative">
         <div class="team-photo">💆‍♀️<div class="team-photo-overlay"></div></div>
         <div class="team-info">
           <div class="team-name">Елена Петрова</div>
           <div class="team-role">Врач-косметолог</div>
           <div class="team-bio">Медицинское образование, 9 лет в эстетической медицине. Специализация на инъекционных техниках и аппаратной косметологии.</div>
           <div class="team-cert"><span>Врач-косметолог</span><span>Инъекции</span><span>Аппаратная</span></div>
+          <button onclick="location.href='booking.html'" style="margin-top:14px;width:100%;font-family:var(--sans);font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;background:var(--cta);color:#fff;border:none;padding:10px;cursor:pointer;transition:background 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--cta-hover)'" onmouseleave="this.style.background='var(--cta)'">Записаться к косметологу</button>
         </div>
       </div>
-      <div class="team-card" data-cat="beauty">
+      <div class="team-card" data-cat="beauty" style="position:relative">
         <div class="team-photo">💇‍♀️<div class="team-photo-overlay"></div></div>
         <div class="team-info">
           <div class="team-name">Виктория Смирнова</div>
           <div class="team-role">Топ-стилист</div>
           <div class="team-bio">15 лет в индустрии красоты. Стажировалась в Лондоне и Париже. Специализация на окрашивании и авторских стрижках.</div>
           <div class="team-cert"><span>L'Oréal Expert</span><span>Wella Master</span><span>Лондон</span></div>
+          <button onclick="location.href='booking.html'" style="margin-top:14px;width:100%;font-family:var(--sans);font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;background:var(--cta);color:#fff;border:none;padding:10px;cursor:pointer;transition:background 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--cta-hover)'" onmouseleave="this.style.background='var(--cta)'">Записаться к стилисту</button>
         </div>
       </div>
     </div>
