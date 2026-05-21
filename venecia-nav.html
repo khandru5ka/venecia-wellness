@@ -6,113 +6,397 @@
 <title>Венеция — Карта сайта</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#f4efe6;color:#2a2018;font-family:'Jost',sans-serif;font-weight:300;min-height:100vh}
-header{padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(184,146,74,.22);background:#f4efe6;position:sticky;top:0;z-index:10}
-.logo{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.35em;text-transform:uppercase;color:#b8924a}
-.back{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#7a6a55;text-decoration:none;transition:color .25s}
-.back:hover{color:#b8924a}
-.hero{padding:48px 48px 36px;border-bottom:1px solid rgba(184,146,74,.15)}
-.eyebrow{font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:#b8924a;margin-bottom:10px}
-h1{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#2a2018;line-height:1}
-h1 em{font-style:italic;color:#b8924a}
-.section-hd{padding:20px 48px 12px;font-size:7.5px;letter-spacing:.44em;text-transform:uppercase;color:#b8924a;display:flex;align-items:center;gap:14px}
-.section-hd::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(184,146,74,.25),transparent)}
-.grid{display:flex;flex-direction:column;margin:0 48px;border:1px solid rgba(184,146,74,.18);border-top:none}
-.row{display:grid;grid-template-columns:28px 190px 1fr 180px;align-items:center;gap:20px;padding:16px 20px;border-top:1px solid rgba(184,146,74,.12);text-decoration:none;color:inherit;transition:background .2s;cursor:pointer}
-.row:hover{background:rgba(184,146,74,.05)}
-.row:hover .arr{color:#b8924a;transform:translateX(4px)}
-.rn{font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(184,146,74,.4)}
-.rname{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#2a2018}
-.rdesc{font-size:11px;color:#7a6a55;line-height:1.55}
-.rurl{font-family:'Courier New',monospace;font-size:9.5px;color:#b8924a;background:rgba(184,146,74,.08);padding:4px 10px;border:1px solid rgba(184,146,74,.18);white-space:nowrap;text-align:right}
-.arr{color:#ccc;font-size:14px;transition:all .25s;grid-column:5}
-.new{display:inline-block;font-size:7px;letter-spacing:.25em;text-transform:uppercase;background:rgba(139,32,32,0.1);color:#8b2020;border:1px solid rgba(139,32,32,0.2);padding:2px 7px;vertical-align:middle;margin-left:6px}
-.sub-grid{display:flex;flex-direction:column;margin:0 48px 0 80px;border:1px solid rgba(184,146,74,.1);border-top:none}
-.sub-row{display:grid;grid-template-columns:150px 1fr 160px;align-items:center;gap:16px;padding:11px 16px;border-top:1px solid rgba(184,146,74,.08);text-decoration:none;color:inherit;transition:padding .18s;cursor:pointer}
-.sub-row:hover{padding-left:24px}
-.sub-row:hover .sarr{color:#b8924a}
-.sname{font-size:12px;color:#2a2018;font-weight:400}
-.sdesc{font-size:10px;color:#9a8870}
-.sid{font-family:'Courier New',monospace;font-size:8.5px;color:#b8924a;opacity:.6;text-align:right}
-.sarr{color:#ccc;font-size:11px;transition:color .25s}
-.note{padding:12px 48px;font-size:10px;color:#9a8870;background:rgba(184,146,74,.04);border-top:1px solid rgba(184,146,74,.12);margin:0 48px}
-.pgf{margin:0 48px;padding:20px 0 40px;border-top:1px solid rgba(184,146,74,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.pgf-n{font-size:9px;color:#9a8870}
-.pgf-n code{color:#b8924a;font-family:'Courier New',monospace;background:rgba(184,146,74,.07);padding:2px 6px}
-@media(max-width:768px){
-  header,.hero,.section-hd,.grid,.sub-grid,.pgf,.note{padding-left:20px;padding-right:20px}
-  .sub-grid{margin-left:20px;margin-right:20px}
-  .row{grid-template-columns:20px 1fr}
-  .rdesc,.rurl,.arr{display:none}
-  .sub-row{grid-template-columns:1fr auto}
-  .sdesc{display:none}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f4efe6; color: #2a2018; font-family: 'Jost', sans-serif; font-weight: 300; min-height: 100vh; }
+
+header { padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(184,146,74,.22); background: #f4efe6; position: sticky; top: 0; z-index: 10; }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: .35em; text-transform: uppercase; color: #b8924a; }
+.back { font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: #7a6a55; text-decoration: none; border: 1px solid rgba(184,146,74,.3); padding: 7px 16px; transition: all .25s; }
+.back:hover { color: #b8924a; border-color: #b8924a; }
+
+.hero { padding: 52px 48px 40px; border-bottom: 1px solid rgba(184,146,74,.15); }
+.eyebrow { font-size: 8px; letter-spacing: .44em; text-transform: uppercase; color: #b8924a; margin-bottom: 10px; }
+h1 { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: #2a2018; line-height: 1; }
+h1 em { font-style: italic; color: #b8924a; }
+.hero-stats { display: flex; gap: 40px; margin-top: 24px; flex-wrap: wrap; }
+.stat-n { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: #b8924a; line-height: 1; }
+.stat-l { font-size: 7.5px; letter-spacing: .24em; text-transform: uppercase; color: #9a8870; margin-top: 3px; }
+
+.sec-label { padding: 24px 48px 12px; font-size: 7.5px; letter-spacing: .44em; text-transform: uppercase; color: #b8924a; display: flex; align-items: center; gap: 14px; }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(184,146,74,.25), transparent); }
+
+/* Main page grid */
+.page-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(184,146,74,.18); margin: 0 48px; border: 1px solid rgba(184,146,74,.18); }
+
+.page-card { background: #f4efe6; padding: 26px 22px 22px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0; transition: background .22s; position: relative; overflow: hidden; cursor: pointer; }
+.page-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #b8924a; transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.page-card:hover { background: #ebe5da; }
+.page-card:hover::before { transform: scaleX(1); }
+.page-card:hover .pc-arrow { color: #b8924a; transform: translateX(4px); }
+
+.pc-num { font-family: 'Cormorant Garamond', serif; font-size: 11px; color: rgba(184,146,74,.35); margin-bottom: 12px; }
+.pc-icon { font-size: 26px; margin-bottom: 10px; }
+.pc-category { font-size: 7px; letter-spacing: .34em; text-transform: uppercase; color: #9a8870; margin-bottom: 5px; }
+.pc-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: #2a2018; line-height: 1.1; margin-bottom: 5px; }
+.pc-url { font-family: 'Courier New', monospace; font-size: 8px; color: #b8924a; background: rgba(184,146,74,.08); padding: 3px 7px; display: inline-block; margin-bottom: 10px; }
+.pc-desc { font-size: 10.5px; color: #7a6a55; line-height: 1.65; flex: 1; }
+.pc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.tag { font-size: 7.5px; letter-spacing: .16em; text-transform: uppercase; padding: 3px 8px; border: 1px solid rgba(184,146,74,.28); color: #9a8870; }
+.tag.new { border-color: rgba(139,32,32,.25); color: #8b2020; background: rgba(139,32,32,.05); }
+.tag.tmpl { border-color: rgba(184,146,74,.4); color: #b8924a; background: rgba(184,146,74,.07); }
+.tag.updated { border-color: rgba(42,140,42,.25); color: #2a6a2a; background: rgba(42,140,42,.05); }
+.pc-arrow { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: #b8924a; margin-top: 14px; display: flex; align-items: center; gap: 6px; transition: all .28s; }
+.pc-arrow::after { content: '→'; }
+
+/* Template grid (2 col) */
+.tmpl-grid { grid-template-columns: 1fr 1fr; }
+
+/* Sub rows */
+.sub-wrap { margin: 0 48px; border: 1px solid rgba(184,146,74,.15); border-top: none; }
+.sub-row { display: grid; grid-template-columns: 190px 1fr 170px; align-items: center; gap: 16px; padding: 11px 20px; border-top: 1px solid rgba(184,146,74,.1); text-decoration: none; color: inherit; transition: all .2s; cursor: pointer; }
+.sub-row:first-child { border-top: none; }
+.sub-row:hover { background: #ebe5da; padding-left: 28px; }
+.sub-row:hover .sr-arr { color: #b8924a; }
+.sr-name { font-size: 12px; color: #2a2018; font-weight: 400; }
+.sr-desc { font-size: 10px; color: #9a8870; line-height: 1.5; }
+.sr-id { font-family: 'Courier New', monospace; font-size: 8.5px; color: #b8924a; opacity: .6; text-align: right; }
+.sr-arr { font-size: 11px; color: #ccc; transition: color .25s; }
+
+.note-bar { margin: 0 48px; padding: 10px 18px; background: rgba(184,146,74,.05); border: 1px solid rgba(184,146,74,.14); border-top: none; font-size: 9.5px; color: #9a8870; line-height: 1.6; }
+
+.pgf { margin: 0 48px; padding: 20px 0 44px; margin-top: 32px; border-top: 1px solid rgba(184,146,74,.14); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; align-items: center; }
+.pgf-note { font-size: 9px; color: #9a8870; }
+code { color: #b8924a; font-family: 'Courier New', monospace; font-size: 8.5px; background: rgba(184,146,74,.08); padding: 2px 6px; }
+
+@media(max-width: 960px) {
+  .page-grid { grid-template-columns: 1fr 1fr; margin: 0 24px; }
+  header, .hero, .sec-label, .sub-wrap, .pgf, .note-bar { padding-left: 24px; padding-right: 24px; }
+  .sub-wrap { margin: 0 24px; }
+}
+@media(max-width: 600px) {
+  .page-grid { grid-template-columns: 1fr; margin: 0 14px; }
+  .sub-row { grid-template-columns: 1fr auto; }
+  .sr-desc { display: none; }
+  header { padding: 0 14px; }
+  .hero, .sec-label, .sub-wrap, .pgf, .note-bar { padding-left: 14px; padding-right: 14px; }
+  .sub-wrap { margin: 0 14px; }
 }
 </style>
 </head>
 <body>
+
+<!-- HEADER -->
 <header>
   <div class="logo">Венеция · Велнес</div>
-  <a class="back" href="index.html">← Открыть сайт</a>
+  <a class="back" href="index.html">Открыть сайт →</a>
 </header>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="eyebrow">Sitemap · Карта страниц</div>
+  <div class="eyebrow">Sitemap · Карта страниц · Навигация</div>
   <h1>Все страницы <em>проекта</em></h1>
+  <div class="hero-stats">
+    <div><div class="stat-n">19</div><div class="stat-l">HTML-файлов</div></div>
+    <div><div class="stat-n">4</div><div class="stat-l">шаблона</div></div>
+    <div><div class="stat-n">12</div><div class="stat-l">подразделов</div></div>
+    <div><div class="stat-n">20</div><div class="stat-l">итого страниц</div></div>
+  </div>
 </div>
 
-<!-- MAIN PAGES -->
-<div class="section-hd">Основные страницы</div>
-<div class="grid">
-  <a class="row" href="index.html"><span class="rn">01</span><span class="rname">Главная</span><span class="rdesc">Философия, гостевой визит, членство, манифест</span><span class="rurl">index.html</span><span class="arr">→</span></a>
-  <a class="row" href="directory.html"><span class="rn">02</span><span class="rname">Все разделы</span><span class="rdesc">Разводящая страница — визуальная навигация</span><span class="rurl">directory.html</span><span class="arr">→</span></a>
-  <a class="row" href="fitness.html"><span class="rn">03</span><span class="rname">Фитнес</span><span class="rdesc">Зоны, тренеры, оборудование, расписание</span><span class="rurl">fitness.html</span><span class="arr">→</span></a>
-  <a class="row" href="training.html?type=yoga"><span class="rn">04</span><span class="rname">Страница тренировки <span class="new">template</span></span><span class="rdesc">training.html?type=yoga|pilates|boxing|stretching</span><span class="rurl">training.html</span><span class="arr">→</span></a>
-  <a class="row" href="spa.html"><span class="rn">05</span><span class="rname">Велнес и СПА</span><span class="rdesc">Бассейн (слайдер), хамам, сауна — отдельные блоки</span><span class="rurl">spa.html</span><span class="arr">→</span></a>
-  <a class="row" href="clinic.html"><span class="rn">06</span><span class="rname">Косметология</span><span class="rdesc">Команда + запись, прайс, 4 категории процедур</span><span class="rurl">clinic.html</span><span class="arr">→</span></a>
-  <a class="row" href="beauty.html"><span class="rn">07</span><span class="rname">Салон красоты</span><span class="rdesc">Команда + запись, прайс, 5 категорий услуг</span><span class="rurl">beauty.html</span><span class="arr">→</span></a>
-  <a class="row" href="team.html"><span class="rn">08</span><span class="rname">Команда</span><span class="rdesc">Манифест, фильтры Фитнес / Косметология / Салон</span><span class="rurl">team.html</span><span class="arr">→</span></a>
-  <a class="row" href="booking.html"><span class="rn">09</span><span class="rname">Бронирование</span><span class="rdesc">Раздел держателей карт + открытая запись</span><span class="rurl">booking.html</span><span class="arr">→</span></a>
-  <a class="row" href="account.html"><span class="rn">10</span><span class="rname">Личный кабинет</span><span class="rdesc">Карта, бронирования, оплаты, кликабельные тренеры</span><span class="rurl">account.html</span><span class="arr">→</span></a>
-  <a class="row" href="about.html"><span class="rn">11</span><span class="rname">О нас и контакты</span><span class="rdesc">История, философия, контактная форма</span><span class="rurl">about.html</span><span class="arr">→</span></a>
-  <a class="row" href="news.html"><span class="rn">12</span><span class="rname">Новости</span><span class="rdesc">Лента новостей клуба, featured-статья</span><span class="rurl">news.html</span><span class="arr">→</span></a>
-  <a class="row" href="news-article.html"><span class="rn">13</span><span class="rname">Статья новости <span class="new">new</span></span><span class="rdesc">Шаблон отдельной статьи с сайдбаром</span><span class="rurl">news-article.html</span><span class="arr">→</span></a>
-  <a class="row" href="services.html"><span class="rn">14</span><span class="rname">Сервисы и аренда</span><span class="rdesc">Для держателей карт vs для всех — визуальный split</span><span class="rurl">services.html</span><span class="arr">→</span></a>
-  <a class="row" href="payment.html"><span class="rn">15</span><span class="rname">Оплата</span><span class="rdesc">Форма заявки, способы, рассрочка, возврат</span><span class="rurl">payment.html</span><span class="arr">→</span></a>
+<!-- ════ ОСНОВНЫЕ СТРАНИЦЫ ════ -->
+<div class="sec-label">Основные страницы · 16 файлов</div>
+<div class="page-grid">
+
+  <a class="page-card" href="index.html">
+    <div class="pc-num">01</div>
+    <div class="pc-icon">🏛</div>
+    <div class="pc-category">Главная</div>
+    <div class="pc-title">Главная страница</div>
+    <div class="pc-url">index.html</div>
+    <div class="pc-desc">Women-only манифест, членство (Signature/Platinum/Diamond без цен), «День в Венеции», сервисы разделены на Фитнес и Велнес, гостевой визит</div>
+    <div class="pc-tags"><span class="tag">Логотип по центру</span><span class="tag">МФК ↗ слева</span><span class="tag updated">Тренеры + кнопка</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="directory.html">
+    <div class="pc-num">02</div>
+    <div class="pc-icon">🗺</div>
+    <div class="pc-category">Навигация</div>
+    <div class="pc-title">Все разделы</div>
+    <div class="pc-url">directory.html</div>
+    <div class="pc-desc">Hub-страница с 4 основными направлениями и блоком команды (Фитнес + Косметология) — 4+4 карточки</div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="fitness.html">
+    <div class="pc-num">03</div>
+    <div class="pc-icon">🏋️</div>
+    <div class="pc-category">Фитнес</div>
+    <div class="pc-title">Фитнес и тренировки</div>
+    <div class="pc-url">fitness.html</div>
+    <div class="pc-desc">Fullscreen-баннер, манифест со статами, 6 тренерских зон. Блок тренеров — 6 плиток с кнопкой «Записаться» (открывает modal). Оборудование (accordion), расписание</div>
+    <div class="pc-tags"><span class="tag updated">Кнопка записи у тренеров</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="spa.html">
+    <div class="pc-num">04</div>
+    <div class="pc-icon">🌿</div>
+    <div class="pc-category">Велнес</div>
+    <div class="pc-title">СПА и велнес</div>
+    <div class="pc-url">spa.html</div>
+    <div class="pc-desc">Hero-слайдер авто (3 слайда: СПА / Хамам / Сауна). Бассейн 50м с UTP-слайдером (4 слайда: 50м / противоток / 28°C / панорама). Tab-switcher: Хамам · Сауна · Джакузи</div>
+    <div class="pc-tags"><span class="tag">3 слайдера</span><span class="tag">Tab-switcher</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="clinic.html">
+    <div class="pc-num">05</div>
+    <div class="pc-icon">💎</div>
+    <div class="pc-category">Косметология</div>
+    <div class="pc-title">Клиника красоты</div>
+    <div class="pc-url">clinic.html</div>
+    <div class="pc-desc">Информационный блок (EU-оборудование, врачи, препараты). Прайс (4 вкладки). После прайса — 3 карточки специалистов с фото, тегами и кнопкой записи</div>
+    <div class="pc-tags"><span class="tag updated">Специалисты после прайса</span><span class="tag">3 врача</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="beauty.html">
+    <div class="pc-num">06</div>
+    <div class="pc-icon">✨</div>
+    <div class="pc-category">Салон красоты</div>
+    <div class="pc-title">Салон красоты</div>
+    <div class="pc-url">beauty.html</div>
+    <div class="pc-desc">Информационный блок о мастерах. Прайс (5 вкладок). После прайса — 4 карточки мастеров (стилист, маникюр, брови, визажист) с кнопкой записи</div>
+    <div class="pc-tags"><span class="tag updated">Мастера после прайса</span><span class="tag">4 мастера</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="team.html">
+    <div class="pc-num">07</div>
+    <div class="pc-icon">👑</div>
+    <div class="pc-category">Команда</div>
+    <div class="pc-title">Команда</div>
+    <div class="pc-url">team.html</div>
+    <div class="pc-desc">Fullscreen-баннер. Манифест (цитата + 3 цифры). Фильтр «Все / Фитнес / Косметология / Салон» — располагается после манифеста. Кнопки «Записаться» у косметолога и стилиста</div>
+    <div class="pc-tags"><span class="tag">Фильтр по категориям</span><span class="tag">Запись из карточки</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="booking.html">
+    <div class="pc-num">08</div>
+    <div class="pc-icon">📅</div>
+    <div class="pc-category">Бронирование</div>
+    <div class="pc-title">Бронирование</div>
+    <div class="pc-url">booking.html</div>
+    <div class="pc-desc">Две секции: «Фитнес и тренировки» (по расписанию / тренеру / студии) и «Косметология и салон» (по услуге / специалисту). Дисклеймер про опоздания</div>
+    <div class="pc-tags"><span class="tag">2 секции</span><span class="tag">Дисклеймер</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="booking-open.html">
+    <div class="pc-num">09</div>
+    <div class="pc-icon">💆‍♀️</div>
+    <div class="pc-category">Открытая запись</div>
+    <div class="pc-title">Запись в клинику и салон</div>
+    <div class="pc-url">booking-open.html</div>
+    <div class="pc-desc">Без клубной карты. По услуге (умный список по направлению) или по специалисту (7 тайлов → форма с именем). Дисклеймер об отмене</div>
+    <div class="pc-tags"><span class="tag new">Открытая</span><span class="tag">7 специалистов</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="account.html">
+    <div class="pc-num">10</div>
+    <div class="pc-icon">🔐</div>
+    <div class="pc-category">Личное</div>
+    <div class="pc-title">Личный кабинет</div>
+    <div class="pc-url">account.html</div>
+    <div class="pc-desc">Карта Platinum. 3 кнопки быстрой записи. Бронирования: тренеры кликабельны, формат 09:00–09:55. Расписание в боковом меню → schedule.html</div>
+    <div class="pc-tags"><span class="tag">Тренеры кликабельны</span><span class="tag">Расписание в меню</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="schedule.html">
+    <div class="pc-num">11</div>
+    <div class="pc-icon">🗓</div>
+    <div class="pc-category">Расписание</div>
+    <div class="pc-title">Расписание тренировок</div>
+    <div class="pc-url">schedule.html</div>
+    <div class="pc-desc">12 слотов с тренерами. Фильтры: направление (8 кнопок) + тип (групповые/персональные) + выбор тренера. Клик на строку → modal с описанием тренировки и подготовкой</div>
+    <div class="pc-tags"><span class="tag new">Новая</span><span class="tag">Modal при клике</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="news.html">
+    <div class="pc-num">12</div>
+    <div class="pc-icon">📰</div>
+    <div class="pc-category">Новости</div>
+    <div class="pc-title">Новости клуба</div>
+    <div class="pc-url">news.html</div>
+    <div class="pc-desc">Featured-статья с баннером + сайдбар 2 новости. Сетка 6 карточек — у каждой цветной баннер с эмодзи, тег, заголовок, описание. Все кликабельны → news-article.html</div>
+    <div class="pc-tags"><span class="tag updated">Банеры на карточках</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="news-article.html">
+    <div class="pc-num">13</div>
+    <div class="pc-icon">📄</div>
+    <div class="pc-category">Новость</div>
+    <div class="pc-title">Страница статьи</div>
+    <div class="pc-url">news-article.html</div>
+    <div class="pc-desc">Полная статья: баннер, цитата, таблица расписания. Сайдбар: другие новости + виджет гостевого визита</div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="services.html">
+    <div class="pc-num">14</div>
+    <div class="pc-icon">🛎</div>
+    <div class="pc-category">Сервисы</div>
+    <div class="pc-title">Сервисы и аренда</div>
+    <div class="pc-url">services.html</div>
+    <div class="pc-desc">Селектор: Все / Для держателей карт / Для всех. Единая структура карточек: баннер-фото, заголовок, подзаголовок, описание, цены, кнопка бронирования</div>
+    <div class="pc-tags"><span class="tag updated">Единые карточки</span><span class="tag">Селектор</span></div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="payment.html">
+    <div class="pc-num">15</div>
+    <div class="pc-icon">💳</div>
+    <div class="pc-category">Оплата</div>
+    <div class="pc-title">Оплата услуг</div>
+    <div class="pc-url">payment.html</div>
+    <div class="pc-desc">Форма заявки с умным описанием по типу услуги. Способы оплаты (карта / СБП / нал / перевод). Рассрочка, условия возврата</div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
+  <a class="page-card" href="about.html">
+    <div class="pc-num">16</div>
+    <div class="pc-icon">📍</div>
+    <div class="pc-category">О клубе</div>
+    <div class="pc-title">О нас и контакты</div>
+    <div class="pc-url">about.html</div>
+    <div class="pc-desc">История клуба, 3 стат-блока. Контакты: адрес, телефон, режим работы. Форма обратной связи с выбором темы</div>
+    <div class="pc-arrow">Открыть</div>
+  </a>
+
 </div>
 
-<!-- BOOKING TABS -->
-<div class="section-hd" style="margin-top:24px">Бронирование — booking.html</div>
-<div class="sub-grid">
-  <a class="sub-row" href="booking.html"><span class="sname">🏋️ Для держателей карт</span><span class="sdesc">По расписанию / по тренеру / студия</span><span class="sid">Fitness section</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="booking.html"><span class="sname">💎 Для всех — по услуге</span><span class="sdesc">Клиника и салон по услуге</span><span class="sid">Health → by service</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="booking.html"><span class="sname">💎 Для всех — по специалисту</span><span class="sdesc">Клиника и салон по мастеру</span><span class="sid">Health → by specialist</span><span class="sarr">→</span></a>
+<!-- ════ ШАБЛОНЫ ════ -->
+<div class="sec-label" style="margin-top:28px">Шаблонные страницы — URL-параметры</div>
+<div class="page-grid tmpl-grid">
+
+  <a class="page-card" href="training.html?type=yoga">
+    <div class="pc-num">T-01</div>
+    <div class="pc-icon">🧘</div>
+    <div class="pc-category">Шаблон тренировки</div>
+    <div class="pc-title">Страница тренировки</div>
+    <div class="pc-url">training.html?type=…</div>
+    <div class="pc-desc">Один файл — 4 вида тренировок. Баннер, описание, расписание с тренерами (динамически), блок 3 тренеров, форма записи через личный кабинет</div>
+    <div class="pc-tags">
+      <span class="tag tmpl">?type=yoga</span>
+      <span class="tag tmpl">?type=pilates</span>
+      <span class="tag tmpl">?type=boxing</span>
+      <span class="tag tmpl">?type=stretching</span>
+    </div>
+    <div class="pc-arrow">Открыть (йога)</div>
+  </a>
+
+  <a class="page-card" href="procedure.html?proc=biorev">
+    <div class="pc-num">T-02</div>
+    <div class="pc-icon">💉</div>
+    <div class="pc-category">Шаблон процедуры</div>
+    <div class="pc-title">Страница процедуры</div>
+    <div class="pc-url">procedure.html?proc=…</div>
+    <div class="pc-desc">Один файл — N процедур клиники. Баннер, 4 параметра, подробное описание, карточка специалиста, форма записи в сайдбаре</div>
+    <div class="pc-tags">
+      <span class="tag tmpl">?proc=biorev</span>
+      <span class="tag tmpl">?proc=smas</span>
+    </div>
+    <div class="pc-arrow">Открыть (биоревитализация)</div>
+  </a>
+
 </div>
 
-<!-- ACCOUNT TABS -->
-<div class="section-hd" style="margin-top:16px">Личный кабинет — account.html</div>
-<div class="sub-grid">
-  <a class="sub-row" href="account.html"><span class="sname">Карта и статус</span><span class="sdesc">Platinum + кнопки быстрой записи</span><span class="sid">acc-membership</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="account.html"><span class="sname">Мои бронирования</span><span class="sdesc">Тренеры кликабельны, формат 09:00–09:55</span><span class="sid">acc-bookings</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="account.html"><span class="sname">Оплаты и история</span><span class="sdesc">Таблица транзакций</span><span class="sid">acc-payments</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="account.html"><span class="sname">Шкафчик</span><span class="sdesc">Шкафчик №42, кнопка продления</span><span class="sid">acc-locker</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="account.html"><span class="sname">VIP-раздевалка</span><span class="sdesc">Статус и бронирование</span><span class="sid">acc-vip</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="account.html"><span class="sname">СПА-кабинет</span><span class="sdesc">2 из 4 сеансов</span><span class="sid">acc-spa</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="account.html"><span class="sname">Настройки профиля</span><span class="sdesc">Имя, email, цели</span><span class="sid">acc-profile</span><span class="sarr">→</span></a>
+<!-- ════ БРОНИРОВАНИЕ — подразделы ════ -->
+<div class="sec-label" style="margin-top:28px">Подразделы бронирования</div>
+<div class="sub-wrap">
+  <a class="sub-row" href="booking.html">
+    <span class="sr-name">🏋️ Фитнес — по расписанию</span>
+    <span class="sr-desc">Тип тренировки, дата, время, контакты</span>
+    <span class="sr-id">Секция A → По расписанию</span>
+    <span class="sr-arr">→</span>
+  </a>
+  <a class="sub-row" href="booking.html">
+    <span class="sr-name">🏋️ Фитнес — по тренеру</span>
+    <span class="sr-desc">Выбор тренера из списка, цель, пожелания</span>
+    <span class="sr-id">Секция A → По тренеру</span>
+    <span class="sr-arr">→</span>
+  </a>
+  <a class="sub-row" href="booking.html">
+    <span class="sr-name">🏋️ Фитнес — студия / аренда</span>
+    <span class="sr-desc">Студии №1–3, VIP-раздевалка, шкафчик</span>
+    <span class="sr-id">Секция A → Студия</span>
+    <span class="sr-arr">→</span>
+  </a>
+  <a class="sub-row" href="booking-open.html">
+    <span class="sr-name">💎 Клиника/Салон — по услуге</span>
+    <span class="sr-desc">Направление → умный список → форма</span>
+    <span class="sr-id">booking-open.html</span>
+    <span class="sr-arr">→</span>
+  </a>
+  <a class="sub-row" href="booking-open.html">
+    <span class="sr-name">💎 Клиника/Салон — по специалисту</span>
+    <span class="sr-desc">7 тайлов → выбор → форма с именем</span>
+    <span class="sr-id">booking-open.html</span>
+    <span class="sr-arr">→</span>
+  </a>
 </div>
 
-<!-- TRAINING TYPES -->
-<div class="section-hd" style="margin-top:16px">Страницы тренировок — training.html?type=...</div>
-<div class="note">Один шаблон, контент меняется по параметру URL. Добавляйте новые тренировки в объект TRAININGS в JS.</div>
-<div class="sub-grid">
-  <a class="sub-row" href="training.html?type=yoga"><span class="sname">Йога</span><span class="sdesc">Все стили, расписание, тренеры</span><span class="sid">?type=yoga</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="training.html?type=pilates"><span class="sname">Пилатес</span><span class="sdesc">На реформерах Balanced Body</span><span class="sid">?type=pilates</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="training.html?type=boxing"><span class="sname">Боксинг</span><span class="sdesc">Женский бокс, авторская программа</span><span class="sid">?type=boxing</span><span class="sarr">→</span></a>
-  <a class="sub-row" href="training.html?type=stretching"><span class="sname">Растяжка и МФР</span><span class="sdesc">Стретчинг и восстановление</span><span class="sid">?type=stretching</span><span class="sarr">→</span></a>
+<!-- ════ ЛИЧНЫЙ КАБИНЕТ — подразделы ════ -->
+<div class="sec-label" style="margin-top:16px">Разделы личного кабинета — account.html</div>
+<div class="sub-wrap">
+  <a class="sub-row" href="account.html"><span class="sr-name">Карта и статус</span><span class="sr-desc">Platinum + 3 кнопки быстрой записи</span><span class="sr-id">acc-membership</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="schedule.html"><span class="sr-name">Расписание тренировок</span><span class="sr-desc">В боковом меню → ведёт на schedule.html</span><span class="sr-id">→ schedule.html</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sr-name">Мои бронирования</span><span class="sr-desc">Тренеры кликабельны, формат 09:00–09:55</span><span class="sr-id">acc-bookings</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sr-name">Оплаты и история</span><span class="sr-desc">Таблица транзакций с датами</span><span class="sr-id">acc-payments</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sr-name">Мой шкафчик</span><span class="sr-desc">Шкафчик №42, кнопка продления</span><span class="sr-id">acc-locker</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sr-name">VIP-раздевалка</span><span class="sr-desc">Статус и следующее бронирование</span><span class="sr-id">acc-vip</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sr-name">СПА-кабинет</span><span class="sr-desc">2 из 4 сеансов, прогресс</span><span class="sr-id">acc-spa</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="account.html"><span class="sr-name">Настройки профиля</span><span class="sr-desc">Имя, email, телефон, цели</span><span class="sr-id">acc-profile</span><span class="sr-arr">→</span></a>
 </div>
 
+<!-- ════ РАСПИСАНИЕ — фильтры и modal ════ -->
+<div class="sec-label" style="margin-top:16px">Фильтры и modal расписания — schedule.html</div>
+<div class="sub-wrap">
+  <a class="sub-row" href="schedule.html"><span class="sr-name">Фильтр по направлению</span><span class="sr-desc">Йога, пилатес, бокс, аквафитнес, растяжка, сайкл, Body Pump</span><span class="sr-id">8 кнопок-фильтров</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="schedule.html"><span class="sr-name">Фильтр по типу</span><span class="sr-desc">Групповые / Персональные</span><span class="sr-id">2 кнопки</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="schedule.html"><span class="sr-name">Фильтр по тренеру</span><span class="sr-desc">Выпадающий список, 7 тренеров</span><span class="sr-id">Select-фильтр</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="schedule.html"><span class="sr-name">Modal — детали тренировки</span><span class="sr-desc">Клик → описание + подготовка + кнопка записи через кабинет</span><span class="sr-id">openTrainingModal()</span><span class="sr-arr">→</span></a>
+</div>
+<div class="note-bar">Все фильтры комбинируются. Добавить тренировку: дополнить TRAINING_DATA в JS файла schedule.html.</div>
+
+<!-- ════ ШАБЛОНЫ — типы и параметры ════ -->
+<div class="sec-label" style="margin-top:16px">Типы тренировок — training.html</div>
+<div class="sub-wrap">
+  <a class="sub-row" href="training.html?type=yoga">     <span class="sr-name">Йога</span>    <span class="sr-desc">Хатха, виньяса, инь — Анна Соколова</span>    <span class="sr-id">?type=yoga</span>      <span class="sr-arr">→</span></a>
+  <a class="sub-row" href="training.html?type=pilates">  <span class="sr-name">Пилатес</span> <span class="sr-desc">Реформеры Balanced Body — Мария Белова</span>  <span class="sr-id">?type=pilates</span>   <span class="sr-arr">→</span></a>
+  <a class="sub-row" href="training.html?type=boxing">   <span class="sr-name">Боксинг</span> <span class="sr-desc">Женский бокс, без спарринга — Дарья Волкова</span><span class="sr-id">?type=boxing</span>    <span class="sr-arr">→</span></a>
+  <a class="sub-row" href="training.html?type=stretching"><span class="sr-name">Растяжка</span><span class="sr-desc">Стретчинг и МФР — Наталья Орлова</span>        <span class="sr-id">?type=stretching</span><span class="sr-arr">→</span></a>
+</div>
+
+<!-- ════ ПРОЦЕДУРЫ — типы ════ -->
+<div class="sec-label" style="margin-top:16px">Процедуры клиники — procedure.html</div>
+<div class="sub-wrap">
+  <a class="sub-row" href="procedure.html?proc=biorev"><span class="sr-name">Биоревитализация</span><span class="sr-desc">Инъекции гиалуроновой кислоты — Елена Петрова</span><span class="sr-id">?proc=biorev</span><span class="sr-arr">→</span></a>
+  <a class="sub-row" href="procedure.html?proc=smas">  <span class="sr-name">SMAS-лифтинг</span>     <span class="sr-desc">Ultraformer III — без реабилитации — Мария Осипова</span><span class="sr-id">?proc=smas</span>  <span class="sr-arr">→</span></a>
+</div>
+<div class="note-bar">Добавить процедуру: дополнить объект PROCS в JS файла procedure.html.</div>
+
+<!-- FOOTER -->
 <div class="pgf">
-  <div class="pgf-n">Навигация: прямые URL · Все страницы отдельные файлы · <code>training.html?type=</code> — параметризованный шаблон</div>
-  <div class="pgf-n" style="opacity:.45">15 страниц + template</div>
+  <div class="pgf-note">19 HTML-файлов · <code>training.html?type=</code> и <code>procedure.html?proc=</code> — параметризованные шаблоны · GitHub Pages: khandru5ka.github.io/venecia-wellness</div>
+  <div class="pgf-note" style="opacity:.5">Венеция · Велнес · 2025</div>
 </div>
+
 </body>
 </html>
