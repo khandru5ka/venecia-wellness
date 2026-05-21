@@ -49,6 +49,7 @@ header {
   padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
+  position: fixed;
   gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
@@ -1390,13 +1391,13 @@ footer {
 
 <!-- HEADER -->
 <header id="header">
-  <a class="logo" href="index.html">
+  <div style="display:flex;align-items:center;flex:1">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
+  <a class="logo" href="index.html" style="position:absolute;left:50%;transform:translateX(-50%)">
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <div class="header-center">
-    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
-  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
@@ -1527,30 +1528,58 @@ footer {
   <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Тренеры</div>
   <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--cream);margin-bottom:32px">Кто ведёт <em style="font-style:italic;color:var(--gold)">занятия</em></h2>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-hard);border:1px solid var(--border-hard)" id="trainerCards">
-    <div style="background:var(--card);padding:32px 24px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="location.href='team.html'">
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">👩‍🦰</div>
-      <div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Анна Соколова</div>
-        <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Йога · RYT-500</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.6">8 лет практики. Хатха, виньяса, инь-йога, пранаяма</div>
+
+    <div style="background:var(--card);padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <a href="team.html" style="flex-shrink:0">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px">👩‍🦰</div>
+        </a>
+        <div style="flex:1">
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Анна Соколова</div>
+          <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Йога · RYT-500</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.6">8 лет практики. Хатха, виньяса, инь-йога, пранаяма</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="openBookingModal('Персональная тренировка — Анна Соколова', '')" style="flex:1;font-family:var(--sans);font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:11px 8px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+        <a href="team.html" style="display:flex;align-items:center;justify-content:center;padding:11px 14px;border:1px solid var(--border-hard);font-family:var(--sans);font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-radius:2px;transition:all 0.3s" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border-hard)';this.style.color='var(--text-muted)'">Профиль</a>
       </div>
     </div>
-    <div style="background:var(--card);padding:32px 24px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="location.href='team.html'">
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">👩‍🦳</div>
-      <div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Ольга Морозова</div>
-        <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Силовые · NASM-CPT</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.6">12 лет стажа. Женский фитнес, коррекция фигуры</div>
+
+    <div style="background:var(--card);padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <a href="team.html" style="flex-shrink:0">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px">👩‍🦳</div>
+        </a>
+        <div style="flex:1">
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Ольга Морозова</div>
+          <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Силовые · NASM-CPT</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.6">12 лет стажа. Женский фитнес, коррекция фигуры</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="openBookingModal('Персональная тренировка — Ольга Морозова', '')" style="flex:1;font-family:var(--sans);font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:11px 8px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+        <a href="team.html" style="display:flex;align-items:center;justify-content:center;padding:11px 14px;border:1px solid var(--border-hard);font-family:var(--sans);font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-radius:2px;transition:all 0.3s" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border-hard)';this.style.color='var(--text-muted)'">Профиль</a>
       </div>
     </div>
-    <div style="background:var(--card);padding:32px 24px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'" onclick="location.href='team.html'">
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">🧖‍♀️</div>
-      <div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Наталья Орлова</div>
-        <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Растяжка · МФР</div>
-        <div style="font-size:11px;color:var(--text-muted);line-height:1.6">Реабилитолог. Стретчинг, МФР, восстановление</div>
+
+    <div style="background:var(--card);padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='var(--card)'">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <a href="team.html" style="flex-shrink:0">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:26px">🧖‍♀️</div>
+        </a>
+        <div style="flex:1">
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);margin-bottom:4px">Наталья Орлова</div>
+          <div style="font-size:8.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Растяжка · МФР</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.6">Реабилитолог. Стретчинг, МФР, восстановление</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="openBookingModal('Персональная тренировка — Наталья Орлова', '')" style="flex:1;font-family:var(--sans);font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:11px 8px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+        <a href="team.html" style="display:flex;align-items:center;justify-content:center;padding:11px 14px;border:1px solid var(--border-hard);font-family:var(--sans);font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-radius:2px;transition:all 0.3s" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border-hard)';this.style.color='var(--text-muted)'">Профиль</a>
       </div>
     </div>
+
   </div>
 </section>
 
