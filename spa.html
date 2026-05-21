@@ -46,10 +46,10 @@ body {
 /* ─── HEADER ─── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 0 48px;
+  padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
   backdrop-filter: blur(16px);
@@ -58,41 +58,34 @@ header {
   text-decoration: none; cursor: pointer; flex-shrink: 0;
 }
 .logo-main {
-  font-family: var(--serif); font-size: 18px; font-weight: 400;
+  font-family: var(--serif); font-size: 17px; font-weight: 400;
   letter-spacing: 0.32em; color: var(--gold);
   text-transform: uppercase; line-height: 1; display: block;
 }
 .logo-sub {
-  font-family: var(--sans); font-size: 7.5px; font-weight: 400;
-  letter-spacing: 0.3em; text-transform: uppercase;
+  font-family: var(--sans); font-size: 7px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--text-muted); margin-top: 3px; display: block;
 }
-.main-nav {
-  display: flex; align-items: center; gap: 0; flex: 1;
-  justify-content: center; overflow: hidden;
+.main-nav { display: none; }
+.header-center {
+  display: flex; align-items: center; gap: 6px;
 }
-.main-nav a {
-  font-family: var(--sans); font-size: 10px; font-weight: 400;
+.mfc-btn {
+  font-family: var(--sans); font-size: 9px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-muted); text-decoration: none;
-  padding: 4px 12px; white-space: nowrap;
-  transition: color 0.25s; position: relative;
+  background: none; color: var(--text-muted);
+  border: 1px solid rgba(58,50,40,0.2); padding: 7px 14px;
+  border-radius: 3px; cursor: pointer; transition: all 0.3s;
+  text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 5px;
 }
-.main-nav a::after {
-  content: ''; position: absolute; bottom: -2px; left: 12px; right: 12px;
-  height: 1px; background: var(--gold);
-  transform: scaleX(0); transition: transform 0.25s;
-}
-.main-nav a:hover { color: var(--gold); }
-.main-nav a:hover::after { transform: scaleX(1); }
-.main-nav a.active { color: var(--gold); }
-.main-nav a.active::after { transform: scaleX(1); }
-.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.mfc-btn:hover { border-color: var(--gold); color: var(--gold); }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .btn-cta-header {
   font-family: var(--sans); font-size: 10px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: var(--cta); color: #fff;
-  border: none; padding: 10px 20px;
+  border: none; padding: 10px 18px;
   border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
@@ -101,16 +94,20 @@ header {
   font-family: var(--sans); font-size: 10px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: none; color: var(--text);
-  border: 1px solid rgba(58,50,40,0.35); padding: 9px 18px;
+  border: 1px solid rgba(58,50,40,0.3); padding: 9px 16px;
   border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
 .btn-outline-sm:hover { background: var(--text); color: var(--bg); }
-.mobile-toggle {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: pointer; padding: 4px;
+.burger-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: 1px solid rgba(58,50,40,0.25);
+  cursor: pointer; padding: 9px 12px; border-radius: 3px;
+  transition: all 0.3s; flex-shrink: 0;
 }
-.mobile-toggle span { width: 22px; height: 1px; background: var(--text); display: block; transition: all 0.3s; }
+.burger-btn span { width: 18px; height: 1.5px; background: var(--text); display: block; transition: all 0.3s; }
+.burger-btn:hover { border-color: var(--gold); }
+.burger-btn:hover span { background: var(--gold); }
 /* Mobile overlay */
 .mobile-overlay {
   position: fixed; inset: 0; z-index: 1500;
@@ -124,7 +121,7 @@ header {
 .mobile-overlay-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 32px; height: 68px;
-  border-bottom: 1px solid var(--border-hard);
+  border-bottom: 1px solid var(--border-hard); flex-shrink: 0;
 }
 .mobile-close {
   background: none; border: 1px solid var(--border-hard);
@@ -134,18 +131,19 @@ header {
 }
 .mobile-close:hover { border-color: var(--gold); color: var(--gold); }
 .mobile-nav-links {
-  display: flex; flex-direction: column; padding: 32px;
-  gap: 0; flex: 1;
+  display: flex; flex-direction: column; padding: 24px 32px;
+  gap: 0; flex: 1; overflow-y: auto;
 }
 .mobile-nav-links a {
-  font-family: var(--serif); font-size: 26px; font-weight: 300;
+  font-family: var(--serif); font-size: 28px; font-weight: 300;
   color: var(--cream); text-decoration: none;
   padding: 14px 0; border-bottom: 1px solid var(--border-hard);
-  transition: color 0.25s;
+  transition: color 0.25s; display: flex; justify-content: space-between; align-items: center;
 }
+.mobile-nav-links a::after { content: '→'; font-size: 18px; color: rgba(184,146,74,0.4); }
 .mobile-nav-links a:hover { color: var(--gold); }
+.mobile-nav-links a:hover::after { color: var(--gold); }
 .mobile-nav-links a:last-child { border-bottom: none; }
-
 /* ─── HERO ─── */
 .hero {
   height: 100vh;
@@ -1389,27 +1387,19 @@ footer {
 </style>
 </head>
 <body>
-
 <!-- HEADER -->
 <header id="header">
   <a class="logo" href="index.html">
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <nav class="main-nav">
-    <a href="fitness.html">Фитнес</a>
-    <a href="clinic.html">Косметология</a>
-    <a href="beauty.html">Салон красоты</a>
-    <a href="spa.html">Велнес и СПА</a>
-    <a href="services.html">Сервисы</a>
-    <a href="team.html">Команда</a>
-    <a href="news.html">Новости</a>
-    <a href="about.html">Контакты</a>
-  </nav>
+  <div class="header-center">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
-    <button class="mobile-toggle" onclick="toggleMobileMenu()" id="mobileToggleBtn">
+    <button class="burger-btn" onclick="toggleMobileMenu()" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1430,357 +1420,299 @@ footer {
     <a href="team.html">Команда</a>
     <a href="news.html">Новости</a>
     <a href="about.html">Контакты</a>
+    <a href="schedule.html">Расписание</a>
   </nav>
-  <div style="padding:24px 32px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border-hard)">
-    <button class="btn-primary" style="width:100%" onclick="location.href='booking.html'">Клубные карты</button>
-    <button class="btn-outline" style="width:100%" onclick="location.href='account.html'">Личный кабинет</button>
+  <div style="padding:20px 32px 28px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border-hard)">
+    <button class="btn-cta-header" style="width:100%;font-size:11px;padding:14px" onclick="location.href='booking.html'">Клубные карты</button>
+    <button class="btn-outline-sm" style="width:100%;font-size:11px;padding:13px" onclick="location.href='account.html'">Личный кабинет</button>
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank" style="justify-content:center">МФК Венеция ↗</a>
   </div>
 </div>
 
+<div class="page active" id="page-spa" style="padding-top:68px">
 
-<!-- PAGE CONTENT -->
-<div class="page active" id="page-spa">
-  <div class="page-hero">
-    <div class="page-hero-bg-text">SPA</div>
-    <div>
-      <div class="breadcrumb"><span onclick="navigate('home')">Главная</span> / СПА и велнес</div>
-      <h1 class="section-title">СПА<br><em>и велнес</em></h1>
-      <p class="section-desc">Пространство тишины и восстановления. Бассейн, джакузи, сауна, хамам — ритуалы, которые наполняют</p>
-      <button class="btn-primary" style="margin-top:32px" onclick="location.href='booking.html'">Клубная карта</button>
-    </div>
-  </div>
+  <!-- ══════════════════════════════════
+       BLOCK 1: HERO BANNER SLIDER
+  ══════════════════════════════════ -->
+  <div style="position:relative;height:100vh;min-height:600px;overflow:hidden" id="heroSlider">
+    <!-- Slides -->
+    <div id="heroSlides" style="display:flex;height:100%;transition:transform 0.7s cubic-bezier(0.77,0,0.18,1)">
 
-  <!-- POOL CAROUSEL (pool only) -->
-  <div style="position:relative;overflow:hidden;border-bottom:1px solid var(--border-hard)" id="spaCarousel">
-    <div id="spaSlides" style="display:flex;transition:transform 0.5s ease">
-      <!-- Slide 1: Pool overview -->
-      <div style="min-width:100%;background:var(--card);padding:64px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-        <div>
-          <div style="font-size:8.5px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>01 / 02 · Бассейн</div>
-          <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Панорамный<br>бассейн <em style="font-style:italic;color:var(--gold)">22 метра</em></h2>
-          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Две дорожки и вид на Москву-реку. Открыт для свободного плавания, аквафитнеса и тренировок с инструктором.</p>
-          <div style="display:flex;gap:24px;flex-wrap:wrap">
-            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">22м</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">длина</div></div>
-            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">28°C</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">температура</div></div>
-            <div style="text-align:center"><div style="font-family:var(--serif);font-size:32px;color:var(--gold)">2</div><div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)">дорожки</div></div>
+      <!-- Slide 1: SPA Overview -->
+      <div style="min-width:100%;height:100%;position:relative;display:flex;align-items:flex-end;padding:0 80px 80px">
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#151008 0%,#201508 50%,#151008 100%)"></div>
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.07" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <circle cx="800" cy="350" r="400" fill="none" stroke="#b8924a" stroke-width="0.8"/>
+          <circle cx="800" cy="350" r="250" fill="none" stroke="#b8924a" stroke-width="0.5"/>
+          <ellipse cx="800" cy="350" rx="400" ry="120" fill="none" stroke="#b8924a" stroke-width="0.5"/>
+        </svg>
+        <div style="position:absolute;right:80px;top:50%;transform:translateY(-50%);font-size:160px;opacity:0.07;pointer-events:none">🌿</div>
+        <div style="position:relative;z-index:2;max-width:640px">
+          <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:#b8924a;margin-bottom:20px">Велнес и СПА</div>
+          <h1 style="font-family:var(--serif);font-size:clamp(48px,8vw,100px);font-weight:300;color:#f2ece0;line-height:0.95;margin-bottom:24px">Время<br><em style="color:#b8924a">принадлежит</em><br>вам</h1>
+          <p style="font-size:15px;color:rgba(240,235,225,0.6);max-width:440px;line-height:1.85;margin-bottom:36px">Бассейн, хамам, сауна и джакузи — пространство восстановления для тех, кто умеет ценить тишину</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button onclick="location.href='booking.html'" style="background:#b8924a;color:#fff;border:none;padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Клубная карта</button>
+            <button onclick="heroGoTo(1)" style="background:none;color:#f2ece0;border:1px solid rgba(240,235,225,0.3);padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Бассейн →</button>
           </div>
         </div>
-        <div style="aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:72px">🏊</div>
       </div>
-      <!-- Slide 2: Jacuzzi -->
-      <div style="min-width:100%;background:var(--bg);padding:64px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+      <!-- Slide 2: Hammam -->
+      <div style="min-width:100%;height:100%;position:relative;display:flex;align-items:flex-end;padding:0 80px 80px">
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0f1008 0%,#1a1a08 50%,#0f1008 100%)"></div>
+        <div style="position:absolute;right:80px;top:50%;transform:translateY(-50%);font-size:200px;opacity:0.06;pointer-events:none">🌙</div>
+        <div style="position:relative;z-index:2;max-width:640px">
+          <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:#b8924a;margin-bottom:20px">02 · Хамам</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(44px,7vw,90px);font-weight:300;color:#f2ece0;line-height:0.95;margin-bottom:24px">Звёздное<br><em style="color:#b8924a">небо</em></h2>
+          <p style="font-size:15px;color:rgba(240,235,225,0.6);max-width:440px;line-height:1.85;margin-bottom:36px">Аутентичный хамам с мраморными лежаками и парогенератором. Потолок мерцает звёздами — время останавливается</p>
+          <button onclick="heroGoTo(2)" style="background:#b8924a;color:#fff;border:none;padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Сауна и джакузи →</button>
+        </div>
+      </div>
+
+      <!-- Slide 3: Sauna -->
+      <div style="min-width:100%;height:100%;position:relative;display:flex;align-items:flex-end;padding:0 80px 80px">
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,#150808 0%,#200f08 50%,#150808 100%)"></div>
+        <div style="position:absolute;right:80px;top:50%;transform:translateY(-50%);font-size:200px;opacity:0.06;pointer-events:none">🔥</div>
+        <div style="position:relative;z-index:2;max-width:640px">
+          <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:#b8924a;margin-bottom:20px">03 · Сауна</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(44px,7vw,90px);font-weight:300;color:#f2ece0;line-height:0.95;margin-bottom:24px">Финский<br><em style="color:#b8924a">жар</em></h2>
+          <p style="font-size:15px;color:rgba(240,235,225,0.6);max-width:440px;line-height:1.85;margin-bottom:36px">Классическая сауна Harvia 85–95°C. Ледяной водопад рядом. Контрастный ритуал, который перезагружает тело и разум</p>
+          <button onclick="heroGoTo(0)" style="background:rgba(240,235,225,0.12);color:#f2ece0;border:1px solid rgba(240,235,225,0.25);padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">← Назад к началу</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero navigation dots -->
+    <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10">
+      <button onclick="heroGoTo(0)" class="hero-dot" style="width:32px;height:2px;background:#b8924a;border:none;cursor:pointer;padding:0;transition:all 0.3s"></button>
+      <button onclick="heroGoTo(1)" class="hero-dot" style="width:32px;height:2px;background:rgba(240,235,225,0.25);border:none;cursor:pointer;padding:0;transition:all 0.3s"></button>
+      <button onclick="heroGoTo(2)" class="hero-dot" style="width:32px;height:2px;background:rgba(240,235,225,0.25);border:none;cursor:pointer;padding:0;transition:all 0.3s"></button>
+    </div>
+    <!-- Arrow prev/next -->
+    <button onclick="heroSlide(-1)" style="position:absolute;left:32px;top:50%;transform:translateY(-50%);width:52px;height:52px;background:rgba(240,235,225,0.1);border:1px solid rgba(240,235,225,0.2);color:#f2ece0;font-size:22px;cursor:pointer;transition:all 0.3s;z-index:10;border-radius:2px" onmouseenter="this.style.background='rgba(184,146,74,0.3)'" onmouseleave="this.style.background='rgba(240,235,225,0.1)'">‹</button>
+    <button onclick="heroSlide(1)"  style="position:absolute;right:32px;top:50%;transform:translateY(-50%);width:52px;height:52px;background:rgba(240,235,225,0.1);border:1px solid rgba(240,235,225,0.2);color:#f2ece0;font-size:22px;cursor:pointer;transition:all 0.3s;z-index:10;border-radius:2px" onmouseenter="this.style.background='rgba(184,146,74,0.3)'" onmouseleave="this.style.background='rgba(240,235,225,0.1)'">›</button>
+  </div>
+
+  <!-- ══════════════════════════════════
+       BLOCK 2: БАССЕЙН + УТП СЛАЙДЕР
+  ══════════════════════════════════ -->
+  <section style="background:var(--bg);border-bottom:1px solid var(--border-hard)">
+    <div style="padding:64px 80px 40px;border-bottom:1px solid var(--border-hard)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px">
         <div>
-          <div style="font-size:8.5px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>02 / 02 · Джакузи</div>
-          <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Зона<br><em style="font-style:italic;color:var(--gold)">гидромассажа</em></h2>
-          <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Джакузи рядом с бассейном — теплые воды и гидромассажные форсунки для восстановления после тренировки.</p>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Температура 36–38°C</div>
-            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>12 гидромассажных форсунок</div>
-            <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Аромаподача</div>
+          <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Бассейн</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(32px,4.5vw,60px);font-weight:300;color:var(--cream);line-height:1">Панорамный бассейн<br><em style="font-style:italic;color:var(--gold)">50 метров</em></h2>
+        </div>
+        <p style="font-size:14px;color:var(--text-muted);max-width:380px;line-height:1.85">Два уровня, несколько дорожек, вид на Москву-реку и набережную. Открыт для свободного плавания, аквафитнеса и персональных занятий.</p>
+      </div>
+    </div>
+    <!-- Pool UTP slider -->
+    <div style="position:relative;overflow:hidden;border-bottom:1px solid var(--border-hard)" id="poolSlider">
+      <div id="poolSlides" style="display:flex;transition:transform 0.5s ease">
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-hard)">
+          <div style="background:var(--card);padding:56px 48px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:var(--serif);font-size:80px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:12px">50</div>
+            <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">метров длина</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.85;max-width:380px">Профессиональная длина дорожки — 50 метров. Идеально для серьёзных тренировок, аква-программ и свободного плавания в собственном ритме.</p>
+          </div>
+          <div style="background:var(--bg);padding:56px 48px;display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:80px;margin-bottom:16px">🏊</div>
+              <div style="font-family:var(--serif);font-size:20px;color:var(--cream)">Профессиональная дорожка</div>
+            </div>
           </div>
         </div>
-        <div style="aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:72px">💧</div>
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-hard)">
+          <div style="background:var(--bg);padding:56px 48px;display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:80px;margin-bottom:16px">🌊</div>
+              <div style="font-family:var(--serif);font-size:20px;color:var(--cream)">Противоток</div>
+            </div>
+          </div>
+          <div style="background:var(--card);padding:56px 48px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:var(--serif);font-size:80px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:12px">∞</div>
+            <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">противоток</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.85;max-width:380px">Система противотока позволяет плыть без остановки — как на открытой воде. Регулируемая интенсивность от лёгкой разминки до профессиональной нагрузки.</p>
+          </div>
+        </div>
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-hard)">
+          <div style="background:var(--card);padding:56px 48px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:var(--serif);font-size:80px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:12px">28°C</div>
+            <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">постоянная температура</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.85;max-width:380px">Вода поддерживается при 28°C круглый год — комфортная температура для продуктивной тренировки без переохлаждения.</p>
+          </div>
+          <div style="background:var(--bg);padding:56px 48px;display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:80px;margin-bottom:16px">🌡</div>
+              <div style="font-family:var(--serif);font-size:20px;color:var(--cream)">Идеальный комфорт</div>
+            </div>
+          </div>
+        </div>
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-hard)">
+          <div style="background:var(--bg);padding:56px 48px;display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:80px;margin-bottom:16px">🏙</div>
+              <div style="font-family:var(--serif);font-size:20px;color:var(--cream)">Вид на город</div>
+            </div>
+          </div>
+          <div style="background:var(--card);padding:56px 48px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:var(--serif);font-size:56px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:12px">Панорама</div>
+            <div style="font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">Москва-река</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.85;max-width:380px">Бассейн с панорамным остеклением. Плывёте вдоль набережной Тараса Шевченко — вид, который делает каждое утро особенным.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Pool slider controls -->
+      <button onclick="poolSlide(-1)" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(240,235,225,0.9);border:1px solid var(--border-hard);font-size:18px;cursor:pointer;border-radius:2px;transition:all 0.3s" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(240,235,225,0.9)';this.style.color='inherit'">‹</button>
+      <button onclick="poolSlide(1)"  style="position:absolute;right:20px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(240,235,225,0.9);border:1px solid var(--border-hard);font-size:18px;cursor:pointer;border-radius:2px;transition:all 0.3s" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(240,235,225,0.9)';this.style.color='inherit'">›</button>
+      <div id="poolDots" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px">
+        <button onclick="poolGoTo(0)" class="pool-dot" style="width:8px;height:8px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;padding:0"></button>
+        <button onclick="poolGoTo(1)" class="pool-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;padding:0"></button>
+        <button onclick="poolGoTo(2)" class="pool-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;padding:0"></button>
+        <button onclick="poolGoTo(3)" class="pool-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;padding:0"></button>
       </div>
     </div>
-    <button onclick="spaSlide(-1)" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(240,235,225,0.9);border:1px solid var(--border-hard);cursor:pointer;font-size:18px;color:var(--cream);transition:all 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(240,235,225,0.9)';this.style.color='var(--cream)'">‹</button>
-    <button onclick="spaSlide(1)"  style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(240,235,225,0.9);border:1px solid var(--border-hard);cursor:pointer;font-size:18px;color:var(--cream);transition:all 0.3s;border-radius:2px" onmouseenter="this.style.background='var(--gold)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(240,235,225,0.9)';this.style.color='var(--cream)'">›</button>
-    <div id="spaDots" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px">
-      <button onclick="spaGoTo(0)" class="spa-dot" style="width:8px;height:8px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;padding:0"></button>
-      <button onclick="spaGoTo(1)" class="spa-dot" style="width:8px;height:8px;border-radius:50%;background:var(--border-hard);border:none;cursor:pointer;padding:0"></button>
-    </div>
-  </div>
-
-  <!-- HAMMAM BLOCK -->
-  <section style="background:var(--cream);padding:64px 80px;border-bottom:1px solid rgba(184,146,74,0.25)">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
-      <div>
-        <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Хамам</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,54px);font-weight:300;color:#f0ebe1;line-height:1.05;margin-bottom:20px">Хамам со<br><em style="font-style:italic;color:var(--gold)">звёздным небом</em></h2>
-        <p style="font-size:14px;color:rgba(240,235,225,0.65);line-height:1.9;margin-bottom:28px">Аутентичный хамам с мраморными лежаками, парогенератором и ароматическими маслами. Потолок в виде звёздного неба создаёт ощущение медитации под открытым небом.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(240,235,225,0.6)"><span style="color:var(--gold)">—</span>Температура 45–55°C, влажность 90%</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(240,235,225,0.6)"><span style="color:var(--gold)">—</span>Ароматические масла — эвкалипт, мята, роза</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(240,235,225,0.6)"><span style="color:var(--gold)">—</span>Эффект «звёздного неба»</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(240,235,225,0.6)"><span style="color:var(--gold)">—</span>Ритуал «пилинг + маска» — по запросу</div>
-        </div>
-        <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-          <div style="text-align:center;padding:16px;border:1px solid rgba(240,235,225,0.15)"><div style="font-family:var(--serif);font-size:28px;color:var(--gold)">45–55°C</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:4px">температура</div></div>
-          <div style="text-align:center;padding:16px;border:1px solid rgba(240,235,225,0.15)"><div style="font-family:var(--serif);font-size:28px;color:var(--gold)">90%</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:4px">влажность</div></div>
-          <div style="text-align:center;padding:16px;border:1px solid rgba(240,235,225,0.15)"><div style="font-family:var(--serif);font-size:28px;color:var(--gold)">8</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,235,225,0.45);margin-top:4px">мест</div></div>
-        </div>
-      </div>
-      <div style="aspect-ratio:3/4;background:rgba(240,235,225,0.05);border:1px solid rgba(240,235,225,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
-        <div style="font-size:80px">🌙</div>
-        <div style="font-family:var(--serif);font-size:18px;color:rgba(240,235,225,0.5);letter-spacing:0.1em">Звёздное небо</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAUNA BLOCK -->
-  <section style="background:var(--bg);padding:64px 80px;border-bottom:1px solid var(--border-hard)">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
-      <div style="aspect-ratio:3/4;background:var(--card);border:1px solid var(--border-hard);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
-        <div style="font-size:80px">🔥</div>
-        <div style="font-family:var(--serif);font-size:18px;color:var(--text-muted);letter-spacing:0.1em">Финская сауна Harvia</div>
-      </div>
-      <div>
-        <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Сауна</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(32px,4vw,54px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Финская<br><em style="font-style:italic;color:var(--gold)">сауна</em></h2>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Классическая финская сауна с каменкой Harvia и берёзовыми вениками. Сухой жар до 95°C очищает, тонизирует и восстанавливает мышцы после тренировки.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Печь Harvia — финское качество</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Температура 85–95°C</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ароматные травяные отвары</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ледяной водопад и контрастный душ</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>8 мест, лаунж-зона рядом</div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-          <div style="text-align:center;padding:16px;background:var(--card);border:1px solid var(--border-hard)"><div style="font-family:var(--serif);font-size:28px;color:var(--gold)">95°C</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">температура</div></div>
-          <div style="text-align:center;padding:16px;background:var(--card);border:1px solid var(--border-hard)"><div style="font-family:var(--serif);font-size:28px;color:var(--gold)">8</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">мест</div></div>
-          <div style="text-align:center;padding:16px;background:var(--card);border:1px solid var(--border-hard)"><div style="font-family:var(--serif);font-size:28px;color:var(--gold)">Harvia</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">печь</div></div>
-        </div>
-      </div>
+    <!-- Pool quick facts strip -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border-hard);border-top:none">
+      <div style="background:var(--card);padding:20px;text-align:center"><div style="font-family:var(--serif);font-size:24px;color:var(--gold)">50м</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">длина</div></div>
+      <div style="background:var(--bg);padding:20px;text-align:center"><div style="font-family:var(--serif);font-size:24px;color:var(--gold)">28°C</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">температура</div></div>
+      <div style="background:var(--card);padding:20px;text-align:center"><div style="font-family:var(--serif);font-size:24px;color:var(--gold)">∞</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">противоток</div></div>
+      <div style="background:var(--bg);padding:20px;text-align:center"><div style="font-family:var(--serif);font-size:24px;color:var(--gold)">07–22</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">ежедневно</div></div>
+      <div style="background:var(--card);padding:20px;text-align:center"><div style="font-family:var(--serif);font-size:24px;color:var(--gold)">🏙</div><div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">вид на реку</div></div>
     </div>
   </section>
 
-  <!-- POOL DETAIL -->
-  <div class="spa-detail-grid">
-    <div class="spa-detail-content">
-      <div class="section-eyebrow">Бассейн</div>
-      <h2 style="font-family:var(--serif);font-size:clamp(32px,3.5vw,52px);font-weight:300;margin-bottom:20px">
-        Панорамный<br>бассейн <em>22 метра</em>
-      </h2>
-      <p style="font-size:14px;color:var(--text-muted);line-height:1.9;max-width:500px">
-        Два дорожки, ласковый свет и завораживающий вид на Москву-реку. Бассейн открыт для свободного плавания, аквафитнеса и персональных тренировок с инструктором.
-      </p>
-      <div class="spa-params">
-        <div class="spa-param">
-          <div class="spa-param-val">22м</div>
-          <div class="spa-param-label">длина</div>
-        </div>
-        <div class="spa-param">
-          <div class="spa-param-val">2</div>
-          <div class="spa-param-label">дорожки</div>
-        </div>
-        <div class="spa-param">
-          <div class="spa-param-val">28°C</div>
-          <div class="spa-param-label">температура</div>
-        </div>
-      </div>
-      <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
-        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)">
-          <span style="color:var(--gold)">—</span> Свободное плавание — ежедневно 07:00–22:00
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)">
-          <span style="color:var(--gold)">—</span> Аквафитнес — по расписанию
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)">
-          <span style="color:var(--gold)">—</span> Персональный инструктор — по записи
-        </div>
-      </div>
+  <!-- ══════════════════════════════════
+       BLOCK 3: САУНА / ХАМАМ / ДЖАКУЗИ СЛАЙДЕР
+  ══════════════════════════════════ -->
+  <section style="background:var(--card);border-bottom:1px solid var(--border-hard)">
+    <div style="padding:56px 80px 32px;border-bottom:1px solid var(--border-hard)">
+      <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>Тепловые зоны</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:300;color:var(--cream);line-height:1">Хамам · Сауна · <em style="font-style:italic;color:var(--gold)">Джакузи</em></h2>
     </div>
-    <div class="spa-detail-visual">
-      <div class="spa-detail-visual-inner">🏊<br><span style="font-size:14px;letter-spacing:0.2em;text-transform:uppercase">Бассейн 22м</span></div>
+    <!-- Tab switcher -->
+    <div style="display:flex;border-bottom:1px solid var(--border-hard);background:var(--bg)">
+      <button id="therm-tab-0" onclick="thermGoTo(0)" style="flex:1;padding:18px;font-family:var(--sans);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid var(--gold);background:none;cursor:pointer;color:var(--gold);transition:all 0.3s">🌙 Хамам</button>
+      <button id="therm-tab-1" onclick="thermGoTo(1)" style="flex:1;padding:18px;font-family:var(--sans);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted);transition:all 0.3s">🔥 Сауна</button>
+      <button id="therm-tab-2" onclick="thermGoTo(2)" style="flex:1;padding:18px;font-family:var(--sans);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted);transition:all 0.3s">💧 Джакузи</button>
     </div>
-  </div>
-
-  <div class="divider" style="margin:0 80px"><div class="divider-ornament">✦</div></div>
-
-  <!-- SAUNA/HAMMAM -->
-  <section class="section" style="background:var(--card);border-top:1px solid var(--border-hard)">
-    <div class="two-col">
-      <div>
-        <div class="section-eyebrow">Тепловые ритуалы</div>
-        <h2 class="section-title">Хамам<br>со <em>звёздным небом</em></h2>
-        <p style="font-size:14px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">
-          Аутентичный хамам с мраморными мозелями, парогенератором с ароматическими маслами и эффектом звёздного неба. Контрастные ритуалы для глубокого очищения и восстановления.
-        </p>
-        <div class="highlight-box">
-          <p>«Хамам — это не просто баня. Это ритуал, уходящий корнями в тысячелетнюю традицию женского ухода. В Венеции мы воссоздали его в современном прочтении.»</p>
+    <!-- Therm slider -->
+    <div id="thermSlider" style="overflow:hidden">
+      <div id="thermSlides" style="display:flex;transition:transform 0.5s ease">
+        <!-- Hammam -->
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;min-height:480px">
+          <div style="background:var(--cream);padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Хамам</div>
+            <h3 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:#f0ebe1;line-height:1.05;margin-bottom:20px">Звёздное небо<br><em style="color:var(--gold)">и мраморный жар</em></h3>
+            <p style="font-size:13px;color:rgba(240,235,225,0.65);line-height:1.9;margin-bottom:28px">Аутентичный хамам с мраморными лежаками, парогенератором с маслами эвкалипта и розы. Потолок мерцает звёздами — время и заботы растворяются в тёплом паре.</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:12px;font-size:12px;color:rgba(240,235,225,0.55)"><span style="color:var(--gold)">—</span>45–55°C · Влажность 90%</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:rgba(240,235,225,0.55)"><span style="color:var(--gold)">—</span>Эффект «Звёздного неба»</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:rgba(240,235,225,0.55)"><span style="color:var(--gold)">—</span>Ароматические масла — эвкалипт, роза</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:rgba(240,235,225,0.55)"><span style="color:var(--gold)">—</span>Ритуал «Пилинг + маска» по запросу</div>
+            </div>
+          </div>
+          <div style="background:rgba(240,235,225,0.04);display:flex;align-items:center;justify-content:center;font-size:120px">🌙</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px">
-          <div class="zone-feature">Хамам с эффектом «звёздного неба»</div>
-          <div class="zone-feature">Финская сауна (85–95°C)</div>
-          <div class="zone-feature">Ароматические ритуалы</div>
-          <div class="zone-feature">Душ впечатлений</div>
-          <div class="zone-feature">Ледяной водопад</div>
-          <div class="zone-feature">Лаундж-зона отдыха</div>
+        <!-- Sauna -->
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;min-height:480px">
+          <div style="background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:120px">🔥</div>
+          <div style="background:var(--bg);padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Финская сауна</div>
+            <h3 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Сухой жар<br><em style="color:var(--gold)">Harvia</em></h3>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Классическая финская сауна с каменкой Harvia. Сухой жар 85–95°C, берёзовые веники. Рядом — ледяной водопад и контрастный душ.</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>85–95°C · 8 мест</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Печь Harvia — финское производство</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ледяной водопад · Контрастный душ</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Ароматные травяные отвары</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div style="background:var(--bg);border:1px solid var(--border-hard);padding:32px">
-          <div style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Режим работы СПА</div>
-          <div style="font-family:var(--serif);font-size:22px;color:var(--cream);margin-bottom:16px">Ежедневно<br>09:00 – 22:00</div>
-          <p style="font-size:12px;color:var(--text-muted)">СПА-зона доступна держателям всех клубных карт. VIP-кабинет доступен по предварительной записи.</p>
-        </div>
-        <div style="background:var(--bg);border:1px solid var(--gold);padding:32px">
-          <div style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">VIP СПА-кабинет</div>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">Приватный СПА-кабинет с персональной программой. Массаж, обёртывание, ароматерапия — в вашем личном ритме.</p>
-          <button class="btn-primary" style="width:100%;font-size:10px" onclick="navigate('booking')">Забронировать</button>
+        <!-- Jacuzzi -->
+        <div style="min-width:100%;display:grid;grid-template-columns:1fr 1fr;min-height:480px">
+          <div style="background:var(--card);padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Джакузи</div>
+            <h3 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:20px">Тёплые воды<br><em style="color:var(--gold)">гидромассажа</em></h3>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.9;margin-bottom:28px">Джакузи рядом с бассейном с 12 гидромассажными форсунками. Температура 36–38°C — идеально для восстановления мышц после тренировки.</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>36–38°C</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>12 гидромассажных форсунок</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Аромаподача</div>
+              <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Лаунж-зона рядом</div>
+            </div>
+          </div>
+          <div style="background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:120px">💧</div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer style="background:var(--card);border-top:1px solid var(--border-hard);padding:24px 80px;text-align:center">
-    <p class="footer-copy">© 2025 Венеция. Велнес — <span style="color:var(--gold);cursor:pointer" onclick="navigate('home')">На главную</span></p>
-  </footer>
-</div><!-- /page-spa -->
+  <!-- VIP SPA CABINET CTA -->
+  <section style="background:var(--cream);padding:64px 80px;text-align:center">
+    <div style="position:relative;z-index:1;max-width:600px;margin:0 auto">
+      <div style="font-size:8.5px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">VIP-кабинет</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:300;color:#f0ebe1;line-height:1.05;margin-bottom:20px">Приватный<br><em style="color:var(--gold)">СПА-кабинет</em></h2>
+      <p style="font-size:14px;color:rgba(240,235,225,0.6);line-height:1.9;margin-bottom:32px">Массаж, обёртывание, ароматерапия в закрытом персональном кабинете. Для держателей карт Platinum и Diamond.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button onclick="location.href='booking.html'" style="background:#b8924a;color:#fff;border:none;padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Забронировать кабинет</button>
+        <button onclick="location.href='account.html'" style="background:none;color:#f0ebe1;border:1px solid rgba(240,235,225,0.3);padding:14px 36px;font-family:var(--sans);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;border-radius:3px">Личный кабинет</button>
+      </div>
+    </div>
+  </section>
+
+</div>
 
 <!-- BOOKING MODAL -->
 <!-- ─── BOOKING MODAL ─── -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <div class="modal-close" onclick="closeModal()">×</div>
-
 <!-- TOAST -->
 <!-- ─── TOAST ─── -->
 <div class="toast" id="toast">
   <span class="toast-icon">✓</span>
   <span class="toast-text" id="toastText">Запрос принят!</span>
 </div>
-
 <script>
 
-// ─── NAVIGATION ───
-function navigate(page) {
-  const urls = {
-    'home': 'index.html',
-    'directory': 'directory.html',
-    'fitness': 'fitness.html',
-    'spa': 'spa.html',
-    'clinic': 'clinic.html',
-    'beauty': 'beauty.html',
-    'team': 'team.html',
-    'booking': 'booking.html',
-    'account': 'account.html'
-  };
-  const url = urls[page];
-  if (url) window.location.href = url;
+// ─── SPA SLIDERS ───
+let heroIdx=0, poolIdx=0, thermIdx=0;
+function heroSlide(d){heroGoTo(heroIdx+d);}
+function heroGoTo(n){
+  const total=3; heroIdx=((n%total)+total)%total;
+  document.getElementById('heroSlides').style.transform='translateX(-'+(heroIdx*100)+'%)';
+  document.querySelectorAll('.hero-dot').forEach((d,i)=>{d.style.background=i===heroIdx?'#b8924a':'rgba(240,235,225,0.25)';d.style.width=i===heroIdx?'48px':'32px';});
 }
-
-
-
-// ─── SPA CAROUSEL ───
-let spaIdx = 0;
-function spaSlide(dir) { spaGoTo(spaIdx + dir); }
-function spaGoTo(n) {
-  const slides = document.getElementById('spaSlides');
-  const dots   = document.querySelectorAll('.spa-dot');
-  if (!slides) return;
-  const total = 2;
-  spaIdx = ((n % total) + total) % total;
-  slides.style.transform = 'translateX(-' + (spaIdx * 100) + '%)';
-  dots.forEach((d,i) => d.style.background = i===spaIdx ? 'var(--gold)' : 'var(--border-hard)');
+function poolSlide(d){poolGoTo(poolIdx+d);}
+function poolGoTo(n){
+  const total=4; poolIdx=((n%total)+total)%total;
+  document.getElementById('poolSlides').style.transform='translateX(-'+(poolIdx*100)+'%)';
+  document.querySelectorAll('.pool-dot').forEach((d,i)=>d.style.background=i===poolIdx?'var(--gold)':'var(--border-hard)');
 }
-// ─── MEGA NAV ───
-function toggleMobileMenu() {
-  const ov = document.getElementById('mobileMenuOverlay');
-  ov.classList.toggle('open');
-  document.body.style.overflow = ov.classList.contains('open') ? 'hidden' : '';
+function thermGoTo(n){
+  thermIdx=n;
+  document.getElementById('thermSlides').style.transform='translateX(-'+(thermIdx*100)+'%)';
+  for(let i=0;i<3;i++){
+    const btn=document.getElementById('therm-tab-'+i);
+    if(btn){btn.style.color=i===thermIdx?'var(--gold)':'var(--text-muted)';btn.style.borderBottomColor=i===thermIdx?'var(--gold)':'transparent';}
+  }
 }
-function toggleMobileNav() { toggleMobileMenu(); }
-function toggleMegaNav()   { toggleMobileMenu(); }
+// Auto-play hero
+let heroAuto=setInterval(()=>heroGoTo((heroIdx+1)%3),5000);
+document.getElementById('heroSlider').addEventListener('mouseenter',()=>clearInterval(heroAuto));
+document.getElementById('heroSlider').addEventListener('mouseleave',()=>{heroAuto=setInterval(()=>heroGoTo((heroIdx+1)%3),5000);});
 
-// ─── ACCORDION ───
-function toggleAccordion(header) {
-  const item = header.parentElement;
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
-}
-
-// ─── SCHEDULE DAY ───
-function setDay(tab, day) {
-  document.querySelectorAll('.sched-tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-}
-
-// ─── CLINIC TABS ───
-function setClinicTab(tab, catId) {
-  document.querySelectorAll('#page-clinic .price-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-clinic .price-category').forEach(c => c.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById(catId).classList.add('active');
-}
-
-// ─── BEAUTY TABS ───
-function setBeautyTab(tab, catId) {
-  document.querySelectorAll('#page-beauty .price-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-beauty .price-category').forEach(c => c.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById(catId).classList.add('active');
-}
-
-// ─── BOOKING TABS ───
-function setBookTab(tab, formId) {
-  document.querySelectorAll('.book-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.booking-form').forEach(f => f.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById(formId).classList.add('active');
-}
-
-// ─── ACCOUNT TABS ───
-function setAccountTab(link, paneId) {
-  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-  document.querySelectorAll('.account-content-pane').forEach(p => p.classList.remove('active'));
-  link.classList.add('active');
-  document.getElementById(paneId).classList.add('active');
-}
-
-// ─── MODAL ───
-function openBookingModal(title, time) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalSubtitle').textContent = time !== '—' ? `Время: ${time}` : 'Запишитесь к нашему специалисту';
-  document.getElementById('bookingModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('bookingModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function submitModal() {
-  closeModal();
-  showToast('Запись оформлена! Ждём вас в клубе.');
-}
-document.getElementById('bookingModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-// ─── SUBMIT BOOKING ───
-function submitBooking(formId) {
-  const messages = {
-    'book-group': 'Место на групповой тренировке забронировано!',
-    'book-personal': 'Запись к тренеру подтверждена!',
-    'book-studio': 'Студия забронирована! Ждём вас.',
-    'book-vip': 'VIP-раздевалка забронирована!',
-    'book-salon': 'Запись к специалисту принята!',
-    'book-locker': 'Шкафчик арендован!'
-  };
-  showToast(messages[formId] || 'Заявка принята!');
-}
-
-// ─── TOAST ───
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toastText').textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3800);
-}
-
-// ─── SCROLL TO ───
-function scrollToId(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-}
-
-// ─── INIT ───
-document.addEventListener('DOMContentLoaded', () => {
-  const today = new Date().toISOString().split('T')[0];
-  document.querySelectorAll('input[type="date"]').forEach(i => { if (!i.value) i.value = today; });
-});
-
-
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastText').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3800);}
+function openBookingModal(title,time){document.getElementById('modalTitle').textContent=title;document.getElementById('bookingModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('bookingModal').classList.remove('open');document.body.style.overflow='';}
+function submitModal(){closeModal();showToast('Запрос принят!');}
+document.getElementById('bookingModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function toggleMobileMenu(){const ov=document.getElementById('mobileMenuOverlay');ov.classList.toggle('open');document.body.style.overflow=ov.classList.contains('open')?'hidden':'';}
+function toggleMobileNav(){toggleMobileMenu();}
+const today=new Date().toISOString().split('T')[0];
+document.querySelectorAll('input[type="date"]').forEach(i=>{if(!i.value)i.value=today;});
 </script>
 </body>
 </html>

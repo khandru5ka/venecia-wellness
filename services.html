@@ -46,10 +46,10 @@ body {
 /* ─── HEADER ─── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 0 48px;
+  padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
   backdrop-filter: blur(16px);
@@ -58,41 +58,34 @@ header {
   text-decoration: none; cursor: pointer; flex-shrink: 0;
 }
 .logo-main {
-  font-family: var(--serif); font-size: 18px; font-weight: 400;
+  font-family: var(--serif); font-size: 17px; font-weight: 400;
   letter-spacing: 0.32em; color: var(--gold);
   text-transform: uppercase; line-height: 1; display: block;
 }
 .logo-sub {
-  font-family: var(--sans); font-size: 7.5px; font-weight: 400;
-  letter-spacing: 0.3em; text-transform: uppercase;
+  font-family: var(--sans); font-size: 7px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--text-muted); margin-top: 3px; display: block;
 }
-.main-nav {
-  display: flex; align-items: center; gap: 0; flex: 1;
-  justify-content: center; overflow: hidden;
+.main-nav { display: none; }
+.header-center {
+  display: flex; align-items: center; gap: 6px;
 }
-.main-nav a {
-  font-family: var(--sans); font-size: 10px; font-weight: 400;
+.mfc-btn {
+  font-family: var(--sans); font-size: 9px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-muted); text-decoration: none;
-  padding: 4px 12px; white-space: nowrap;
-  transition: color 0.25s; position: relative;
+  background: none; color: var(--text-muted);
+  border: 1px solid rgba(58,50,40,0.2); padding: 7px 14px;
+  border-radius: 3px; cursor: pointer; transition: all 0.3s;
+  text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 5px;
 }
-.main-nav a::after {
-  content: ''; position: absolute; bottom: -2px; left: 12px; right: 12px;
-  height: 1px; background: var(--gold);
-  transform: scaleX(0); transition: transform 0.25s;
-}
-.main-nav a:hover { color: var(--gold); }
-.main-nav a:hover::after { transform: scaleX(1); }
-.main-nav a.active { color: var(--gold); }
-.main-nav a.active::after { transform: scaleX(1); }
-.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.mfc-btn:hover { border-color: var(--gold); color: var(--gold); }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .btn-cta-header {
   font-family: var(--sans); font-size: 10px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: var(--cta); color: #fff;
-  border: none; padding: 10px 20px;
+  border: none; padding: 10px 18px;
   border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
@@ -101,16 +94,20 @@ header {
   font-family: var(--sans); font-size: 10px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: none; color: var(--text);
-  border: 1px solid rgba(58,50,40,0.35); padding: 9px 18px;
+  border: 1px solid rgba(58,50,40,0.3); padding: 9px 16px;
   border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
 .btn-outline-sm:hover { background: var(--text); color: var(--bg); }
-.mobile-toggle {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: pointer; padding: 4px;
+.burger-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: 1px solid rgba(58,50,40,0.25);
+  cursor: pointer; padding: 9px 12px; border-radius: 3px;
+  transition: all 0.3s; flex-shrink: 0;
 }
-.mobile-toggle span { width: 22px; height: 1px; background: var(--text); display: block; transition: all 0.3s; }
+.burger-btn span { width: 18px; height: 1.5px; background: var(--text); display: block; transition: all 0.3s; }
+.burger-btn:hover { border-color: var(--gold); }
+.burger-btn:hover span { background: var(--gold); }
 /* Mobile overlay */
 .mobile-overlay {
   position: fixed; inset: 0; z-index: 1500;
@@ -124,7 +121,7 @@ header {
 .mobile-overlay-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 32px; height: 68px;
-  border-bottom: 1px solid var(--border-hard);
+  border-bottom: 1px solid var(--border-hard); flex-shrink: 0;
 }
 .mobile-close {
   background: none; border: 1px solid var(--border-hard);
@@ -134,18 +131,19 @@ header {
 }
 .mobile-close:hover { border-color: var(--gold); color: var(--gold); }
 .mobile-nav-links {
-  display: flex; flex-direction: column; padding: 32px;
-  gap: 0; flex: 1;
+  display: flex; flex-direction: column; padding: 24px 32px;
+  gap: 0; flex: 1; overflow-y: auto;
 }
 .mobile-nav-links a {
-  font-family: var(--serif); font-size: 26px; font-weight: 300;
+  font-family: var(--serif); font-size: 28px; font-weight: 300;
   color: var(--cream); text-decoration: none;
   padding: 14px 0; border-bottom: 1px solid var(--border-hard);
-  transition: color 0.25s;
+  transition: color 0.25s; display: flex; justify-content: space-between; align-items: center;
 }
+.mobile-nav-links a::after { content: '→'; font-size: 18px; color: rgba(184,146,74,0.4); }
 .mobile-nav-links a:hover { color: var(--gold); }
+.mobile-nav-links a:hover::after { color: var(--gold); }
 .mobile-nav-links a:last-child { border-bottom: none; }
-
 /* ─── HERO ─── */
 .hero {
   height: 100vh;
@@ -1395,20 +1393,13 @@ footer {
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <nav class="main-nav">
-    <a href="fitness.html">Фитнес</a>
-    <a href="clinic.html">Косметология</a>
-    <a href="beauty.html">Салон красоты</a>
-    <a href="spa.html">Велнес и СПА</a>
-    <a href="services.html">Сервисы</a>
-    <a href="team.html">Команда</a>
-    <a href="news.html">Новости</a>
-    <a href="about.html">Контакты</a>
-  </nav>
+  <div class="header-center">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
-    <button class="mobile-toggle" onclick="toggleMobileMenu()" id="mobileToggleBtn">
+    <button class="burger-btn" onclick="toggleMobileMenu()" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1429,10 +1420,12 @@ footer {
     <a href="team.html">Команда</a>
     <a href="news.html">Новости</a>
     <a href="about.html">Контакты</a>
+    <a href="schedule.html">Расписание</a>
   </nav>
-  <div style="padding:24px 32px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border-hard)">
-    <button class="btn-primary" style="width:100%" onclick="location.href='booking.html'">Клубные карты</button>
-    <button class="btn-outline" style="width:100%" onclick="location.href='account.html'">Личный кабинет</button>
+  <div style="padding:20px 32px 28px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border-hard)">
+    <button class="btn-cta-header" style="width:100%;font-size:11px;padding:14px" onclick="location.href='booking.html'">Клубные карты</button>
+    <button class="btn-outline-sm" style="width:100%;font-size:11px;padding:13px" onclick="location.href='account.html'">Личный кабинет</button>
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank" style="justify-content:center">МФК Венеция ↗</a>
   </div>
 </div>
 
@@ -1443,10 +1436,18 @@ footer {
     <p style="font-size:14px;color:var(--text-muted);max-width:520px;line-height:1.85">Шкафчики, VIP-раздевалки, аренда студий, парковка и дополнительные удобства</p>
   </div>
 
+  <!-- SELECTOR TABS -->
+  <div style="background:var(--card);border-bottom:1px solid var(--border-hard);padding:0 80px;display:flex;gap:0" id="servSelector">
+    <button id="sst-all" onclick="switchServTab('all')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid var(--gold);background:none;cursor:pointer;color:var(--gold)">Все сервисы</button>
+    <button id="sst-open" onclick="switchServTab('open')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted)">Для всех посетителей</button>
+    <button id="sst-card" onclick="switchServTab('card')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted)">Для держателей карт</button>
+  </div>
+
   <!-- SECTION LABEL SPLIT -->
   <section style="padding:0 80px 60px;background:var(--bg)">
 
     <!-- FOR CARDHOLDERS -->
+    <div id="serv-card" class="serv-group">
     <div style="margin-bottom:48px">
       <div style="display:flex;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid var(--border-hard)">
         <div style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream)">Для держателей клубных карт</div>
@@ -1502,7 +1503,9 @@ footer {
       </div>
     </div>
 
+    </div>
     <!-- FOR EVERYONE -->
+    <div id="serv-open" class="serv-group">
     <div>
       <div style="display:flex;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid var(--border-hard)">
         <div style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream)">Для всех</div>
@@ -1681,5 +1684,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+</script>
+<script>
+function switchServTab(t){
+  ['all','open','card'].forEach(s=>{
+    const b=document.getElementById('sst-'+s);
+    if(b){b.style.color=s===t?'var(--gold)':'var(--text-muted)';b.style.borderBottomColor=s===t?'var(--gold)':'transparent';}
+  });
+  document.querySelectorAll('.serv-group').forEach(g=>{
+    const id=g.id.replace('serv-','');
+    g.style.display=(t==='all'||t===id)?'block':'none';
+  });
+}
+function toggleMobileMenu(){const ov=document.getElementById('mobileMenuOverlay');ov.classList.toggle('open');document.body.style.overflow=ov.classList.contains('open')?'hidden':'';}
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastText').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3800);}
 </script>
 </body>

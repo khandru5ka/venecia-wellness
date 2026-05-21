@@ -46,10 +46,10 @@ body {
 /* ─── HEADER ─── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 0 48px;
+  padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
   backdrop-filter: blur(16px);
@@ -58,41 +58,34 @@ header {
   text-decoration: none; cursor: pointer; flex-shrink: 0;
 }
 .logo-main {
-  font-family: var(--serif); font-size: 18px; font-weight: 400;
+  font-family: var(--serif); font-size: 17px; font-weight: 400;
   letter-spacing: 0.32em; color: var(--gold);
   text-transform: uppercase; line-height: 1; display: block;
 }
 .logo-sub {
-  font-family: var(--sans); font-size: 7.5px; font-weight: 400;
-  letter-spacing: 0.3em; text-transform: uppercase;
+  font-family: var(--sans); font-size: 7px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--text-muted); margin-top: 3px; display: block;
 }
-.main-nav {
-  display: flex; align-items: center; gap: 0; flex: 1;
-  justify-content: center; overflow: hidden;
+.main-nav { display: none; }
+.header-center {
+  display: flex; align-items: center; gap: 6px;
 }
-.main-nav a {
-  font-family: var(--sans); font-size: 10px; font-weight: 400;
+.mfc-btn {
+  font-family: var(--sans); font-size: 9px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-muted); text-decoration: none;
-  padding: 4px 12px; white-space: nowrap;
-  transition: color 0.25s; position: relative;
+  background: none; color: var(--text-muted);
+  border: 1px solid rgba(58,50,40,0.2); padding: 7px 14px;
+  border-radius: 3px; cursor: pointer; transition: all 0.3s;
+  text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 5px;
 }
-.main-nav a::after {
-  content: ''; position: absolute; bottom: -2px; left: 12px; right: 12px;
-  height: 1px; background: var(--gold);
-  transform: scaleX(0); transition: transform 0.25s;
-}
-.main-nav a:hover { color: var(--gold); }
-.main-nav a:hover::after { transform: scaleX(1); }
-.main-nav a.active { color: var(--gold); }
-.main-nav a.active::after { transform: scaleX(1); }
-.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.mfc-btn:hover { border-color: var(--gold); color: var(--gold); }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .btn-cta-header {
   font-family: var(--sans); font-size: 10px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: var(--cta); color: #fff;
-  border: none; padding: 10px 20px;
+  border: none; padding: 10px 18px;
   border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
@@ -101,16 +94,20 @@ header {
   font-family: var(--sans); font-size: 10px; font-weight: 400;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: none; color: var(--text);
-  border: 1px solid rgba(58,50,40,0.35); padding: 9px 18px;
+  border: 1px solid rgba(58,50,40,0.3); padding: 9px 16px;
   border-radius: 3px; cursor: pointer; transition: all 0.3s;
   white-space: nowrap;
 }
 .btn-outline-sm:hover { background: var(--text); color: var(--bg); }
-.mobile-toggle {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: pointer; padding: 4px;
+.burger-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: 1px solid rgba(58,50,40,0.25);
+  cursor: pointer; padding: 9px 12px; border-radius: 3px;
+  transition: all 0.3s; flex-shrink: 0;
 }
-.mobile-toggle span { width: 22px; height: 1px; background: var(--text); display: block; transition: all 0.3s; }
+.burger-btn span { width: 18px; height: 1.5px; background: var(--text); display: block; transition: all 0.3s; }
+.burger-btn:hover { border-color: var(--gold); }
+.burger-btn:hover span { background: var(--gold); }
 /* Mobile overlay */
 .mobile-overlay {
   position: fixed; inset: 0; z-index: 1500;
@@ -124,7 +121,7 @@ header {
 .mobile-overlay-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 32px; height: 68px;
-  border-bottom: 1px solid var(--border-hard);
+  border-bottom: 1px solid var(--border-hard); flex-shrink: 0;
 }
 .mobile-close {
   background: none; border: 1px solid var(--border-hard);
@@ -134,18 +131,19 @@ header {
 }
 .mobile-close:hover { border-color: var(--gold); color: var(--gold); }
 .mobile-nav-links {
-  display: flex; flex-direction: column; padding: 32px;
-  gap: 0; flex: 1;
+  display: flex; flex-direction: column; padding: 24px 32px;
+  gap: 0; flex: 1; overflow-y: auto;
 }
 .mobile-nav-links a {
-  font-family: var(--serif); font-size: 26px; font-weight: 300;
+  font-family: var(--serif); font-size: 28px; font-weight: 300;
   color: var(--cream); text-decoration: none;
   padding: 14px 0; border-bottom: 1px solid var(--border-hard);
-  transition: color 0.25s;
+  transition: color 0.25s; display: flex; justify-content: space-between; align-items: center;
 }
+.mobile-nav-links a::after { content: '→'; font-size: 18px; color: rgba(184,146,74,0.4); }
 .mobile-nav-links a:hover { color: var(--gold); }
+.mobile-nav-links a:hover::after { color: var(--gold); }
 .mobile-nav-links a:last-child { border-bottom: none; }
-
 /* ─── HERO ─── */
 .hero {
   height: 100vh;
@@ -1396,25 +1394,22 @@ footer {
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <nav class="main-nav">
-    <a href="fitness.html" class="active">Фитнес</a>
-    <a href="clinic.html">Косметология</a>
-    <a href="beauty.html">Салон красоты</a>
-    <a href="spa.html">Велнес и СПА</a>
-    <a href="services.html">Сервисы</a>
-    <a href="team.html">Команда</a>
-    <a href="news.html">Новости</a>
-    <a href="about.html">Контакты</a>
-  </nav>
+  <div class="header-center">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
-    <button class="mobile-toggle" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    <button class="burger-btn" onclick="toggleMobileMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 <div class="mobile-overlay" id="mobileMenuOverlay">
   <div class="mobile-overlay-header">
-    <a class="logo" href="index.html"><span class="logo-main">В Е Н Е Ц И Я</span></a>
+    <a class="logo" href="index.html">
+      <span class="logo-main">В Е Н Е Ц И Я</span>
+    </a>
     <button class="mobile-close" onclick="toggleMobileMenu()">✕ Закрыть</button>
   </div>
   <nav class="mobile-nav-links">
@@ -1426,10 +1421,12 @@ footer {
     <a href="team.html">Команда</a>
     <a href="news.html">Новости</a>
     <a href="about.html">Контакты</a>
+    <a href="schedule.html">Расписание</a>
   </nav>
-  <div style="padding:24px 32px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border-hard)">
-    <button class="btn-primary" style="width:100%" onclick="location.href='booking.html'">Клубные карты</button>
-    <button class="btn-outline" style="width:100%" onclick="location.href='account.html'">Личный кабинет</button>
+  <div style="padding:20px 32px 28px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border-hard)">
+    <button class="btn-cta-header" style="width:100%;font-size:11px;padding:14px" onclick="location.href='booking.html'">Клубные карты</button>
+    <button class="btn-outline-sm" style="width:100%;font-size:11px;padding:13px" onclick="location.href='account.html'">Личный кабинет</button>
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank" style="justify-content:center">МФК Венеция ↗</a>
   </div>
 </div>
 
@@ -1495,28 +1492,32 @@ footer {
   </div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px" id="trainingSchedule">
     <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
-      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Понедельник · Среда · Пятница</div>
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Пн · Ср · Пт</div>
       <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">07:30</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Утренний поток</div>
-      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Утренний поток</div>
+      <div id="trainer-slot-1" style="font-size:10px;color:var(--gold);margin-top:4px;font-style:italic"></div>
+      <button class="btn-book-small" style="margin-top:10px" onclick="location.href='account.html'">Записаться</button>
     </div>
     <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
-      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Вторник · Четверг</div>
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Вт · Чт</div>
       <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">09:00</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Дневной поток</div>
-      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Дневной поток</div>
+      <div id="trainer-slot-2" style="font-size:10px;color:var(--gold);margin-top:4px;font-style:italic"></div>
+      <button class="btn-book-small" style="margin-top:10px" onclick="location.href='account.html'">Записаться</button>
     </div>
     <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
       <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Ежедневно</div>
       <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">12:00</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Обеденный поток</div>
-      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Обеденный поток</div>
+      <div id="trainer-slot-3" style="font-size:10px;color:var(--gold);margin-top:4px;font-style:italic"></div>
+      <button class="btn-book-small" style="margin-top:10px" onclick="location.href='account.html'">Записаться</button>
     </div>
     <div style="background:var(--bg);border:1px solid var(--border-hard);padding:20px 16px">
       <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Ежедневно</div>
       <div style="font-family:var(--serif);font-size:24px;color:var(--gold)">19:00</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Вечерний поток</div>
-      <button class="btn-book-small" onclick="location.href='account.html'">Записаться</button>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Вечерний поток</div>
+      <div id="trainer-slot-4" style="font-size:10px;color:var(--gold);margin-top:4px;font-style:italic"></div>
+      <button class="btn-book-small" style="margin-top:10px" onclick="location.href='account.html'">Записаться</button>
     </div>
   </div>
 </section>
@@ -1577,28 +1578,28 @@ const TRAININGS = {
     desc: 'Хатха, виньяса, инь-йога — для начинающих и продвинутых',
     about1: 'Йога в Венеции — это пространство для осознанного движения. Мы предлагаем несколько стилей: динамичная виньяса для тех, кто ищет энергии, медитативная инь-йога для восстановления и классическая хатха для баланса.',
     about2: 'Все занятия проходят в специализированной студии с деревянным полом, зеркалами и необходимым инвентарём. Ковры, блоки и ремни предоставляются.',
-    s1v:'60', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'10', s3l:'мест', s4v:'6', s4l:'раз в нед'
+    s1v:'60', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'10', s3l:'мест', s4v:'6', s4l:'раз в нед', trainers:['Анна Соколова','Анна Соколова','Анна Соколова','Анна Соколова']
   },
   pilates: {
     title: 'Пилатес', titleEm: 'на реформерах', emoji: '🏃‍♀️', breadcrumb: 'Пилатес',
     desc: 'Классический и современный пилатес на реформерах Balanced Body',
     about1: 'Студия пилатеса Венеции оснащена профессиональными реформерами Balanced Body — оборудованием, которое используют ведущие студии мира. Занятия ведёт сертифицированный инструктор BASI Pilates.',
     about2: 'Пилатес на реформерах — это работа с глубокими мышцами, осанкой и гибкостью. Подходит для реабилитации, послеродового восстановления и профессиональных спортсменов.',
-    s1v:'55', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'6', s3l:'мест', s4v:'BASI', s4l:'сертификат'
+    s1v:'55', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'6', s3l:'мест', s4v:'BASI', s4l:'сертификат', trainers:['Мария Белова','Мария Белова','Мария Белова','Мария Белова']
   },
   boxing: {
     title: 'Боксинг', titleEm: 'для женщин', emoji: '🥊', breadcrumb: 'Боксинг',
     desc: 'Авторская программа женского бокса — кардио, сила и уверенность',
     about1: 'Женский боксинг в Венеции — это не спарринги и синяки. Это мощное кардио, работа с координацией и колоссальный выброс эмоций в безопасной атмосфере. Тренер — КМС по боксу.',
     about2: 'Занятия проходят в профессиональной боевой зоне с рингом. Всё снаряжение предоставляется. Никаких контактных спаррингов — только работа с мешком и лапами.',
-    s1v:'50', s1l:'минут', s2v:'Новички', s2l:'приветствуются', s3v:'8', s3l:'мест', s4v:'Ринг', s4l:'профессиональный'
+    s1v:'50', s1l:'минут', s2v:'Новички', s2l:'приветствуются', s3v:'8', s3l:'мест', s4v:'Ринг', s4l:'профессиональный', trainers:['Дарья Волкова','Дарья Волкова','Дарья Волкова','Дарья Волкова']
   },
   stretching: {
     title: 'Растяжка', titleEm: 'и стретчинг', emoji: '🤸‍♀️', breadcrumb: 'Растяжка',
     desc: 'Глубокий стретчинг, МФР и восстановление — для гибкости и здоровья',
     about1: 'Зона растяжки Венеции — идеальное завершение тренировочного дня. Специалист по стретчингу и МФР работает с мышечными зажимами, улучшает гибкость и ускоряет восстановление.',
     about2: 'Занятия подходят для всех — от профессиональных спортсменов до тех, кто впервые пришёл на тренировку. Коврики, блоки и роллеры предоставляются.',
-    s1v:'60', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'12', s3l:'мест', s4v:'МФР', s4l:'методика'
+    s1v:'60', s1l:'минут', s2v:'Все', s2l:'уровни', s3v:'12', s3l:'мест', s4v:'МФР', s4l:'методика', trainers:['Наталья Орлова','Наталья Орлова','Наталья Орлова','Наталья Орлова']
   }
 };
 
@@ -1619,6 +1620,12 @@ document.getElementById('stat2val').textContent = t.s2v; document.getElementById
 document.getElementById('stat3val').textContent = t.s3v; document.getElementById('stat3lbl').textContent = t.s3l;
 document.getElementById('stat4val').textContent = t.s4v; document.getElementById('stat4lbl').textContent = t.s4l;
 document.title = t.title + ' — Венеция Велнес';
+if (t.trainers) {
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById('trainer-slot-' + i);
+    if (el && t.trainers[i-1]) el.textContent = t.trainers[i-1];
+  }
+}
 
 function toggleMobileMenu() {
   const ov = document.getElementById('mobileMenuOverlay');
