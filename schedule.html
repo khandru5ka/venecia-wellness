@@ -49,6 +49,7 @@ header {
   padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
+  position: fixed;
   gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
@@ -1396,13 +1397,13 @@ footer {
 <body>
 <!-- HEADER -->
 <header id="header">
-  <a class="logo" href="index.html">
+  <div style="display:flex;align-items:center;flex:1">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
+  <a class="logo" href="index.html" style="position:absolute;left:50%;transform:translateX(-50%)">
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <div class="header-center">
-    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
-  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
@@ -1479,7 +1480,7 @@ footer {
 
   <!-- Schedule rows -->
   <div id="schedGrid" style="background:var(--bg);border-bottom:1px solid var(--border-hard)">
-    <div class="sched-row" data-type="yoga" data-kind="групповая" data-trainer="Анна Соколова">
+    <div class="sched-row" data-type="yoga" onclick="openTrainingModal('yoga', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Утренняя йога', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Анна Соколова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">07:30</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн Ср Пт</div>
@@ -1496,9 +1497,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">10 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="pilates" data-kind="групповая" data-trainer="Мария Белова">
+    </div>
+    <div class="sched-row" data-type="pilates" onclick="openTrainingModal('pilates', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Пилатес на реформерах', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Мария Белова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">08:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн–Пт</div>
@@ -1515,9 +1519,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">6 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="pilates" data-kind="групповая" data-trainer="Мария Белова">
+    </div>
+    <div class="sched-row" data-type="pilates" onclick="openTrainingModal('pilates', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Пилатес на реформерах', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Мария Белова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">09:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Вт Чт</div>
@@ -1534,9 +1541,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">6 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="personal" data-kind="персональная" data-trainer="Ольга Морозова">
+    </div>
+    <div class="sched-row" data-type="personal" onclick="openTrainingModal('personal', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Персональная тренировка', this.dataset.trainer)" style="cursor:pointer" data-kind="персональная" data-trainer="Ольга Морозова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">09:30</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн–Пт</div>
@@ -1553,9 +1563,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cta);border:1px solid var(--cta);padding:3px 10px;display:inline-block">Персональная</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">1 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="aqua" data-kind="групповая" data-trainer="Екатерина Лебедева">
+    </div>
+    <div class="sched-row" data-type="aqua" onclick="openTrainingModal('aqua', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Аквафитнес', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Екатерина Лебедева">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">11:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн Ср Пт Сб</div>
@@ -1572,9 +1585,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">8 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="personal" data-kind="персональная" data-trainer="Дарья Волкова">
+    </div>
+    <div class="sched-row" data-type="personal" onclick="openTrainingModal('personal', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Персональная тренировка', this.dataset.trainer)" style="cursor:pointer" data-kind="персональная" data-trainer="Дарья Волкова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">11:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн–Пт</div>
@@ -1591,9 +1607,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cta);border:1px solid var(--cta);padding:3px 10px;display:inline-block">Персональная</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">1 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="stretching" data-kind="групповая" data-trainer="Наталья Орлова">
+    </div>
+    <div class="sched-row" data-type="stretching" onclick="openTrainingModal('stretching', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Стретчинг и МФР', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Наталья Орлова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">12:30</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Ежедн.</div>
@@ -1610,9 +1629,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">12 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="cycle" data-kind="групповая" data-trainer="Ирина Козлова">
+    </div>
+    <div class="sched-row" data-type="cycle" onclick="openTrainingModal('cycle', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Сайкл', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Ирина Козлова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">14:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Вт Чт Сб</div>
@@ -1629,9 +1651,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">10 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="pump" data-kind="групповая" data-trainer="Ольга Морозова">
+    </div>
+    <div class="sched-row" data-type="pump" onclick="openTrainingModal('pump', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Body Pump', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Ольга Морозова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">16:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн Ср Пт</div>
@@ -1648,9 +1673,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">12 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="boxing" data-kind="групповая" data-trainer="Дарья Волкова">
+    </div>
+    <div class="sched-row" data-type="boxing" onclick="openTrainingModal('boxing', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Боксинг для женщин', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Дарья Волкова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">18:30</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Вт Чт Сб</div>
@@ -1667,9 +1695,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">8 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="course" data-kind="групповая" data-trainer="Ольга Морозова">
+    </div>
+    <div class="sched-row" data-type="course" onclick="openTrainingModal('course', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Курс «Женское тело»', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Ольга Морозова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">19:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Пн Ср</div>
@@ -1686,9 +1717,12 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">8 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
     </div>
-    <div class="sched-row" data-type="yoga" data-kind="групповая" data-trainer="Анна Соколова">
+    </div>
+    <div class="sched-row" data-type="yoga" onclick="openTrainingModal('yoga', this.querySelector('[style*=\'font-size:17px\']') ? this.querySelector('[style*=\'font-size:17px\']').textContent : 'Утренняя йога', this.dataset.trainer)" style="cursor:pointer" data-kind="групповая" data-trainer="Анна Соколова">
       <div style="font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:300">20:00</div>
       <div>
         <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">Ежедн.</div>
@@ -1705,7 +1739,10 @@ footer {
         <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:3px 10px;display:inline-block">Групповая</div>
         <div style="font-size:10px;color:var(--text-muted);margin-top:4px">10 мест</div>
       </div>
-      <button onclick="location.href='account.html'" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+      <div style="display:flex;flex-direction:column;gap:6px">
+    <button onclick="event.stopPropagation();location.href='account.html'" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:9px 14px;cursor:pointer;border-radius:2px;transition:background 0.3s;white-space:nowrap" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться</button>
+    <button onclick="event.stopPropagation();openTrainingModal(this.closest('[data-type]').dataset.type,'',this.closest('[data-trainer]').dataset.trainer)" style="font-family:var(--sans);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px 14px;cursor:pointer;border-radius:2px;white-space:nowrap">Подробнее</button>
+    </div>
     </div>
   </div>
   <div id="noResults" style="display:none;padding:48px;text-align:center;color:var(--text-muted);font-family:var(--serif);font-size:22px">Тренировок по фильтру не найдено</div>
@@ -1756,6 +1793,75 @@ function applyFilters(){
 function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastText').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3800);}
 function toggleMobileMenu(){const ov=document.getElementById('mobileMenuOverlay');ov.classList.toggle('open');document.body.style.overflow=ov.classList.contains('open')?'hidden':'';}
 const today=new Date().toISOString().split('T')[0];document.querySelectorAll('input[type="date"]').forEach(i=>{if(!i.value)i.value=today;});
+</script>
+
+<!-- TRAINING DETAIL MODAL -->
+<div id="trainingModal" style="position:fixed;inset:0;z-index:2000;background:rgba(42,32,24,0.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px">
+  <div style="background:var(--bg);border:1px solid var(--border-hard);max-width:600px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:fadeUp 0.35s ease">
+    <!-- Modal header -->
+    <div style="padding:28px 32px 20px;border-bottom:1px solid var(--border-hard);display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-size:8px;letter-spacing:0.34em;text-transform:uppercase;color:var(--gold);margin-bottom:8px" id="mTrainCat">Тренировка</div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font-size:40px" id="mTrainEmoji">🏋️</span>
+          <h3 style="font-family:var(--serif);font-size:28px;font-weight:400;color:var(--cream);line-height:1.05" id="mTrainName">Название</h3>
+        </div>
+      </div>
+      <button onclick="closeTrainingModal()" style="background:none;border:1px solid var(--border-hard);color:var(--text-muted);cursor:pointer;padding:8px 14px;font-family:var(--sans);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;transition:all 0.3s;flex-shrink:0" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--border-hard)';this.style.color='var(--text-muted)'">✕</button>
+    </div>
+    <!-- Stats strip -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-hard);border-bottom:1px solid var(--border-hard)">
+      <div style="background:var(--card);padding:16px;text-align:center">
+        <div style="font-family:var(--serif);font-size:18px;color:var(--gold)" id="mDuration">60 мин</div>
+        <div style="font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:3px">длительность</div>
+      </div>
+      <div style="background:var(--card);padding:16px;text-align:center">
+        <div style="font-family:var(--serif);font-size:18px;color:var(--gold)" id="mLevel">Все</div>
+        <div style="font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:3px">уровень</div>
+      </div>
+      <div style="background:var(--card);padding:16px;text-align:center">
+        <div style="font-family:var(--serif);font-size:18px;color:var(--gold)" id="mTrainer">—</div>
+        <div style="font-size:7.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-top:3px">тренер</div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div style="padding:28px 32px">
+      <div style="font-size:8.5px;letter-spacing:0.34em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">О тренировке</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.9;margin-bottom:24px" id="mAbout">Описание</p>
+      <div style="background:rgba(184,146,74,0.07);border:1px solid rgba(184,146,74,0.2);border-left:3px solid var(--gold);padding:16px 20px;margin-bottom:24px">
+        <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Как подготовиться</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.75" id="mPrep">Подготовка</p>
+      </div>
+      <button onclick="location.href='account.html'" style="width:100%;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:14px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Записаться через личный кабинет →</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toastSchedEl"><span class="toast-icon">✓</span><span class="toast-text" id="toastSchedText">Готово!</span></div>
+
+<script>
+const TRAINING_DATA = {"yoga": {"name": "Утренняя йога", "emoji": "🧘", "duration": "60 мин", "level": "Все уровни", "about": "Мягкое пробуждение через хатха и виньяса-йогу. Начинаем с пранаямы, затем плавно разогреваем тело через солнечные приветствия. Идеально для старта дня — без стресса, с полным вниманием к себе.", "prep": "Удобная одежда, голодный желудок (не есть за 1,5 часа). Всё оборудование предоставляется."}, "pilates": {"name": "Пилатес на реформерах", "emoji": "🏃\u200d♀️", "duration": "55 мин", "level": "Все уровни", "about": "Работа с глубокими мышцами-стабилизаторами на профессиональных реформерах Balanced Body. Улучшает осанку, укрепляет кор, развивает гибкость. Подходит для реабилитации и профессиональных спортсменов.", "prep": "Носки с нескользящей подошвой обязательны. Одежда в обтяжку для контроля положения тела."}, "aqua": {"name": "Аквафитнес", "emoji": "🏊", "duration": "50 мин", "level": "Все уровни", "about": "Кардио и силовые упражнения в воде. Минимальная нагрузка на суставы при максимальном эффекте. Подходит беременным (2–3 триместр), восстанавливающимся после травм и всем, кто ищет мягкую нагрузку.", "prep": "Купальник, шапочка, тапочки. Всё есть в прокате на стойке."}, "stretching": {"name": "Стретчинг и МФР", "emoji": "🤸\u200d♀️", "duration": "60 мин", "level": "Все уровни", "about": "Глубокое растягивание мышц и работа с фасциями через миофасциальный релиз. Снимает зажимы, улучшает гибкость, ускоряет восстановление после тренировок. Особенно полезно тем, кто много сидит.", "prep": "Удобная тянущаяся одежда. Занятие лучше проводить после другой тренировки."}, "cycle": {"name": "Сайкл", "emoji": "🚴\u200d♀️", "duration": "45 мин", "level": "Средний +", "about": "Интенсивная велотренировка под музыку в тёмном зале. Интервальные подъёмы, спринты и восстановительные фазы. Одна из самых эффективных кардио-тренировок — 400–600 ккал за занятие.", "prep": "Шорты с велоподкладкой или специальные велотрусы. Бутылка воды обязательна."}, "boxing": {"name": "Боксинг для женщин", "emoji": "🥊", "duration": "50 мин", "level": "Начинающие", "about": "Авторская программа Дарьи Волковой — без контактных спаррингов. Работа с мешком, лапами и собственным весом. Мощное кардио, координация, выброс стресса и уверенность в себе.", "prep": "Обмотки на запястья (можно арендовать), удобная одежда. Перчатки предоставляются."}, "pump": {"name": "Body Pump", "emoji": "💪", "duration": "55 мин", "level": "Средний", "about": "Групповая силовая тренировка со штангой под музыку. Прорабатывает все группы мышц — от 800 до 1000 повторений за занятие. Эффективно для тонуса, выносливости и сжигания жира.", "prep": "Удобная одежда и кроссовки. Первый раз возьмите минимальный вес."}, "course": {"name": "Курс «Женское тело»", "emoji": "🌸", "duration": "60 мин", "level": "Все уровни", "about": "8-недельный авторский курс Ольги Морозовой — работа с женской анатомией, гормональным циклом и самооценкой через движение. Силовые тренировки, растяжка и образовательный блок каждую неделю.", "prep": "Курс проходит последовательно — важно посещать все занятия. Записывайтесь на весь цикл."}, "personal": {"name": "Персональная тренировка", "emoji": "👤", "duration": "60 мин", "level": "Индивидуально", "about": "Тренировка 1-на-1 с закреплённым тренером по вашей персональной программе. Оборудование, интенсивность и направление определяются совместно на вводной консультации.", "prep": "Консультация с тренером обязательна перед первой персональной тренировкой."}};
+
+function openTrainingModal(type, name, trainer) {
+  const d = TRAINING_DATA[type] || {name:name,emoji:'🏋️',duration:'60 мин',level:'Все',about:'Групповая тренировка под руководством сертифицированного инструктора.',prep:'Удобная спортивная одежда.'};
+  document.getElementById('mTrainEmoji').textContent = d.emoji;
+  document.getElementById('mTrainName').textContent = d.name;
+  document.getElementById('mTrainCat').textContent = 'Тренировка';
+  document.getElementById('mDuration').textContent = d.duration;
+  document.getElementById('mLevel').textContent = d.level;
+  document.getElementById('mTrainer').textContent = trainer || '—';
+  document.getElementById('mAbout').textContent = d.about;
+  document.getElementById('mPrep').textContent = d.prep;
+  const modal = document.getElementById('trainingModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeTrainingModal() {
+  document.getElementById('trainingModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('trainingModal').addEventListener('click', function(e) {
+  if (e.target === this) closeTrainingModal();
+});
 </script>
 </body>
 </html>

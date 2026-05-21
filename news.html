@@ -49,6 +49,7 @@ header {
   padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
+  position: fixed;
   gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
@@ -1389,13 +1390,13 @@ footer {
 <body>
 <!-- HEADER -->
 <header id="header">
-  <a class="logo" href="index.html">
+  <div style="display:flex;align-items:center;flex:1">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
+  <a class="logo" href="index.html" style="position:absolute;left:50%;transform:translateX(-50%)">
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <div class="header-center">
-    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
-  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
@@ -1436,84 +1437,109 @@ footer {
     <p style="font-size:14px;color:var(--text-muted);max-width:500px;line-height:1.85">События клуба, обновления расписания, новые процедуры и специальные предложения</p>
   </div>
 
-  <section style="padding:60px 80px;background:var(--bg)">
-    <!-- Featured news -->
+  <section style="padding:40px 80px;background:var(--bg)">
+    <!-- Featured + sidebar grid -->
     <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:1px;background:var(--border-hard);border:1px solid var(--border-hard);margin-bottom:1px">
-      <div style="background:var(--bg);padding:48px 40px;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:180px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:64px;margin-bottom:0">📅</div>
-        <div style="padding:32px 40px 0"><div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Главное · 15 декабря 2025</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:16px">Новое расписание групповых тренировок на январь 2026</h2>
-        <p style="font-size:13px;color:var(--text-muted);line-height:1.85;margin-bottom:24px">Добавили новые слоты утреннего пилатеса, расширили программу аквафитнеса и открыли запись на авторский курс «Женское тело» с Ольгой Морозовой.</p>
-        <div style="font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);cursor:pointer" onclick="location.href='news-article.html'">Читать далее →</div>
-      </div></div>
-      <div style="background:var(--card);padding:48px 40px;display:flex;flex-direction:column;gap:24px">
-        <div>
-          <div style="height:100px;background:linear-gradient(135deg,var(--card),var(--bg2));border-bottom:1px solid var(--border-hard);display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:0">🌿</div>
-          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;padding-top:12px">10 декабря 2025</div>
-          <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);margin-bottom:8px">Обновление СПА-меню на зимний сезон</h3>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.7">Новые ароматические ритуалы в хамаме: «Янтарный мёд» и «Зимний кедр»</p>
+      <!-- Featured article -->
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:block;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:220px;background:linear-gradient(135deg,var(--cream),#2a1f14);display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden">
+          📅
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,146,74,0.15),transparent)"></div>
         </div>
-        <div style="border-top:1px solid var(--border-hard);padding-top:24px">
-          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">5 декабря 2025</div>
-          <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);margin-bottom:8px">Елена Петрова прошла сертификацию Botox Advanced</h3>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.7">Наш врач-косметолог получила международный сертификат по технике контурной пластики</p>
+        <div style="padding:32px 36px">
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Главное · 15 декабря 2025</div>
+          <h2 style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:400;color:var(--cream);line-height:1.12;margin-bottom:12px">Новое расписание групповых тренировок на январь 2026</h2>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">Добавили новые слоты утреннего пилатеса, расширили программу аквафитнеса и открыли запись на авторский курс «Женское тело» с Ольгой Морозовой.</p>
+          <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)">Читать далее →</div>
         </div>
+      </a>
+      <!-- Sidebar news -->
+      <div style="display:flex;flex-direction:column;gap:0;background:var(--card)">
+        <a href="news-article.html" style="text-decoration:none;color:inherit;padding:0;display:flex;flex-direction:column;border-bottom:1px solid var(--border-hard);cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='transparent'">
+          <div style="height:90px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:36px">🌿</div>
+          <div style="padding:16px 20px">
+            <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px">СПА · 10 декабря 2025</div>
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:4px">Обновление СПА-меню на зимний сезон</div>
+            <div style="font-size:10px;color:var(--text-muted)">Новые ароматические ритуалы «Янтарный мёд» и «Зимний кедр»</div>
+          </div>
+        </a>
+        <a href="news-article.html" style="text-decoration:none;color:inherit;padding:0;display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--bg2)'" onmouseleave="this.style.background='transparent'">
+          <div style="height:90px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:36px">💉</div>
+          <div style="padding:16px 20px">
+            <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px">Клиника · 5 декабря 2025</div>
+            <div style="font-family:var(--serif);font-size:16px;color:var(--cream);margin-bottom:4px">Елена Петрова — сертификация Botox Advanced</div>
+            <div style="font-size:10px;color:var(--text-muted)">Международный сертификат по контурной пластике</div>
+          </div>
+        </a>
       </div>
     </div>
 
-    <!-- News grid -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border-hard);border:0 solid var(--border-hard);border-left:1px solid var(--border-hard);border-right:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard)">
-      
-      <div style="background:var(--bg);padding:32px 28px;cursor:pointer;transition:background 0.3s;border-bottom:1px solid var(--border-hard)" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:28px;border-bottom:1px solid var(--border-hard)">💊</div>
-      <div style="padding:16px 20px"><div style="font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Клиника · 28 ноя 2025</div>
-        <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:10px">Новая процедура: SMAS-лифтинг Ultraformer III</h3>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Аппаратный лифтинг без реабилитации — запись уже открыта</p>
-        <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
-      </div>
-      
-      <div style="background:var(--bg);padding:32px 28px;cursor:pointer;transition:background 0.3s;border-bottom:1px solid var(--border-hard)" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:28px;border-bottom:1px solid var(--border-hard)">🥊</div>
-      <div style="padding:16px 20px"><div style="font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Фитнес · 20 ноя 2025</div>
-        <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:10px">Дарья Волкова открывает курс женского бокса</h3>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Авторская 8-недельная программа для начинающих</p>
-        <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
-      </div>
-      
-      <div style="background:var(--bg);padding:32px 28px;cursor:pointer;transition:background 0.3s;border-bottom:1px solid var(--border-hard)" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:28px;border-bottom:1px solid var(--border-hard)">💇‍♀️</div>
-      <div style="padding:16px 20px"><div style="font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Салон · 15 ноя 2025</div>
-        <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:10px">Виктория Смирнова вернулась из стажировки в Лондоне</h3>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Новые техники окрашивания уже в меню салона</p>
-        <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
-      </div>
-      
-      <div style="background:var(--bg);padding:32px 28px;cursor:pointer;transition:background 0.3s;border-bottom:1px solid var(--border-hard)" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:28px;border-bottom:1px solid var(--border-hard)">🌿</div>
-      <div style="padding:16px 20px"><div style="font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">СПА · 10 ноя 2025</div>
-        <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:10px">Хамам закрыт на профилактику 22–23 ноября</h3>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Бассейн и сауна работают в штатном режиме</p>
-        <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
-      </div>
-      
-      <div style="background:var(--bg);padding:32px 28px;cursor:pointer;transition:background 0.3s;border-bottom:1px solid var(--border-hard)" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:28px;border-bottom:1px solid var(--border-hard)">📱</div>
-      <div style="padding:16px 20px"><div style="font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Клуб · 1 ноя 2025</div>
-        <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:10px">Обновление личного кабинета</h3>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Новый интерфейс бронирования и история визитов</p>
-        <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
-      </div>
-      
-      <div style="background:var(--bg);padding:32px 28px;cursor:pointer;transition:background 0.3s;border-bottom:1px solid var(--border-hard)" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
-        <div style="height:64px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:28px;border-bottom:1px solid var(--border-hard)">🏋️</div>
-      <div style="padding:16px 20px"><div style="font-size:7.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Фитнес · 25 окт 2025</div>
-        <h3 style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:10px">Новый тренажёр Hammer Strength в силовой зоне</h3>
-        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Leg Press следующего поколения — уже доступен</p>
-        <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
-      </div>
-      
+    <!-- News grid 3-col -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-hard);border:0 solid var(--border-hard);border-left:1px solid var(--border-hard);border-right:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard)">
+
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:130px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px">💊</div>
+        <div style="padding:20px 22px 22px;flex:1">
+          <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Клиника · 28 ноя 2025</div>
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);line-height:1.1;margin-bottom:8px">SMAS-лифтинг Ultraformer III</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:14px">Аппаратный лифтинг без реабилитации — запись уже открыта.</p>
+          <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
+        </div>
+      </a>
+
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:130px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px">🥊</div>
+        <div style="padding:20px 22px 22px;flex:1">
+          <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Фитнес · 20 ноя 2025</div>
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);line-height:1.1;margin-bottom:8px">Дарья Волкова открывает курс боксинга</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:14px">Авторская 8-недельная программа для начинающих — старт в январе.</p>
+          <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
+        </div>
+      </a>
+
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:130px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px">💇‍♀️</div>
+        <div style="padding:20px 22px 22px;flex:1">
+          <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Салон · 15 ноя 2025</div>
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);line-height:1.1;margin-bottom:8px">Виктория Смирнова вернулась из Лондона</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:14px">Новые техники окрашивания уже в меню салона.</p>
+          <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
+        </div>
+      </a>
+
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:130px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px">🔧</div>
+        <div style="padding:20px 22px 22px;flex:1">
+          <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">СПА · 10 ноя 2025</div>
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);line-height:1.1;margin-bottom:8px">Хамам закрыт на профилактику 22–23 ноября</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:14px">Бассейн и сауна работают в штатном режиме.</p>
+          <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
+        </div>
+      </a>
+
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:130px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px">📱</div>
+        <div style="padding:20px 22px 22px;flex:1">
+          <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Клуб · 1 ноя 2025</div>
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);line-height:1.1;margin-bottom:8px">Обновление личного кабинета</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:14px">Новый интерфейс бронирования и история визитов.</p>
+          <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
+        </div>
+      </a>
+
+      <a href="news-article.html" style="text-decoration:none;color:inherit;background:var(--bg);display:flex;flex-direction:column;cursor:pointer;transition:background 0.3s" onmouseenter="this.style.background='var(--card)'" onmouseleave="this.style.background='var(--bg)'">
+        <div style="height:130px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px">🏋️</div>
+        <div style="padding:20px 22px 22px;flex:1">
+          <div style="font-size:7.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Фитнес · 25 окт 2025</div>
+          <div style="font-family:var(--serif);font-size:18px;color:var(--cream);line-height:1.1;margin-bottom:8px">Новый тренажёр Hammer Strength</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:14px">Leg Press следующего поколения — уже доступен в силовой зоне.</p>
+          <div style="font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)">Подробнее →</div>
+        </div>
+      </a>
+
     </div>
   </section>
+
 </div>
 
 <!-- BOOKING MODAL -->

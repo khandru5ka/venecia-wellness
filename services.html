@@ -49,6 +49,7 @@ header {
   padding: 0 40px;
   height: 68px;
   display: flex; align-items: center; justify-content: space-between;
+  position: fixed;
   gap: 16px;
   border-bottom: 1px solid var(--border-hard);
   background: rgba(240,235,225,0.97);
@@ -1389,13 +1390,13 @@ footer {
 <body>
 <!-- HEADER -->
 <header id="header">
-  <a class="logo" href="index.html">
+  <div style="display:flex;align-items:center;flex:1">
+    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
+  </div>
+  <a class="logo" href="index.html" style="position:absolute;left:50%;transform:translateX(-50%)">
     <span class="logo-main">В Е Н Е Ц И Я</span>
     <span class="logo-sub">Велнес клуб &amp; СПА</span>
   </a>
-  <div class="header-center">
-    <a class="mfc-btn" href="https://veneciawellness.ru" target="_blank">МФК Венеция ↗</a>
-  </div>
   <div class="header-actions">
     <button class="btn-cta-header" onclick="location.href='booking.html'">Клубные карты</button>
     <button class="btn-outline-sm" onclick="location.href='account.html'">Кабинет</button>
@@ -1437,115 +1438,127 @@ footer {
   </div>
 
   <!-- SELECTOR TABS -->
-  <div style="background:var(--card);border-bottom:1px solid var(--border-hard);padding:0 80px;display:flex;gap:0" id="servSelector">
-    <button id="sst-all" onclick="switchServTab('all')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid var(--gold);background:none;cursor:pointer;color:var(--gold)">Все сервисы</button>
-    <button id="sst-open" onclick="switchServTab('open')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted)">Для всех посетителей</button>
-    <button id="sst-card" onclick="switchServTab('card')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted)">Для держателей карт</button>
+  <div style="background:var(--card);border-bottom:1px solid var(--border-hard);padding:0 80px;display:flex;gap:0">
+    <button id="sst-all"  onclick="switchServTab('all')"  style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid var(--gold);background:none;cursor:pointer;color:var(--gold);transition:all 0.3s">Все сервисы</button>
+    <button id="sst-open" onclick="switchServTab('open')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted);transition:all 0.3s">Для всех посетителей</button>
+    <button id="sst-card" onclick="switchServTab('card')" style="padding:18px 32px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--text-muted);transition:all 0.3s">Для держателей карт</button>
   </div>
 
-  <!-- SECTION LABEL SPLIT -->
-  <section style="padding:0 80px 60px;background:var(--bg)">
+  <!-- FOR CARDHOLDERS -->
+  <div id="serv-card" class="serv-group" style="padding:48px 80px;background:var(--bg)">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border-hard)">
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream)">Для держателей клубных карт</div>
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;background:rgba(184,146,74,0.1);color:var(--gold);border:1px solid rgba(184,146,74,0.3);padding:4px 10px">Fitness</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
 
-    <!-- FOR CARDHOLDERS -->
-    <div id="serv-card" class="serv-group">
-    <div style="margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid var(--border-hard)">
-        <div style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream)">Для держателей клубных карт</div>
-        <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;background:rgba(184,146,74,0.1);color:var(--gold);border:1px solid rgba(184,146,74,0.3);padding:5px 12px">Fitness</div>
+      <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:160px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:56px;position:relative">
+          🔑
+          <div style="position:absolute;top:12px;right:12px;font-size:7px;letter-spacing:0.22em;text-transform:uppercase;background:rgba(184,146,74,0.2);color:var(--gold);padding:4px 8px">Аренда</div>
+        </div>
+        <div style="padding:22px 20px 20px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Шкафчики</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--cream);margin-bottom:6px">Личный шкафчик</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">Долгосрочная аренда в раздевалке</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;flex:1">Храните форму, косметику и личные вещи. Стандарт, увеличенный или VIP-шкафчик с зарядкой и персональными полками.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">Стандарт</span><span style="color:var(--gold);font-family:var(--serif)">1 800 ₽/мес</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">Увеличенный</span><span style="color:var(--gold);font-family:var(--serif)">2 500 ₽/мес</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">VIP с зарядкой</span><span style="color:var(--gold);font-family:var(--serif)">4 000 ₽/мес</span></div>
+          </div>
+          <button onclick="location.href='booking.html'" style="width:100%;font-family:var(--sans);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:11px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Арендовать</button>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border-hard);border:0 solid var(--border-hard);border-left:1px solid var(--border-hard);border-right:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard)">
 
-        <div style="background:var(--bg);padding:36px 28px">
-          <div style="font-size:8.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Аренда шкафчиков</div>
-          <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:12px">Личный шкафчик</h3>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">Долгосрочная аренда в раздевалке — для вашей формы, косметики и личных вещей.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
-            <div style="background:var(--card);border:1px solid var(--border-hard);padding:12px 16px;display:flex;justify-content:space-between">
-              <span style="font-size:12px;color:var(--cream)">Стандарт 30×40</span>
-              <span style="font-family:var(--serif);font-size:14px;color:var(--gold)">1 800 ₽/мес</span>
-            </div>
-            <div style="background:var(--card);border:1px solid var(--border-hard);padding:12px 16px;display:flex;justify-content:space-between">
-              <span style="font-size:12px;color:var(--cream)">Увеличенный 40×60</span>
-              <span style="font-family:var(--serif);font-size:14px;color:var(--gold)">2 500 ₽/мес</span>
-            </div>
-            <div style="background:var(--card);border:1px solid var(--gold);padding:12px 16px;display:flex;justify-content:space-between">
-              <span style="font-size:12px;color:var(--cream)">VIP (с зарядкой)</span>
-              <span style="font-family:var(--serif);font-size:14px;color:var(--gold)">4 000 ₽/мес</span>
-            </div>
-          </div>
-          <button class="btn-primary" style="width:100%;font-size:9px" onclick="location.href='booking.html'">Арендовать</button>
+      <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:160px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:56px;position:relative">
+          👑
+          <div style="position:absolute;top:12px;right:12px;font-size:7px;letter-spacing:0.22em;text-transform:uppercase;background:rgba(184,146,74,0.2);color:var(--gold);padding:4px 8px">Premium</div>
         </div>
-
-        <div style="background:var(--card);padding:36px 28px">
-          <div style="font-size:8.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">VIP-раздевалка</div>
-          <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:12px">Приватный кабинет</h3>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">Закреплённая раздевалка с персональным сервисом для особых визитов.</p>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
-            <div style="display:flex;gap:10px;font-size:11px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Полная приватность</div>
-            <div style="display:flex;gap:10px;font-size:11px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Банные принадлежности</div>
-            <div style="display:flex;gap:10px;font-size:11px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>Приветственный ритуал</div>
-            <div style="display:flex;gap:10px;font-size:11px;color:var(--text-muted)"><span style="color:var(--gold)">—</span>От 3 500 ₽ / день</div>
+        <div style="padding:22px 20px 20px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">VIP</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--cream);margin-bottom:6px">VIP-раздевалка</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">Приватный кабинет с сервисом</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;flex:1">Полная приватность, банные принадлежности, приветственный ритуал. Для особых визитов и деловых встреч.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">Разовое бронирование</span><span style="color:var(--gold);font-family:var(--serif)">от 3 500 ₽/день</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">На неделю</span><span style="color:var(--gold);font-family:var(--serif)">от 18 000 ₽</span></div>
           </div>
-          <button class="btn-primary" style="width:100%;font-size:9px" onclick="location.href='booking.html'">Забронировать</button>
+          <button onclick="location.href='booking.html'" style="width:100%;font-family:var(--sans);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:11px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Забронировать</button>
         </div>
+      </div>
 
-        <div style="background:var(--bg);padding:36px 28px">
-          <div style="font-size:8.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Аренда студий</div>
-          <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:12px">Персональные студии</h3>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:20px">40–56 м² для тренировок со своим тренером или самостоятельно.</p>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
-            <div style="background:var(--card);border:1px solid var(--border-hard);padding:10px 14px;display:flex;justify-content:space-between"><span style="font-size:11px;color:var(--cream)">Студия №1 — Балет</span><span style="font-size:12px;color:var(--gold)">4 500 ₽/ч</span></div>
-            <div style="background:var(--card);border:1px solid var(--border-hard);padding:10px 14px;display:flex;justify-content:space-between"><span style="font-size:11px;color:var(--cream)">Студия №2 — Пилатес</span><span style="font-size:12px;color:var(--gold)">4 500 ₽/ч</span></div>
-            <div style="background:var(--card);border:1px solid var(--border-hard);padding:10px 14px;display:flex;justify-content:space-between"><span style="font-size:11px;color:var(--cream)">Студия №3 — Бокс</span><span style="font-size:12px;color:var(--gold)">4 500 ₽/ч</span></div>
+      <div style="background:var(--card);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:160px;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:56px;position:relative">
+          🏛
+          <div style="position:absolute;top:12px;right:12px;font-size:7px;letter-spacing:0.22em;text-transform:uppercase;background:rgba(184,146,74,0.2);color:var(--gold);padding:4px 8px">Аренда</div>
+        </div>
+        <div style="padding:22px 20px 20px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Студии</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--cream);margin-bottom:6px">Персональные студии</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">40–56 м² со своим тренером</div>
+          <p style="font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;flex:1">Три студии для тренировок со своим тренером или самостоятельно. Балет, пилатес, боевые искусства.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">1 час</span><span style="color:var(--gold);font-family:var(--serif)">от 4 500 ₽</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--text-muted)">Пакет 10 часов</span><span style="color:var(--gold);font-family:var(--serif)">38 000 ₽</span></div>
           </div>
-          <button class="btn-primary" style="width:100%;font-size:9px" onclick="location.href='booking.html'">Арендовать студию</button>
+          <button onclick="location.href='booking.html'" style="width:100%;font-family:var(--sans);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:11px;cursor:pointer;border-radius:2px;transition:background 0.3s" onmouseenter="this.style.background='var(--cta)'" onmouseleave="this.style.background='var(--gold)'">Арендовать студию</button>
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- FOR EVERYONE -->
+  <div id="serv-open" class="serv-group" style="padding:48px 80px;background:var(--card);border-top:1px solid var(--border-hard)">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border-hard)">
+      <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream)">Для всех посетителей</div>
+      <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;background:rgba(139,32,32,0.08);color:var(--cta);border:1px solid rgba(139,32,32,0.2);padding:4px 10px">Без карты</div>
     </div>
-    <!-- FOR EVERYONE -->
-    <div id="serv-open" class="serv-group">
-    <div>
-      <div style="display:flex;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid var(--border-hard)">
-        <div style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream)">Для всех</div>
-        <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;background:rgba(139,32,32,0.08);color:var(--cta);border:1px solid rgba(139,32,32,0.2);padding:5px 12px">Без карты</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-hard);border:0 solid var(--border-hard);border-left:1px solid var(--border-hard);border-right:1px solid var(--border-hard);border-bottom:1px solid var(--border-hard)">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
 
-        <div style="background:var(--card);padding:36px 28px">
-          <div style="font-size:8.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Парковка</div>
-          <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:12px">Подземная парковка</h3>
-          <p style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:16px">Первые 2 часа для гостей клиники и салона — бесплатно при валидации на стойке администратора МФК.</p>
-          <div style="font-size:11px;color:var(--text-muted)">Въезд: наб. Тараса Шевченко</div>
-        </div>
-
-        <div style="background:var(--bg);padding:36px 28px">
-          <div style="font-size:8.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Прочие удобства</div>
-          <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:12px">Сервисы МФК</h3>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="border-bottom:1px solid var(--border-hard);padding-bottom:12px"><div style="font-size:13px;color:var(--cream);margin-bottom:4px">Детская комната</div><div style="font-size:11px;color:var(--text-muted)">Присмотр во время вашего визита — по записи</div></div>
-            <div style="border-bottom:1px solid var(--border-hard);padding-bottom:12px"><div style="font-size:13px;color:var(--cream);margin-bottom:4px">Аренда полотенец</div><div style="font-size:11px;color:var(--text-muted)">Для гостей клиники и салона — 200 ₽</div></div>
-            <div><div style="font-size:13px;color:var(--cream);margin-bottom:4px">Кейтеринг</div><div style="font-size:11px;color:var(--text-muted)">Лёгкие закуски в зону ожидания — по запросу</div></div>
-          </div>
+      <div style="background:var(--bg);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:120px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:44px">🚗</div>
+        <div style="padding:18px 16px 16px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Транспорт</div>
+          <div style="font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:6px">Парковка</div>
+          <p style="font-size:10px;color:var(--text-muted);line-height:1.65;margin-bottom:12px;flex:1">Подземная парковка МФК. Первые 2 часа — бесплатно при валидации на стойке.</p>
+          <div style="font-size:11px;color:var(--gold);font-family:var(--serif)">Бесплатно · 2 часа</div>
         </div>
       </div>
+
+      <div style="background:var(--bg);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:120px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:44px">👶</div>
+        <div style="padding:18px 16px 16px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Семья</div>
+          <div style="font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:6px">Детская комната</div>
+          <p style="font-size:10px;color:var(--text-muted);line-height:1.65;margin-bottom:12px;flex:1">Присмотр за детьми во время визита. По предварительной записи у администратора.</p>
+          <button onclick="showToast('Уточните у администратора: +7 (495) 000-00-00')" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px;cursor:pointer;width:100%;border-radius:2px">Уточнить</button>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:120px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:44px">🛁</div>
+        <div style="padding:18px 16px 16px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Комфорт</div>
+          <div style="font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:6px">Аренда полотенец</div>
+          <p style="font-size:10px;color:var(--text-muted);line-height:1.65;margin-bottom:12px;flex:1">Комплект банных полотенец для гостей клиники и салона. Для держателей карт — включено.</p>
+          <div style="font-size:11px;color:var(--gold);font-family:var(--serif)">200 ₽ · комплект</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid var(--border-hard);overflow:hidden;display:flex;flex-direction:column;transition:transform 0.3s,box-shadow 0.3s" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(184,146,74,0.1)'" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:120px;background:linear-gradient(135deg,var(--bg3),var(--bg2));display:flex;align-items:center;justify-content:center;font-size:44px">☕</div>
+        <div style="padding:18px 16px 16px;flex:1;display:flex;flex-direction:column">
+          <div style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Питание</div>
+          <div style="font-family:var(--serif);font-size:17px;color:var(--cream);margin-bottom:6px">Кейтеринг</div>
+          <p style="font-size:10px;color:var(--text-muted);line-height:1.65;margin-bottom:12px;flex:1">Лёгкие закуски, чай и напитки в зону ожидания. По предварительному запросу.</p>
+          <button onclick="showToast('Запрос на кейтеринг: info@veneciawellness.ru')" style="font-family:var(--sans);font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;background:none;border:1px solid var(--border-hard);color:var(--gold);padding:8px;cursor:pointer;width:100%;border-radius:2px">Заказать</button>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
-</div>
-
-<!-- BOOKING MODAL -->
-<!-- ─── BOOKING MODAL ─── -->
-<div class="modal-overlay" id="bookingModal">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal()">×</div>
-<!-- TOAST -->
-<!-- ─── TOAST ─── -->
-<div class="toast" id="toast">
-  <span class="toast-icon">✓</span>
-  <span class="toast-text" id="toastText">Запрос принят!</span>
-</div>
 <footer style="background:var(--cream);border-top:1px solid rgba(184,146,74,0.2);padding:24px 80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:auto">
   <div style="font-family:var(--serif);font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)">Венеция · Велнес</div>
   <div style="display:flex;gap:24px;flex-wrap:wrap">
@@ -1698,5 +1711,19 @@ function switchServTab(t){
 }
 function toggleMobileMenu(){const ov=document.getElementById('mobileMenuOverlay');ov.classList.toggle('open');document.body.style.overflow=ov.classList.contains('open')?'hidden':'';}
 function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastText').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3800);}
+</script>
+<script>
+function switchServTab(t){
+  ['all','open','card'].forEach(s=>{
+    const b=document.getElementById('sst-'+s);
+    if(b){b.style.color=s===t?'var(--gold)':'var(--text-muted)';b.style.borderBottomColor=s===t?'var(--gold)':'transparent';}
+  });
+  document.querySelectorAll('.serv-group').forEach(g=>{
+    const id=g.id.replace('serv-','');
+    g.style.display=(t==='all'||t===id)?'block':'none';
+  });
+}
+function showToast(msg){const t=document.getElementById('toast');if(t){document.getElementById('toastText').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3800);}}
+function toggleMobileMenu(){const ov=document.getElementById('mobileMenuOverlay');ov.classList.toggle('open');document.body.style.overflow=ov.classList.contains('open')?'hidden':'';}
 </script>
 </body>
